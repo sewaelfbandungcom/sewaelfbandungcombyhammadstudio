@@ -347,11 +347,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
   const selectedFleetObj = fleetOptions.find((f) => f.value === fleet) || fleetOptions[0];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[110px] sm:pt-[118px] lg:pt-[124px]">
-      {/* 100% Full-Width & Full-Height 1 Viewport Screen Slider */}
-      <div className="relative w-full overflow-hidden rounded-b-[24px] sm:rounded-b-[40px] lg:rounded-b-[52px] bg-slate-950 shadow-sm">
+    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[106px] sm:pt-[112px]">
+      {/* Full-Width Slider Container with Exact Proportions: 100% of Image is Visible (Zero Top/Bottom Crop) */}
+      <div className="relative w-full overflow-hidden rounded-b-[20px] sm:rounded-b-[36px] bg-slate-950 shadow-sm">
         <div
-          className="group/slider relative w-full h-[calc(100svh-110px)] sm:h-[calc(100svh-118px)] lg:h-[calc(100svh-124px)] min-h-[520px] overflow-hidden"
+          className="group/slider relative w-full aspect-[9/16] sm:aspect-[16/9] overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
@@ -374,7 +374,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                   className="block relative size-full cursor-pointer"
                   aria-label={slide.alt}
                 >
-                  {/* Mobile Banner: Full Screen Viewport (Top Aligned) */}
+                  {/* Mobile Banner (941x1672 - Native 9:16 Aspect Ratio) */}
                   <div className="relative size-full sm:hidden">
                     <Image
                       src={slide.mobile}
@@ -382,11 +382,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                       fill
                       priority={index === 0}
                       sizes="100vw"
-                      className="object-cover object-top"
+                      className="object-cover object-center"
                     />
                   </div>
 
-                  {/* Desktop Banner: Full Screen Viewport (Top Aligned) */}
+                  {/* Desktop Banner (1672x941 - Native 16:9 Aspect Ratio) */}
                   <div className="relative size-full hidden sm:block">
                     <Image
                       src={slide.desktop}
@@ -394,7 +394,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                       fill
                       priority={index === 0}
                       sizes="100vw"
-                      className="object-cover object-top"
+                      className="object-cover object-center"
                     />
                   </div>
                 </a>
@@ -420,18 +420,18 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
             <ChevronRight className="size-5 sm:size-6 text-[#1237B8]" />
           </button>
 
-          {/* Indicator Dots */}
-          <div className="absolute bottom-20 sm:bottom-24 lg:bottom-28 inset-x-0 z-20 flex items-center justify-center gap-2">
+          {/* Indicator Dots (Neat & Clean at Bottom) */}
+          <div className="absolute bottom-3 sm:bottom-4 inset-x-0 z-20 flex items-center justify-center gap-2">
             {slides.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => setCurrentSlide(idx)}
                 aria-label={`Buka slide ${idx + 1}`}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   idx === currentSlide
-                    ? "w-9 bg-[#50C710] shadow-md"
-                    : "w-2.5 bg-white/70 hover:bg-white"
+                    ? "w-8 bg-[#50C710] shadow-md"
+                    : "w-2 bg-white/70 hover:bg-white"
                 }`}
               />
             ))}
@@ -439,11 +439,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
         </div>
       </div>
 
-      {/* Booking Form Planner Attached Directly onto the Hero Slider */}
-      <div className="site-container relative z-30 -mt-14 sm:-mt-18 lg:-mt-22 pb-10 sm:pb-14">
+      {/* Booking Form Planner Attached Right Below the Banner without deep covering */}
+      <div className="site-container relative z-30 pt-4 sm:pt-6 pb-10 sm:pb-14">
         <form
           onSubmit={handleBookingSubmit}
-          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_24px_70px_rgba(18,55,184,.14)]"
+          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_20px_50px_rgba(18,55,184,.12)]"
         >
           <div className="mb-4 sm:mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div>
