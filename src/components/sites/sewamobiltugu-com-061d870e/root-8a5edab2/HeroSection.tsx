@@ -20,13 +20,22 @@ const bookingBenefits = [
 export function HeroSection() {
   return (
     <section className="relative bg-[#F1F6FF] text-white">
-      <div className="relative min-h-[720px] overflow-hidden rounded-b-[52px] bg-[#101B38] sm:rounded-b-[68px] lg:min-h-[750px] lg:rounded-b-[92px]">
-        <Image src={`${assetRoot}/drivemate-hero-bandung.png`} alt="Armada Sewa Elf Bandung dengan latar kota Bandung" fill priority sizes="100vw" className="scale-[1.03] object-cover object-[64%_center]" />
+      {/* Hero Background Container - Extended Height & Smoothed Curves */}
+      <div className="relative min-h-[830px] overflow-hidden rounded-b-[52px] bg-[#101B38] sm:min-h-[860px] sm:rounded-b-[68px] lg:min-h-[890px] lg:rounded-b-[92px]">
+        <Image
+          src={`${assetRoot}/drivemate-hero-bandung.png`}
+          alt="Armada Sewa Elf Bandung dengan latar kota Bandung"
+          fill
+          priority
+          sizes="100vw"
+          className="scale-[1.03] object-cover object-[64%_56%]"
+        />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,27,56,.99)_0%,rgba(18,55,184,.92)_35%,rgba(40,87,232,.55)_58%,rgba(105,32,204,.12)_84%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_18%,rgba(40,87,232,.3),transparent_28%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#101B38]/95 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_22%,rgba(40,87,232,.3),transparent_28%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-[#101B38]/95 to-transparent" />
 
-        <div className="site-container relative z-10 flex min-h-[720px] items-start pb-[180px] pt-[152px] sm:pt-[166px] lg:min-h-[750px] lg:items-center lg:pb-[160px] lg:pt-[120px]">
+        {/* Hero Content with Spacious Top Gap from Fixed Header */}
+        <div className="site-container relative z-10 flex min-h-[830px] items-start pb-[220px] pt-[175px] sm:min-h-[860px] sm:pt-[190px] lg:min-h-[890px] lg:items-center lg:pb-[190px] lg:pt-[150px]">
           <div className="max-w-[680px]">
             <p className="hero-reveal hero-delay-1 mb-5 inline-flex items-center gap-2 rounded-full border border-[#50C710]/40 bg-[#50C710]/15 px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#50C710] backdrop-blur-md">
               <span className="size-2 rounded-full bg-[#50C710] animate-pulse" />
@@ -69,7 +78,8 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="hero-reveal hero-delay-6 site-container relative z-20 -mt-[108px] pb-6 sm:-mt-[120px] lg:-mt-[126px] lg:pb-8">
+      {/* Floating Booking Card overlapping bottom curve */}
+      <div className="hero-reveal hero-delay-6 site-container relative z-20 -mt-[112px] pb-6 sm:-mt-[124px] lg:-mt-[130px] lg:pb-8">
         <div className="rounded-[24px] border border-white/90 bg-white p-6 text-[#101B38] shadow-[0_30px_80px_rgba(18,55,184,.14),inset_0_1px_0_rgba(255,255,255,1)] sm:p-8">
           <div className="mb-6">
             <h2 className="text-lg font-bold tracking-[-0.025em] text-[#101B38]">Rencanakan Perjalanan Rombongan Anda</h2>
