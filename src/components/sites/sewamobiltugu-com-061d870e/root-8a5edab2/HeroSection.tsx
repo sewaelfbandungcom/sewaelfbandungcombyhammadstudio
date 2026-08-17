@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, CalendarDays, CarFront, Check, ChevronLeft, ChevronRight, CircleDollarSign, Clock3, MapPin, RotateCcw, Search, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { ArrowRight, Bus, CalendarDays, Car, CarFront, Check, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, Clock3, Compass, MapPin, Navigation, RotateCcw, Search, ShieldCheck, Sparkles, Users, X } from "lucide-react";
 import { useEffect, useState, useRef, useCallback } from "react";
 
 import { assetRoot, bookingUrl } from "./content";
@@ -27,44 +27,66 @@ const slides = [
   },
 ] as const;
 
-const pickupOptions = [
-  "Bandung Kota / Hotel",
-  "Stasiun Bandung / Kiaracondong",
-  "Stasiun Whoosh Padalarang / Tegalluar",
-  "Cileunyi / Cibiru / Jatinangor",
-  "Bandara Kertajati (KJT) / Soetta",
-  "Area Lainnya di Bandung & Sekitarnya",
-] as const;
+export type DropdownOption = {
+  value: string;
+  label: string;
+  sublabel?: string;
+  category?: string;
+  price?: string;
+  badge?: string;
+};
 
-const destinationOptions = [
-  "Wisata Lembang / Tangkuban Perahu / Orchid",
-  "Wisata Ciwidey / Kawah Putih / Ranca Upas",
-  "Wisata Pangalengan / Cukul / Wayang Windu",
-  "City Tour Bandung (Braga, Gedung Sate, Dago)",
-  "Drop Bandara Soekarno-Hatta (Soetta) / Halim",
-  "Drop / Wisata Pangandaran / Garut / Subang",
-  "Tour Luar Kota (Jogja, Semarang, Bali, dll)",
-] as const;
+const pickupOptions: readonly DropdownOption[] = [
+  { value: "Bandung Kota / Hotel / Penginapan", label: "Bandung Kota / Hotel / Penginapan", sublabel: "Dago, Riau, Braga, Setiabudi, Sukajadi, dll" },
+  { value: "Stasiun Bandung (Hall / Kebon Kawung)", label: "Stasiun Bandung (Hall / Kebon Kawung)", sublabel: "Pusat Kota Bandung" },
+  { value: "Stasiun Kiaracondong", label: "Stasiun Kiaracondong", sublabel: "Bandung Timur" },
+  { value: "Stasiun Whoosh Cepat Padalarang", label: "Stasiun Whoosh Padalarang", sublabel: "Koneksi Kereta Cepat Jakarta-Bandung" },
+  { value: "Stasiun Whoosh Cepat Tegalluar", label: "Stasiun Whoosh Tegalluar", sublabel: "Kawasan Summarecon / Gedebage" },
+  { value: "Cileunyi / Cibiru / Jatinangor", label: "Cileunyi / Cibiru / Jatinangor", sublabel: "Garasi Utama Amoora Group" },
+  { value: "Bandara Kertajati (KJT) Majalengka", label: "Bandara Kertajati (KJT)", sublabel: "Antar / Jemput Bandara Internasional" },
+  { value: "Bandara Soekarno-Hatta (Soetta) / Halim", label: "Bandara Soetta / Halim Jakarta", sublabel: "Drop Off Sekali Jalan atau PP" },
+  { value: "Alamat Rumah / Titik Kumpul Khusus", label: "Alamat Rumah / Titik Kumpul Khusus", sublabel: "Sesuai permintaan penyewa" },
+];
 
-const fleetOptions = [
-  { label: "Isuzu Elf Long (19 Seat)", price: "Mulai Rp1,4 Jt" },
-  { label: "Toyota Hiace Premio (14 Seat)", price: "Mulai Rp1,5 Jt" },
-  { label: "Toyota Hiace Commuter (14 Seat)", price: "Mulai Rp1,2 Jt" },
-  { label: "Toyota Hiace Premio Luxury (9 Seat VIP)", price: "Mulai Rp2,2 Jt" },
-  { label: "Medium Bus Pariwisata (31-39 Seat)", price: "Mulai Rp2,0 Jt" },
-  { label: "Big Bus Pariwisata (47-59 Seat)", price: "Mulai Rp3,0 Jt" },
-  { label: "Toyota Innova Reborn / Zenix (7 Seat)", price: "Mulai Rp950 Rb" },
-  { label: "Toyota Avanza TSS (7 Seat)", price: "Mulai Rp750 Rb" },
-  { label: "Toyota Alphard Transformer (VIP)", price: "Mulai Rp3,2 Jt" },
-] as const;
+const destinationOptions: readonly DropdownOption[] = [
+  { value: "Wisata Lembang (Tangkuban Perahu, Orchid, Floating Market)", label: "Wisata Lembang & Tangkuban Perahu", sublabel: "Orchid Forest, Farmhouse, Floating Market, The Great Asia Africa" },
+  { value: "Wisata Ciwidey (Kawah Putih, Ranca Upas, Glamping)", label: "Wisata Ciwidey & Kawah Putih", sublabel: "Ranca Upas, Situ Patenggang, Glamping Lakeside, Tea Plantation" },
+  { value: "Wisata Pangalengan (Cukul Sunrise, Wayang Windu, Rafting)", label: "Wisata Pangalengan & Rafting", sublabel: "Sunrise Cukul, Wayang Windu Panenjoan, Arung Jeram Palayangan" },
+  { value: "City Tour Bandung (Braga, Gedung Sate, Dago, Pusat Oleh-Oleh)", label: "City Tour & Kuliner Bandung", sublabel: "Braga, Asia Afrika, Gedung Sate, FO Dago, Kartika Sari, Primarasa" },
+  { value: "Drop / Carter Bandara Soetta Jakarta", label: "Drop Bandara Soekarno-Hatta (Soetta)", sublabel: "Antar rombongan sekali jalan / PP tepat waktu" },
+  { value: "Tour Garut (Darajat Pass, Cipanas, Papandayan)", label: "Wisata Garut & Pemandian Air Panas", sublabel: "Darajat Pass, Kawah Papandayan, Cipanas Garut" },
+  { value: "Tour Pangandaran / Green Canyon / Batu Karas", label: "Tour Pangandaran & Green Canyon", sublabel: "Pantai Barat/Timur, Batu Hiu, Body Rafting" },
+  { value: "Carter Luar Kota (Jogja, Semarang, Solo, Surabaya, Bali)", label: "Carter Luar Kota (Jawa - Bali)", sublabel: "Perjalanan wisata rombongan & dinas instansi" },
+];
 
-const durationOptions = [
-  "1 Hari (Full Day)",
-  "2 Hari 1 Malam (2D1N)",
-  "3 Hari 2 Malam (3D2N)",
-  "4 Hari atau Lebih",
-  "Drop Off Sekali Jalan",
-] as const;
+const fleetOptions: readonly DropdownOption[] = [
+  // Minibus & Travel
+  { value: "Isuzu Elf Long (18-19 Seat)", label: "Isuzu Elf Long (18-19 Seat)", category: "Minibus / Travel", price: "Rp1.400.000", sublabel: "18-19 Orang | Reclining Seat & AC Dingin" },
+  { value: "Isuzu Elf Long Euro4 (19-21 Seat)", label: "Isuzu Elf Long Euro4 (19-21 Seat)", category: "Minibus / Travel", price: "Rp1.700.000", sublabel: "19-21 Orang | Mesin Euro4 Terbaru & Senyap" },
+  { value: "Isuzu Elf Coaster (17-18 Seat)", label: "Isuzu Elf Coaster (17-18 Seat)", category: "Minibus / Travel", price: "Rp1.800.000", sublabel: "17-18 Orang | Bodi Luas & Lega" },
+  { value: "Isuzu Elf Coaster Euro4 (18-22 Seat)", label: "Isuzu Elf Coaster Euro4 (18-22 Seat)", category: "Minibus / Travel", price: "Rp2.000.000", sublabel: "18-22 Orang | Varian Jumbo Euro4" },
+  { value: "Toyota Hiace Commuter (14 Seat)", label: "Toyota Hiace Commuter (14 Seat)", category: "Minibus / Travel", price: "Rp1.200.000", sublabel: "14 Orang | Nyaman, Suspensi Empuk" },
+  { value: "Toyota Hiace Commuter Euro4 (14 Seat)", label: "Toyota Hiace Commuter Euro4 (14 Seat)", category: "Minibus / Travel", price: "Rp1.300.000", sublabel: "14 Orang | Unit Anyar Euro4" },
+  { value: "Toyota Hiace Premio Std (14 Seat)", label: "Toyota Hiace Premio Std (14 Seat)", category: "Minibus / Travel", price: "Rp1.500.000", sublabel: "14 Orang | Kabin Modern & Mewah" },
+  { value: "Toyota Hiace Premio Luxury (8-10 Seat VIP)", label: "Toyota Hiace Premio Luxury (VIP)", category: "Minibus / Travel", price: "Rp2.200.000", sublabel: "8-10 Orang | Captain Seat & Audio Karaoke" },
+
+  // Bus Pariwisata
+  { value: "Medium Bus Jetbus (29-31 Seat)", label: "Medium Bus Jetbus (29-31 Seat)", category: "Bus Pariwisata", price: "Rp2.000.000", sublabel: "29-31 Orang | Standar Pariwisata AC TV" },
+  { value: "Medium Bus Jetbus 2 (29-35 Seat)", label: "Medium Bus Jetbus 2 (29-35 Seat)", category: "Bus Pariwisata", price: "Rp2.200.000", sublabel: "29, 31, 33, 35 Orang | Nyaman & Luas" },
+  { value: "Medium Bus Jetbus 3+ (31-35 Seat)", label: "Medium Bus Jetbus 3+ (31-35 Seat)", category: "Bus Pariwisata", price: "Rp2.500.000", sublabel: "31-35 Orang | Fasilitas Lengkap Karoseri Adiputro" },
+  { value: "Medium Bus Long JB3+ / JB5 (35-39 Seat)", label: "Medium Bus Long JB3+/JB5 (35-39 Seat)", category: "Bus Pariwisata", price: "Rp2.800.000", sublabel: "35-39 Orang | Model Terbaru Jetbus 5" },
+  { value: "MD Bus Luxury Legrest (14-16 Seat VIP)", label: "MD Bus Luxury Legrest (14-16 Seat)", category: "Bus Pariwisata", price: "Rp3.200.000", sublabel: "14-16 Orang | Kursi Legrest Super Nyaman" },
+  { value: "Big Bus Jetbus HDD (47-59 Seat)", label: "Big Bus Jetbus HDD (47-59 Seat)", category: "Bus Pariwisata", price: "Rp3.200.000", sublabel: "47, 50, 59 Orang | Bagasi Luas & AC Merata" },
+  { value: "Big Bus HDD/SHD JB3+ / JB5 (45-59 Seat)", label: "Big Bus HDD/SHD JB3+/JB5 (45-59 Seat)", category: "Bus Pariwisata", price: "Rp3.800.000", sublabel: "45-59 Orang | Karoseri Mewah Adiputro" },
+  { value: "Big Bus Luxury Legrest (25-30 Seat VIP)", label: "Big Bus Luxury Legrest (25-30 Seat)", category: "Bus Pariwisata", price: "Rp4.200.000", sublabel: "25-30 Orang | Kursi Sultan & Toilet" },
+
+  // Mobil Pribadi & Keluarga
+  { value: "New Avanza TSS (5-7 Seat)", label: "New Avanza TSS (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp750.000", sublabel: "5-7 Orang | Irit & Nyaman untuk Keluarga" },
+  { value: "Innova Reborn (5-7 Seat)", label: "Innova Reborn (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp950.000", sublabel: "5-7 Orang | Standar Perjalanan Luar Kota" },
+  { value: "Innova Zenix G / Q (5-7 Seat)", label: "Innova Zenix G / Q (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp1.500.000", sublabel: "5-7 Orang | Varian Modern Hybrid / Gasoline" },
+  { value: "Fortuner / Pajero Sport (5-7 Seat)", label: "Fortuner / Pajero Sport (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp1.800.000", sublabel: "5-7 Orang | SUV Gagah & Berkelas" },
+  { value: "Toyota Alphard Transformer (5-7 Seat VIP)", label: "Toyota Alphard Transformer (VIP)", category: "Mobil Pribadi & Keluarga", price: "Rp3.200.000", sublabel: "5-7 Orang | Kemewahan & Privasi Maksimal" },
+];
 
 const bookingBenefits = [
   { title: "SOP Transparan", note: "DP 30% Kunci Jadwal", icon: RotateCcw },
@@ -73,16 +95,201 @@ const bookingBenefits = [
   { title: "Driver Berpengalaman", note: "Kontak dibagikan H-1", icon: ShieldCheck },
 ] as const;
 
+// Custom Interactive Dropdown Component
+function CustomDropdown({
+  label,
+  value,
+  options,
+  onChange,
+  icon: Icon,
+  placeholder = "Pilih salah satu",
+  hasCategories = false,
+}: {
+  label: string;
+  value: string;
+  options: readonly DropdownOption[];
+  onChange: (val: string) => void;
+  icon: React.ComponentType<{ className?: string }>;
+  placeholder?: string;
+  hasCategories?: boolean;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const selectedOption = options.find((o) => o.value === value) || options[0];
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // Group options if needed
+  const categories = hasCategories
+    ? Array.from(new Set(options.map((o) => o.category).filter(Boolean)))
+    : [];
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <label className="block text-[11px] font-extrabold text-[#0F172A] mb-1.5">
+        {label}
+      </label>
+
+      {/* Trigger Button */}
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        className={`flex h-13 sm:h-14 w-full items-center justify-between gap-2 rounded-xl border px-3.5 transition-all text-left cursor-pointer shadow-[inset_0_1px_2px_rgba(0,0,0,.025)] ${
+          isOpen
+            ? "border-[#1237B8] bg-white ring-2 ring-[#1237B8]/20 shadow-sm"
+            : "border-[#CBD5E1] bg-[#F8FAFC] hover:border-[#1237B8]/60 hover:bg-white"
+        }`}
+      >
+        <div className="flex items-center gap-2.5 min-w-0">
+          <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#E8F1FF] text-[#1237B8] shadow-2xs">
+            <Icon className="size-4" />
+          </span>
+          <div className="truncate">
+            <span className="block text-[13px] font-bold text-[#0F172A] truncate">
+              {selectedOption ? selectedOption.label : placeholder}
+            </span>
+            {selectedOption?.price ? (
+              <span className="block text-[10px] font-extrabold text-[#2e8807]">
+                {selectedOption.price}
+              </span>
+            ) : null}
+          </div>
+        </div>
+        <ChevronDown
+          className={`size-4 text-[#64748B] shrink-0 transition-transform duration-200 ${
+            isOpen ? "rotate-180 text-[#1237B8]" : ""
+          }`}
+        />
+      </button>
+
+      {/* Dropdown Menu Popover */}
+      {isOpen && (
+        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 max-h-[340px] overflow-y-auto rounded-2xl border border-[#DCE5F0] bg-white p-2 shadow-[0_18px_48px_rgba(18,55,184,.18)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150">
+          {hasCategories && categories.length > 0 ? (
+            <div className="space-y-3">
+              {categories.map((categoryName) => {
+                const categoryOptions = options.filter((o) => o.category === categoryName);
+                return (
+                  <div key={categoryName}>
+                    <div className="sticky top-0 z-10 bg-white/95 backdrop-blur px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[#1237B8] border-b border-[#F1F5F9]">
+                      {categoryName}
+                    </div>
+                    <div className="mt-1 space-y-1">
+                      {categoryOptions.map((opt) => {
+                        const isSelected = opt.value === value;
+                        return (
+                          <button
+                            key={opt.value}
+                            type="button"
+                            onClick={() => {
+                              onChange(opt.value);
+                              setIsOpen(false);
+                            }}
+                            className={`flex w-full items-center justify-between gap-2.5 rounded-xl px-3 py-2.5 text-left transition-colors cursor-pointer ${
+                              isSelected
+                                ? "bg-[#1237B8] text-white shadow-xs font-bold"
+                                : "hover:bg-[#F1F6FF] text-[#0F172A]"
+                            }`}
+                          >
+                            <div className="min-w-0 flex-1">
+                              <span className={`block text-xs font-bold leading-tight ${isSelected ? "text-white" : "text-[#0F172A]"}`}>
+                                {opt.label}
+                              </span>
+                              {opt.sublabel ? (
+                                <span className={`block text-[10px] mt-0.5 ${isSelected ? "text-slate-100" : "text-[#475569]"}`}>
+                                  {opt.sublabel}
+                                </span>
+                              ) : null}
+                            </div>
+                            {opt.price ? (
+                              <span
+                                className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-extrabold ${
+                                  isSelected
+                                    ? "bg-[#50C710] text-white"
+                                    : "bg-[#F2FBEA] text-[#2e8807]"
+                                }`}
+                              >
+                                {opt.price}
+                              </span>
+                            ) : isSelected ? (
+                              <Check className="size-4 shrink-0 text-white stroke-[3]" />
+                            ) : null}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="space-y-1">
+              {options.map((opt) => {
+                const isSelected = opt.value === value;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => {
+                      onChange(opt.value);
+                      setIsOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between gap-2.5 rounded-xl px-3 py-2.5 text-left transition-colors cursor-pointer ${
+                      isSelected
+                        ? "bg-[#1237B8] text-white shadow-xs font-bold"
+                        : "hover:bg-[#F1F6FF] text-[#0F172A]"
+                    }`}
+                  >
+                    <div className="min-w-0 flex-1">
+                      <span className={`block text-xs font-bold leading-tight ${isSelected ? "text-white" : "text-[#0F172A]"}`}>
+                        {opt.label}
+                      </span>
+                      {opt.sublabel ? (
+                        <span className={`block text-[10px] mt-0.5 ${isSelected ? "text-slate-100" : "text-[#475569]"}`}>
+                          {opt.sublabel}
+                        </span>
+                      ) : null}
+                    </div>
+                    {isSelected ? (
+                      <Check className="size-4 shrink-0 text-white stroke-[3]" />
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
-  const [pickup, setPickup] = useState<string>(pickupOptions[0]);
-  const [destination, setDestination] = useState<string>(destinationOptions[0]);
-  const [fleet, setFleet] = useState<string>(fleetOptions[0].label);
-  const [duration, setDuration] = useState<string>(durationOptions[0]);
+  const [pickup, setPickup] = useState<string>(pickupOptions[0].value);
+  const [destination, setDestination] = useState<string>(destinationOptions[0].value);
+  const [fleet, setFleet] = useState<string>(fleetOptions[0].value);
   const [date, setDate] = useState<string>("");
 
   const nextSlide = useCallback(() => {
@@ -132,7 +339,6 @@ export function HeroSection() {
 📍 *Lokasi Penjemputan:* ${pickup}
 🎯 *Rute / Tujuan:* ${destination}
 📅 *Tanggal Berangkat:* ${formattedDate}
-⏱ *Durasi Sewa:* ${duration}
 
 Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
 
@@ -140,7 +346,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
     window.open(waUrl, "_blank", "noopener,noreferrer");
   };
 
-  const selectedFleetObj = fleetOptions.find((f) => f.label === fleet) || fleetOptions[0];
+  const selectedFleetObj = fleetOptions.find((f) => f.value === fleet) || fleetOptions[0];
 
   return (
     <section className="relative bg-[#F1F6FF] text-[#0F172A] pt-[112px] sm:pt-[120px] lg:pt-[128px]">
@@ -237,7 +443,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
           </div>
         </div>
 
-        {/* Interactive Booking Form Planner */}
+        {/* Interactive Booking Form Planner with Custom Dropdowns */}
         <div className="mt-8 sm:mt-10 pb-6 sm:pb-8">
           <form
             onSubmit={handleBookingSubmit}
@@ -252,7 +458,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                   Rencanakan Perjalanan Rombongan Anda
                 </h2>
                 <p className="mt-0.5 text-xs font-medium text-[#334155]">
-                  Pilih rute &amp; jenis unit untuk langsung mendapatkan estimasi dan ketersediaan dari admin resmi.
+                  Pilih titik jemput, destinasi wisata, &amp; jenis unit untuk langsung mendapatkan estimasi penawaran resmi via WhatsApp.
                 </p>
               </div>
               <div className="hidden rounded-xl border border-[#50C710]/40 bg-[#F2FBEA] px-3.5 py-2 text-right sm:block">
@@ -261,86 +467,42 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
               </div>
             </div>
 
-            <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-[1.1fr_1.15fr_1.1fr_0.9fr_auto] xl:items-end">
-              {/* Lokasi Penjemputan */}
-              <div>
-                <label htmlFor="pickup-select" className="block text-[11px] font-extrabold text-[#0F172A]">
-                  Lokasi Penjemputan
-                </label>
-                <div className="mt-1.5 flex h-13 sm:h-14 items-center gap-2.5 rounded-xl border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 transition-all focus-within:border-[#1237B8] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1237B8]/20 shadow-[inset_0_1px_2px_rgba(0,0,0,.025)]">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-white text-[#1237B8] shadow-xs">
-                    <MapPin className="size-4" />
-                  </span>
-                  <select
-                    id="pickup-select"
-                    value={pickup}
-                    onChange={(e) => setPickup(e.target.value)}
-                    className="w-full bg-transparent text-[13px] font-bold text-[#0F172A] outline-none cursor-pointer"
-                  >
-                    {pickupOptions.map((opt) => (
-                      <option key={opt} value={opt} className="text-[#0F172A]">
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+            <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-[1.15fr_1.2fr_1.2fr_0.9fr_auto] xl:items-end">
+              {/* Custom Dropdown: Lokasi Penjemputan */}
+              <CustomDropdown
+                label="Lokasi Penjemputan"
+                value={pickup}
+                options={pickupOptions}
+                onChange={setPickup}
+                icon={MapPin}
+              />
 
-              {/* Destinasi Wisata / Rute */}
-              <div>
-                <label htmlFor="destination-select" className="block text-[11px] font-extrabold text-[#0F172A]">
-                  Destinasi Wisata / Rute
-                </label>
-                <div className="mt-1.5 flex h-13 sm:h-14 items-center gap-2.5 rounded-xl border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 transition-all focus-within:border-[#1237B8] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1237B8]/20 shadow-[inset_0_1px_2px_rgba(0,0,0,.025)]">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-white text-[#1237B8] shadow-xs">
-                    <MapPin className="size-4" />
-                  </span>
-                  <select
-                    id="destination-select"
-                    value={destination}
-                    onChange={(e) => setDestination(e.target.value)}
-                    className="w-full bg-transparent text-[13px] font-bold text-[#0F172A] outline-none cursor-pointer"
-                  >
-                    {destinationOptions.map((opt) => (
-                      <option key={opt} value={opt} className="text-[#0F172A]">
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+              {/* Custom Dropdown: Destinasi Wisata / Rute */}
+              <CustomDropdown
+                label="Destinasi Wisata / Rute"
+                value={destination}
+                options={destinationOptions}
+                onChange={setDestination}
+                icon={Compass}
+              />
 
-              {/* Tipe Armada */}
-              <div>
-                <label htmlFor="fleet-select" className="block text-[11px] font-extrabold text-[#0F172A]">
-                  Tipe Armada Kendaraan
-                </label>
-                <div className="mt-1.5 flex h-13 sm:h-14 items-center gap-2.5 rounded-xl border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 transition-all focus-within:border-[#1237B8] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1237B8]/20 shadow-[inset_0_1px_2px_rgba(0,0,0,.025)]">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-white text-[#1237B8] shadow-xs">
-                    <Users className="size-4" />
-                  </span>
-                  <select
-                    id="fleet-select"
-                    value={fleet}
-                    onChange={(e) => setFleet(e.target.value)}
-                    className="w-full bg-transparent text-[13px] font-bold text-[#0F172A] outline-none cursor-pointer"
-                  >
-                    {fleetOptions.map((opt) => (
-                      <option key={opt.label} value={opt.label} className="text-[#0F172A]">
-                        {opt.label} ({opt.price})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+              {/* Custom Dropdown: Tipe Armada (Grouped with Prices) */}
+              <CustomDropdown
+                label="Tipe Armada Kendaraan"
+                value={fleet}
+                options={fleetOptions}
+                onChange={setFleet}
+                icon={Users}
+                hasCategories
+              />
 
-              {/* Jadwal & Tanggal */}
+              {/* Input Tanggal Berangkat */}
               <div>
-                <label htmlFor="date-input" className="block text-[11px] font-extrabold text-[#0F172A]">
+                <label htmlFor="date-input" className="block text-[11px] font-extrabold text-[#0F172A] mb-1.5">
                   Tanggal Berangkat
                 </label>
-                <div className="mt-1.5 flex h-13 sm:h-14 items-center gap-2.5 rounded-xl border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 transition-all focus-within:border-[#1237B8] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1237B8]/20 shadow-[inset_0_1px_2px_rgba(0,0,0,.025)]">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-white text-[#1237B8] shadow-xs">
+                <div className="flex h-13 sm:h-14 items-center gap-2.5 rounded-xl border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 transition-all focus-within:border-[#1237B8] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1237B8]/20 shadow-[inset_0_1px_2px_rgba(0,0,0,.025)]">
+                  <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#E8F1FF] text-[#1237B8] shadow-2xs">
                     <CalendarDays className="size-4" />
                   </span>
                   <input
@@ -356,10 +518,10 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
               {/* Submit Button */}
               <button
                 type="submit"
-                className="flex h-13 sm:h-14 items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-7 text-sm font-bold text-white shadow-[0_14px_28px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(80,199,16,.36)] cursor-pointer"
+                className="flex h-13 sm:h-14 items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-6 text-sm font-bold text-white shadow-[0_14px_28px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(80,199,16,.36)] cursor-pointer"
               >
                 <Search className="size-4" />
-                Cek via WhatsApp
+                Cek via WA
               </button>
             </div>
 
