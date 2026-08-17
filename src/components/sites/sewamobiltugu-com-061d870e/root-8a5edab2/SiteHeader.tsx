@@ -32,7 +32,7 @@ export function SiteHeader() {
     const updateHeader = () => {
       cancelAnimationFrame(animationFrame);
       animationFrame = requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 48);
+        setIsScrolled(window.scrollY > 40);
         if (pathname !== "/") return;
 
         const triggerLine = 160;
@@ -81,30 +81,47 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-[100] text-white">
+    <header className="fixed inset-x-0 top-0 z-[100]">
       {/* Top Notification Bar */}
-      <div className={`pointer-events-auto h-[34px] border-b border-white/10 bg-[#1237B8]/95 transition duration-300 ${isScrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}>
-        <div className="site-container flex h-full items-center justify-between gap-4 text-[11px] font-medium text-slate-200 sm:text-xs">
+      <div
+        className={`h-[34px] border-b border-[#1237B8]/20 bg-[#1237B8] text-white transition-all duration-300 ${
+          isScrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
+        }`}
+      >
+        <div className="site-container flex h-full items-center justify-between gap-4 text-[11px] font-medium text-slate-100 sm:text-xs">
           <span className="hidden items-center gap-1.5 sm:flex">
-            <MapPin className="size-3 text-[#50C710]" />Jl. Ciborelang No 8 Cileunyi Bandung — Melayani Rombongan Wisata &amp; Luar Kota
+            <MapPin className="size-3 text-[#50C710]" /> Jl. Ciborelang No 8 Cileunyi Bandung — Melayani Rombongan Wisata &amp; Luar Kota
           </span>
-          <span className="sm:hidden text-[11px]">Sewa Elf Bandung by Amoora</span>
+          <span className="sm:hidden text-[11px]">Sewa Elf Bandung by Amoora Group</span>
           <div className="flex items-center gap-4 sm:gap-5">
             <a href="tel:6281214802420" className="flex items-center gap-1.5 transition hover:text-[#50C710]">
-              <Phone className="size-3 text-[#50C710]" />24/7 Hotline: 0812-1480-2420
+              <Phone className="size-3 text-[#50C710]" /> 24/7: 0812-1480-2420
             </a>
             <a href="tel:6282215452230" className="hidden items-center gap-1.5 transition hover:text-[#50C710] md:flex">
-              <Phone className="size-3 text-[#50C710]" />0822-1545-2230
+              <Phone className="size-3 text-[#50C710]" /> 0822-1545-2230
             </a>
           </div>
         </div>
       </div>
 
-      {/* Sticky Main Navigation */}
-      <div className={`pointer-events-auto absolute inset-x-0 h-[78px] border-b transition-all duration-300 ${isScrolled ? "top-0 border-white/10 bg-[#101B38]/95 shadow-[0_12px_34px_rgba(18,55,184,.25)] backdrop-blur-xl" : "top-[34px] border-transparent bg-transparent"}`}>
+      {/* Main Navigation Bar - High Contrast Clean Mode */}
+      <div
+        className={`absolute inset-x-0 h-[78px] border-b transition-all duration-300 ${
+          isScrolled
+            ? "top-0 border-[#DCE5F0] bg-white/95 shadow-[0_10px_30px_rgba(18,55,184,.08)] backdrop-blur-xl"
+            : "top-[34px] border-[#DCE5F0]/60 bg-white/90 shadow-xs backdrop-blur-md"
+        }`}
+      >
         <div className="site-container flex h-full items-center justify-between gap-5">
-          <Link href="/" aria-label="Sewa Elf Bandung - Beranda" onClick={() => { setActiveSection("top"); setMenuOpen(false); }}>
-            <BrandMark inverse compact />
+          <Link
+            href="/"
+            aria-label="Sewa Elf Bandung - Beranda"
+            onClick={() => {
+              setActiveSection("top");
+              setMenuOpen(false);
+            }}
+          >
+            <BrandMark compact />
           </Link>
 
           <nav className="hidden lg:block" aria-label="Navigasi utama">
@@ -117,7 +134,11 @@ export function SiteHeader() {
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       onClick={() => handleLinkClick(link)}
-                      className={`relative flex items-center py-2 text-[13px] font-semibold transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:rounded-full after:bg-[#50C710] after:transition-transform after:duration-300 hover:text-[#50C710] hover:after:scale-x-100 xl:text-sm ${active ? "text-[#50C710] after:scale-x-100 font-bold" : "text-slate-100 after:scale-x-0"}`}
+                      className={`relative flex items-center py-2 text-[13px] font-semibold transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:rounded-full after:bg-[#1237B8] after:transition-transform after:duration-300 hover:text-[#1237B8] hover:after:scale-x-100 xl:text-sm ${
+                        active
+                          ? "text-[#1237B8] after:scale-x-100 font-bold"
+                          : "text-[#65708A] after:scale-x-0 hover:text-[#101B38]"
+                      }`}
                     >
                       {link.label}
                     </Link>
@@ -127,17 +148,34 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <a href={bookingUrl()} target="_blank" rel="noreferrer" className="hidden h-11 items-center gap-2 rounded-[10px] bg-[#50C710] hover:bg-[#43aa0c] px-5 text-[13px] font-bold text-white shadow-[0_12px_28px_rgba(80,199,16,.32)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(80,199,16,.38)] lg:inline-flex">
+          <a
+            href={bookingUrl()}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden h-11 items-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-5 text-[13px] font-bold text-white shadow-[0_12px_28px_rgba(80,199,16,.28)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_34px_rgba(80,199,16,.36)] lg:inline-flex"
+          >
             Pesan via WhatsApp <ArrowRight className="size-4" />
           </a>
 
-          <button type="button" aria-label={menuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"} aria-controls="mobile-navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="grid size-10 place-items-center rounded-lg border border-white/15 text-white transition hover:bg-white/10 lg:hidden">
-            {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          <button
+            type="button"
+            aria-label={menuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+            aria-controls="mobile-navigation"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+            className="grid size-10 place-items-center rounded-lg border border-[#DCE5F0] bg-white text-[#101B38] shadow-xs transition hover:bg-slate-50 lg:hidden"
+          >
+            {menuOpen ? <X className="size-5 text-[#101B38]" /> : <Menu className="size-5 text-[#101B38]" />}
           </button>
         </div>
 
+        {/* Mobile Navigation Drawer */}
         {menuOpen ? (
-          <nav id="mobile-navigation" aria-label="Navigasi seluler" className="absolute inset-x-0 top-full border-t border-white/10 bg-[#101B38]/98 shadow-2xl backdrop-blur-xl lg:hidden">
+          <nav
+            id="mobile-navigation"
+            aria-label="Navigasi seluler"
+            className="absolute inset-x-0 top-full border-t border-[#DCE5F0] bg-white/98 shadow-2xl backdrop-blur-xl lg:hidden"
+          >
             <ul className="site-container py-3">
               {links.map((link) => {
                 const active = isActive(link);
@@ -147,7 +185,11 @@ export function SiteHeader() {
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       onClick={() => handleLinkClick(link)}
-                      className={`flex h-12 items-center rounded-lg px-3 text-base font-semibold transition ${active ? "bg-[#50C710]/15 text-[#50C710] font-bold" : "text-slate-200 hover:bg-white/5 hover:text-[#50C710]"}`}
+                      className={`flex h-12 items-center rounded-lg px-3 text-base font-semibold transition ${
+                        active
+                          ? "bg-[#1237B8]/10 text-[#1237B8] font-bold"
+                          : "text-[#65708A] hover:bg-slate-50 hover:text-[#101B38]"
+                      }`}
                     >
                       {link.label}
                     </Link>

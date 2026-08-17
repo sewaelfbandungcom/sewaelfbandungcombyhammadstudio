@@ -32,41 +32,30 @@ export function CarFleetSection() {
   return (
     <section
       id="armada"
-      className="relative scroll-mt-20 overflow-hidden bg-[#101B38] py-20 text-white lg:py-28"
+      className="relative scroll-mt-20 overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#F1F6FF_40%,#FFFFFF_100%)] py-20 text-[#101B38] lg:py-28"
     >
-      {/* Background Photo with Layered Blue-Purple Gradient */}
-      <div className="absolute inset-0" aria-hidden="true">
-        <Image
-          src={`${assetRoot}/bandung-braga-dusk.jpg`}
-          alt=""
-          fill
-          sizes="100vw"
-          className="scale-[1.03] object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,27,56,.99)_0%,rgba(18,55,184,.93)_35%,rgba(105,32,204,.48)_68%,rgba(16,27,56,.94)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(105,32,204,.35),transparent_28%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_75%,rgba(80,199,16,.12),transparent_25%)]" />
-        <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.15)_1px,transparent_1px)] [background-size:48px_48px]" />
-      </div>
+      {/* Soft Ambient Background Elements */}
+      <div className="pointer-events-none absolute -left-20 top-1/4 size-96 rounded-full bg-[#1237B8]/[0.03] blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 top-2/3 size-96 rounded-full bg-[#6920CC]/[0.03] blur-3xl" />
 
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-[780px]">
-            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#50C710]/40 bg-[#50C710]/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#50C710] backdrop-blur-md">
-              <Sparkles className="size-3.5" /> Pilihan Armada Sewa Elf Bandung
+            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#1237B8]/20 bg-[#E8F1FF] px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#1237B8]">
+              <Sparkles className="size-3.5 text-[#50C710]" /> Pilihan Armada Sewa Elf Bandung
             </p>
-            <h2 className="text-[32px] font-bold leading-[1.14] tracking-[-0.04em] text-white sm:text-[40px] lg:text-[46px]">
-              Katalog Armada Lengkap &amp; Bersih
+            <h2 className="text-[32px] font-bold leading-[1.14] tracking-[-0.04em] text-[#101B38] sm:text-[40px] lg:text-[46px]">
+              Katalog Armada Lengkap &amp; Terawat
             </h2>
-            <p className="mt-3 max-w-[660px] text-sm leading-6 text-slate-200 sm:text-[15px]">
+            <p className="mt-3 max-w-[660px] text-sm leading-6 text-[#65708A] sm:text-[15px]">
               Temukan kendaraan ideal untuk rombongan wisata, family tour, acara instansi, maupun perjalanan dinas di Bandung dan sekitarnya.
             </p>
           </div>
 
           <Link
             href="/armada"
-            className="inline-flex h-11 w-fit items-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-5 text-xs font-bold text-white shadow-[0_12px_26px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5"
+            className="inline-flex h-11 w-fit items-center gap-2 rounded-xl bg-[#1237B8] hover:bg-[#2857E8] px-5 text-xs font-bold text-white shadow-[0_10px_24px_rgba(18,55,184,.22)] transition hover:-translate-y-0.5"
           >
             Buka Katalog Lengkap <ArrowRight className="size-4" />
           </Link>
@@ -74,7 +63,7 @@ export function CarFleetSection() {
 
         {/* 3 Categories Tab Bar */}
         <div className="mt-10">
-          <div className="flex flex-wrap gap-2.5 rounded-2xl border border-white/15 bg-[#101B38]/80 p-2 backdrop-blur-xl shadow-2xl">
+          <div className="flex flex-wrap gap-2.5 rounded-2xl border border-[#DCE5F0] bg-white p-2 shadow-sm">
             {fleetCategories.map((category) => {
               const Icon = getCategoryIcon(category.key);
               const isActive = activeCategory === category.key;
@@ -85,34 +74,34 @@ export function CarFleetSection() {
                   onClick={() => setActiveCategory(category.key)}
                   className={`group flex flex-1 min-w-[210px] items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "bg-gradient-to-r from-[#1237B8] to-[#2857E8] text-white shadow-[0_10px_24px_rgba(18,55,184,.38)] border border-white/20"
-                      : "text-slate-300 hover:bg-white/10 hover:text-white"
+                      ? "bg-gradient-to-r from-[#1237B8] to-[#2857E8] text-white shadow-[0_10px_24px_rgba(18,55,184,.28)]"
+                      : "text-[#65708A] hover:bg-[#F1F6FF] hover:text-[#101B38]"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <span
                       className={`grid size-10 place-items-center rounded-lg transition-transform duration-300 group-hover:scale-105 ${
                         isActive
-                          ? "bg-white text-[#1237B8] shadow-sm"
-                          : "bg-white/10 text-[#50C710]"
+                          ? "bg-white text-[#1237B8] shadow-xs"
+                          : "bg-[#F1F6FF] text-[#1237B8]"
                       }`}
                     >
                       <Icon className="size-5" />
                     </span>
                     <div>
-                      <strong className="block text-sm font-bold leading-tight text-white">
+                      <strong className={`block text-sm font-bold leading-tight ${isActive ? "text-white" : "text-[#101B38]"}`}>
                         {category.label}
                       </strong>
-                      <span className="mt-0.5 block text-[11px] text-slate-300">
+                      <span className={`mt-0.5 block text-[11px] ${isActive ? "text-slate-200" : "text-[#65708A]"}`}>
                         {category.subtitle}
                       </span>
                     </div>
                   </div>
                   <span
-                    className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
                       isActive
                         ? "bg-[#50C710] text-white"
-                        : "bg-white/15 text-slate-300"
+                        : "bg-[#F1F6FF] text-[#1237B8]"
                     }`}
                   >
                     {category.count} Unit
@@ -123,9 +112,9 @@ export function CarFleetSection() {
           </div>
 
           {/* Dynamic Tab Description Box */}
-          <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.06] px-5 py-4 backdrop-blur-md">
-            <p className="text-xs leading-relaxed text-slate-200 sm:text-[13px]">
-              <strong className="text-[#50C710] font-bold mr-1.5">
+          <div className="mt-4 rounded-xl border border-[#E2E8F0] bg-white px-5 py-4 shadow-xs">
+            <p className="text-xs leading-relaxed text-[#65708A] sm:text-[13px]">
+              <strong className="text-[#1237B8] font-bold mr-1.5">
                 {currentCategoryInfo.label}:
               </strong>
               {currentCategoryInfo.description}
@@ -138,7 +127,7 @@ export function CarFleetSection() {
           {displayedFleet.map((vehicle) => (
             <article
               key={vehicle.id}
-              className="group flex flex-col overflow-hidden rounded-[20px] border border-white/80 bg-white text-[#101B38] shadow-[0_18px_46px_rgba(0,0,0,.25)] transition-all duration-300 hover:-translate-y-2 hover:border-[#50C710] hover:shadow-[0_28px_64px_rgba(18,55,184,.32)]"
+              className="group flex flex-col overflow-hidden rounded-[20px] border border-[#E2E8F0] bg-white text-[#101B38] shadow-[0_12px_32px_rgba(18,55,184,.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1237B8]/40 hover:shadow-[0_24px_50px_rgba(18,55,184,.14)]"
             >
               {/* Image Frame */}
               <div className="relative aspect-[1.12] overflow-hidden bg-[radial-gradient(circle_at_50%_38%,#F1F6FF_0%,#E2ECFF_52%,#C8DCFF_100%)]">
@@ -149,7 +138,7 @@ export function CarFleetSection() {
                   sizes="(min-width: 1280px) 270px, (min-width: 1024px) 310px, (min-width: 640px) 50vw, 100vw"
                   className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/20 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/15 to-transparent" />
 
                 {/* Badge Left */}
                 {vehicle.badge ? (
@@ -224,58 +213,58 @@ export function CarFleetSection() {
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/armada"
-            className="inline-flex h-12 items-center gap-2.5 rounded-xl border border-white/30 bg-white/10 px-8 text-sm font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#101B38] shadow-lg"
+            className="inline-flex h-12 items-center gap-2.5 rounded-xl border border-[#1237B8]/30 bg-white px-8 text-sm font-bold text-[#1237B8] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1237B8] hover:text-white"
           >
             <span>
               {hasMore
                 ? `Lihat ${remainingCount} Unit ${currentCategoryInfo.label} Lainnya`
                 : `Lihat Seluruh 27+ Pilihan Armada di Katalog`}
             </span>
-            <ArrowRight className="size-4 text-[#50C710]" />
+            <ArrowRight className="size-4" />
           </Link>
         </div>
 
-        {/* Ketentuan Harga Info Card */}
-        <div id="ketentuan-harga" className="mt-14 rounded-[24px] border border-white/20 bg-[#101B38]/90 p-7 shadow-2xl backdrop-blur-xl lg:p-9">
+        {/* Ketentuan Harga Info Card - Clean Light Mode */}
+        <div id="ketentuan-harga" className="mt-14 rounded-[28px] border border-[#DCE5F0] bg-white p-7 shadow-[0_20px_50px_rgba(18,55,184,.06)] lg:p-9">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
             <div className="max-w-[720px]">
-              <div className="inline-flex items-center gap-2 rounded-md bg-[#50C710]/20 px-3 py-1 text-[11px] font-bold text-[#50C710]">
+              <div className="inline-flex items-center gap-2 rounded-md bg-[#F2FBEA] px-3 py-1 text-[11px] font-bold text-[#50C710]">
                 <Info className="size-3.5" /> Ketentuan Sewa &amp; Tarif
               </div>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight text-white">
+              <h3 className="mt-2 text-2xl font-bold tracking-tight text-[#101B38]">
                 Ketentuan Harga Sewa Kendaraan
               </h3>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2 text-xs leading-relaxed text-slate-200">
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2 text-xs leading-relaxed text-[#65708A]">
                 {priceRules.map((rule, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
                     <span className="mt-1 grid size-4 shrink-0 place-items-center rounded-full bg-[#50C710] text-[10px] font-bold text-white">
                       ✓
                     </span>
-                    <span>{rule}</span>
+                    <span className="text-[#101B38] font-medium">{rule}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Official Contact & Office Box */}
-            <div className="shrink-0 rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md lg:w-[320px]">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#50C710]">
+            <div className="shrink-0 rounded-2xl border border-[#DCE5F0] bg-[#F1F6FF] p-5 lg:w-[320px]">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#1237B8]">
                 Official Hotline &amp; Garasi
               </span>
-              <p className="mt-2 flex items-start gap-2 text-xs text-slate-200">
-                <MapPin className="size-4 shrink-0 text-[#50C710] mt-0.5" />
+              <p className="mt-2 flex items-start gap-2 text-xs text-[#65708A]">
+                <MapPin className="size-4 shrink-0 text-[#1237B8] mt-0.5" />
                 Jalan Ciborelang No. 8, Cileunyi, Bandung
               </p>
-              <div className="mt-3 space-y-1.5 border-t border-white/15 pt-3">
+              <div className="mt-3 space-y-1.5 border-t border-[#DCE5F0] pt-3">
                 <a
                   href="tel:6281214802420"
-                  className="flex items-center gap-2 text-xs font-bold text-white hover:text-[#50C710] transition"
+                  className="flex items-center gap-2 text-xs font-bold text-[#101B38] hover:text-[#1237B8] transition"
                 >
                   <Phone className="size-3.5 text-[#50C710]" /> 0812-1480-2420
                 </a>
                 <a
                   href="tel:6282215452230"
-                  className="flex items-center gap-2 text-xs font-bold text-white hover:text-[#50C710] transition"
+                  className="flex items-center gap-2 text-xs font-bold text-[#101B38] hover:text-[#1237B8] transition"
                 >
                   <Phone className="size-3.5 text-[#50C710]" /> 0822-1545-2230
                 </a>
