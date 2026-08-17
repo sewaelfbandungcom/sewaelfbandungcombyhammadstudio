@@ -138,7 +138,7 @@ function CustomDropdown({
     : [];
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative w-full" ref={dropdownRef}>
       <label className="block text-[11px] font-extrabold text-[#0F172A] mb-1.5">
         {label}
       </label>
@@ -155,11 +155,11 @@ function CustomDropdown({
             : "border-[#CBD5E1] bg-[#F8FAFC] hover:border-[#1237B8]/60 hover:bg-white"
         }`}
       >
-        <div className="flex items-center gap-2.5 min-w-0">
+        <div className="flex items-center gap-2.5 min-w-0 flex-1">
           <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#E8F1FF] text-[#1237B8] shadow-2xs">
             <Icon className="size-4" />
           </span>
-          <div className="truncate">
+          <div className="truncate flex-1">
             <span className="block text-[13px] font-bold text-[#0F172A] truncate">
               {selectedOption ? selectedOption.label : placeholder}
             </span>
@@ -179,7 +179,7 @@ function CustomDropdown({
 
       {/* Dropdown Menu Popover */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 max-h-[340px] overflow-y-auto rounded-2xl border border-[#DCE5F0] bg-white p-2 shadow-[0_18px_48px_rgba(18,55,184,.18)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150">
+        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 max-h-[300px] overflow-y-auto rounded-2xl border border-[#DCE5F0] bg-white p-2 shadow-[0_18px_48px_rgba(18,55,184,.22)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150">
           {hasCategories && categories.length > 0 ? (
             <div className="space-y-3">
               {categories.map((categoryName) => {
@@ -347,121 +347,123 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
   const selectedFleetObj = fleetOptions.find((f) => f.value === fleet) || fleetOptions[0];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A]">
-      {/* 100% Full Screen 1-Viewport Hero Image Slider (Edge-to-Edge, Zero Text Overlaid) */}
-      <div
-        className="group/slider relative w-full h-[100svh] min-h-[100svh] overflow-hidden bg-slate-950"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        {slides.map((slide, index) => {
-          const isActive = index === currentSlide;
-          return (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 size-full transition-opacity duration-700 ease-in-out ${
-                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-              }`}
-            >
-              <a
-                href={bookingUrl()}
-                target="_blank"
-                rel="noreferrer"
-                className="block relative size-full cursor-pointer"
-                aria-label={slide.alt}
+    <section className="relative bg-[#F1F6FF] text-[#0F172A] pt-[112px] sm:pt-[120px] lg:pt-[126px]">
+      {/* Rounded Hero Slider Container with Top Offset below Header */}
+      <div className="relative w-full overflow-hidden rounded-b-[44px] sm:rounded-b-[68px] lg:rounded-b-[88px] bg-slate-900 shadow-sm">
+        <div
+          className="group/slider relative w-full h-[580px] sm:h-[620px] lg:h-[720px] overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {slides.map((slide, index) => {
+            const isActive = index === currentSlide;
+            return (
+              <div
+                key={slide.id}
+                className={`absolute inset-0 size-full transition-opacity duration-700 ease-in-out ${
+                  isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                }`}
               >
-                {/* Mobile Full Screen Banner */}
-                <div className="relative size-full sm:hidden">
-                  <Image
-                    src={slide.mobile}
-                    alt={slide.alt}
-                    fill
-                    priority={index === 0}
-                    sizes="100vw"
-                    className="object-cover object-center"
-                  />
-                </div>
+                <a
+                  href={bookingUrl()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block relative size-full cursor-pointer"
+                  aria-label={slide.alt}
+                >
+                  {/* Mobile Banner Image */}
+                  <div className="relative size-full sm:hidden">
+                    <Image
+                      src={slide.mobile}
+                      alt={slide.alt}
+                      fill
+                      priority={index === 0}
+                      sizes="100vw"
+                      className="object-cover object-center"
+                    />
+                  </div>
 
-                {/* Desktop Full Screen Banner */}
-                <div className="relative size-full hidden sm:block">
-                  <Image
-                    src={slide.desktop}
-                    alt={slide.alt}
-                    fill
-                    priority={index === 0}
-                    sizes="100vw"
-                    className="object-cover object-center"
-                  />
-                </div>
-              </a>
-            </div>
-          );
-        })}
+                  {/* Desktop Banner Image */}
+                  <div className="relative size-full hidden sm:block">
+                    <Image
+                      src={slide.desktop}
+                      alt={slide.alt}
+                      fill
+                      priority={index === 0}
+                      sizes="100vw"
+                      className="object-cover object-center"
+                    />
+                  </div>
+                </a>
+              </div>
+            );
+          })}
 
-        {/* Navigation Arrows */}
-        <button
-          type="button"
-          onClick={prevSlide}
-          aria-label="Slide sebelumnya"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 grid size-11 sm:size-13 place-items-center rounded-full bg-white/80 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
-        >
-          <ChevronLeft className="size-6 sm:size-7 text-[#1237B8]" />
-        </button>
-        <button
-          type="button"
-          onClick={nextSlide}
-          aria-label="Slide berikutnya"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 grid size-11 sm:size-13 place-items-center rounded-full bg-white/80 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
-        >
-          <ChevronRight className="size-6 sm:size-7 text-[#1237B8]" />
-        </button>
+          {/* Navigation Arrows */}
+          <button
+            type="button"
+            onClick={prevSlide}
+            aria-label="Slide sebelumnya"
+            className="absolute left-3.5 sm:left-6 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/85 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            <ChevronLeft className="size-5 sm:size-6 text-[#1237B8]" />
+          </button>
+          <button
+            type="button"
+            onClick={nextSlide}
+            aria-label="Slide berikutnya"
+            className="absolute right-3.5 sm:right-6 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/85 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            <ChevronRight className="size-5 sm:size-6 text-[#1237B8]" />
+          </button>
 
-        {/* Indicator Dots */}
-        <div className="absolute bottom-6 inset-x-0 z-30 flex items-center justify-center gap-2.5">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setCurrentSlide(idx)}
-              aria-label={`Buka slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                idx === currentSlide
-                  ? "w-9 bg-[#50C710] shadow-md"
-                  : "w-2.5 bg-white/70 hover:bg-white"
-              }`}
-            />
-          ))}
+          {/* Indicator Dots */}
+          <div className="absolute bottom-24 sm:bottom-28 inset-x-0 z-20 flex items-center justify-center gap-2.5">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Buka slide ${idx + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  idx === currentSlide
+                    ? "w-9 bg-[#50C710] shadow-md"
+                    : "w-2.5 bg-white/70 hover:bg-white"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Interactive Booking Form Planner (Below Full Screen Slider) */}
-      <div className="site-container py-10 sm:py-14">
+      {/* Floating Interactive Booking Form Planner (Overlapping & Attaching to the Bottom Curve) */}
+      <div className="site-container relative z-30 -mt-[70px] sm:-mt-[90px] lg:-mt-[110px] pb-10 sm:pb-14">
         <form
           onSubmit={handleBookingSubmit}
-          className="rounded-[28px] border border-[#DCE5F0] bg-white p-6 text-[#0F172A] shadow-[0_24px_64px_rgba(18,55,184,.09)] sm:p-8 lg:p-10"
+          className="rounded-[28px] border border-[#DCE5F0] bg-white p-5 sm:p-7 lg:p-9 text-[#0F172A] shadow-[0_30px_80px_rgba(18,55,184,.14)]"
         >
-          <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+          <div className="mb-5 flex flex-col justify-between gap-2 sm:mb-6 sm:flex-row sm:items-center">
             <div>
               <div className="inline-flex items-center gap-1.5 rounded-md bg-[#F1F6FF] px-2.5 py-1 text-[11px] font-extrabold text-[#1237B8]">
                 <Sparkles className="size-3.5 text-[#50C710]" /> Formulir Reservasi Cepat
               </div>
-              <h2 className="mt-1.5 text-xl font-extrabold tracking-[-0.025em] text-[#0F172A]">
+              <h2 className="mt-1.5 text-lg sm:text-xl font-extrabold tracking-[-0.025em] text-[#0F172A]">
                 Rencanakan Perjalanan Rombongan Anda
               </h2>
               <p className="mt-0.5 text-xs font-medium text-[#334155]">
                 Pilih titik jemput, destinasi wisata, &amp; jenis unit untuk langsung mendapatkan estimasi penawaran resmi via WhatsApp.
               </p>
             </div>
-            <div className="hidden rounded-xl border border-[#50C710]/40 bg-[#F2FBEA] px-4 py-2.5 text-right sm:block">
+            <div className="hidden rounded-xl border border-[#50C710]/40 bg-[#F2FBEA] px-4 py-2 text-right sm:block">
               <span className="block text-[10px] font-bold text-[#334155]">Estimasi Unit Pilihan</span>
               <strong className="text-sm font-extrabold text-[#2e8807]">{selectedFleetObj.price}</strong>
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-[1.15fr_1.2fr_1.2fr_0.9fr_auto] xl:items-end">
+          <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-[1.15fr_1.2fr_1.2fr_0.9fr_auto] xl:items-end">
             {/* Custom Dropdown: Lokasi Penjemputan */}
             <CustomDropdown
               label="Lokasi Penjemputan"
@@ -491,7 +493,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
             />
 
             {/* Input Tanggal Berangkat */}
-            <div>
+            <div className="w-full">
               <label htmlFor="date-input" className="block text-[11px] font-extrabold text-[#0F172A] mb-1.5">
                 Tanggal Berangkat
               </label>
@@ -512,7 +514,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
             {/* Submit Button */}
             <button
               type="submit"
-              className="flex h-13 sm:h-14 items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-7 text-sm font-bold text-white shadow-[0_14px_28px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(80,199,16,.36)] cursor-pointer"
+              className="flex h-13 sm:h-14 w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-7 text-sm font-bold text-white shadow-[0_14px_28px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(80,199,16,.36)] cursor-pointer shrink-0"
             >
               <Search className="size-4" />
               Cek via WA
@@ -520,7 +522,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
           </div>
 
           {/* Benefits Bar Underneath Form */}
-          <div className="mt-6 grid gap-4 border-t border-[#E2E8F0] pt-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-5 sm:mt-6 grid gap-3.5 sm:gap-4 border-t border-[#E2E8F0] pt-5 sm:grid-cols-2 lg:grid-cols-4">
             {bookingBenefits.map(({ title, note, icon: Icon }, index) => (
               <div
                 key={title}
