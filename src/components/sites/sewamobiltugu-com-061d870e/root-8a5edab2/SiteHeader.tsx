@@ -82,23 +82,26 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-[100]">
-      {/* Top Notification Bar */}
+      {/* Top Notification Bar - Single Line Responsive on All Screens */}
       <div
         className={`h-[34px] border-b border-[#1237B8]/20 bg-[#1237B8] text-white transition-all duration-300 ${
           isScrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
         }`}
       >
-        <div className="site-container flex h-full items-center justify-between gap-4 text-[11px] font-medium text-slate-100 sm:text-xs">
+        <div className="site-container flex h-full items-center justify-between gap-2 text-[11px] font-medium text-slate-100 sm:text-xs sm:gap-4">
           <span className="hidden items-center gap-1.5 sm:flex">
             <MapPin className="size-3 text-[#50C710]" /> Jl. Ciborelang No 8 Cileunyi Bandung — Melayani Rombongan Wisata &amp; Luar Kota
           </span>
-          <span className="sm:hidden text-[11px]">Sewa Elf Bandung by Amoora Group</span>
-          <div className="flex items-center gap-4 sm:gap-5">
-            <a href="tel:6281214802420" className="flex items-center gap-1.5 transition hover:text-[#50C710]">
-              <Phone className="size-3 text-[#50C710]" /> 24/7: 0812-1480-2420
+          <span className="flex items-center gap-1.5 sm:hidden font-bold whitespace-nowrap">
+            <span className="size-1.5 rounded-full bg-[#50C710] animate-pulse shrink-0" />
+            <span className="truncate max-w-[145px] xs:max-w-none">Amoora Group</span>
+          </span>
+          <div className="flex items-center gap-3 sm:gap-5 shrink-0">
+            <a href="tel:6281214802420" className="flex items-center gap-1.5 font-bold whitespace-nowrap transition hover:text-[#50C710]">
+              <Phone className="size-3 text-[#50C710] shrink-0" /> 0812-1480-2420
             </a>
-            <a href="tel:6282215452230" className="hidden items-center gap-1.5 transition hover:text-[#50C710] md:flex">
-              <Phone className="size-3 text-[#50C710]" /> 0822-1545-2230
+            <a href="tel:6282215452230" className="hidden items-center gap-1.5 font-bold transition hover:text-[#50C710] md:flex">
+              <Phone className="size-3 text-[#50C710] shrink-0" /> 0822-1545-2230
             </a>
           </div>
         </div>
@@ -106,13 +109,13 @@ export function SiteHeader() {
 
       {/* Main Navigation Bar - High Contrast Clean Mode */}
       <div
-        className={`absolute inset-x-0 h-[78px] border-b transition-all duration-300 ${
+        className={`absolute inset-x-0 h-[72px] sm:h-[78px] border-b transition-all duration-300 ${
           isScrolled
             ? "top-0 border-[#DCE5F0] bg-white/95 shadow-[0_10px_30px_rgba(18,55,184,.08)] backdrop-blur-xl"
             : "top-[34px] border-[#DCE5F0]/60 bg-white/90 shadow-xs backdrop-blur-md"
         }`}
       >
-        <div className="site-container flex h-full items-center justify-between gap-5">
+        <div className="site-container flex h-full items-center justify-between gap-4 sm:gap-5">
           <Link
             href="/"
             aria-label="Sewa Elf Bandung - Beranda"
@@ -163,7 +166,7 @@ export function SiteHeader() {
             aria-controls="mobile-navigation"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
-            className="grid size-10 place-items-center rounded-lg border border-[#DCE5F0] bg-white text-[#101B38] shadow-xs transition hover:bg-slate-50 lg:hidden"
+            className="grid size-10 place-items-center rounded-lg border border-[#DCE5F0] bg-white text-[#101B38] shadow-xs transition hover:bg-slate-50 lg:hidden cursor-pointer"
           >
             {menuOpen ? <X className="size-5 text-[#101B38]" /> : <Menu className="size-5 text-[#101B38]" />}
           </button>
