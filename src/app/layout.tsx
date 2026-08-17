@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/logo-brand.jpeg",
-    apple: "/logo-brand.jpeg",
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
@@ -62,7 +62,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "AutoRental",
     "name": "Sewa Elf Bandung by Amoora Group",
-    "image": "https://sewaelfbandung.com/logo-brand.jpeg",
+    "image": "https://sewaelfbandung.com/icon.png",
     "url": "https://sewaelfbandung.com",
     "telephone": "+6281214802420",
     "priceRange": "Rp 750.000 - Rp 4.700.000",
