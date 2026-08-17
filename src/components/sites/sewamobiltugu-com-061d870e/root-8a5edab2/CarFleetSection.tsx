@@ -32,11 +32,21 @@ export function CarFleetSection() {
   return (
     <section
       id="armada"
-      className="relative scroll-mt-20 overflow-hidden bg-[linear-gradient(180deg,#FFFFFF_0%,#F1F6FF_40%,#FFFFFF_100%)] py-20 text-[#101B38] lg:py-28"
+      className="relative scroll-mt-20 overflow-hidden bg-[#F1F6FF] py-20 text-[#101B38] lg:py-28"
     >
-      {/* Soft Ambient Background Elements */}
-      <div className="pointer-events-none absolute -left-20 top-1/4 size-96 rounded-full bg-[#1237B8]/[0.03] blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 top-2/3 size-96 rounded-full bg-[#6920CC]/[0.03] blur-3xl" />
+      {/* Background Photo with Clean White/Light Overlay */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <Image
+          src={`${assetRoot}/bandung-braga-dusk.jpg`}
+          alt=""
+          fill
+          sizes="100vw"
+          className="scale-[1.03] object-cover object-center opacity-35"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.98)_0%,rgba(241,246,255,.94)_35%,rgba(255,255,255,.88)_68%,rgba(241,246,255,.96)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(18,55,184,.06),transparent_30%)]" />
+        <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(#1237B8_1px,transparent_1px),linear-gradient(90deg,#1237B8_1px,transparent_1px)] [background-size:48px_48px]" />
+      </div>
 
       <div className="site-container relative z-10">
         {/* Section Header */}
@@ -63,7 +73,7 @@ export function CarFleetSection() {
 
         {/* 3 Categories Tab Bar */}
         <div className="mt-10">
-          <div className="flex flex-wrap gap-2.5 rounded-2xl border border-[#DCE5F0] bg-white p-2 shadow-sm">
+          <div className="flex flex-wrap gap-2.5 rounded-2xl border border-[#DCE5F0] bg-white/95 p-2 backdrop-blur-md shadow-sm">
             {fleetCategories.map((category) => {
               const Icon = getCategoryIcon(category.key);
               const isActive = activeCategory === category.key;
@@ -112,7 +122,7 @@ export function CarFleetSection() {
           </div>
 
           {/* Dynamic Tab Description Box */}
-          <div className="mt-4 rounded-xl border border-[#E2E8F0] bg-white px-5 py-4 shadow-xs">
+          <div className="mt-4 rounded-xl border border-[#DCE5F0] bg-white/90 px-5 py-4 backdrop-blur-md shadow-xs">
             <p className="text-xs leading-relaxed text-[#65708A] sm:text-[13px]">
               <strong className="text-[#1237B8] font-bold mr-1.5">
                 {currentCategoryInfo.label}:
@@ -224,7 +234,7 @@ export function CarFleetSection() {
           </Link>
         </div>
 
-        {/* Ketentuan Harga Info Card - Clean Light Mode */}
+        {/* Ketentuan Harga Info Card */}
         <div id="ketentuan-harga" className="mt-14 rounded-[28px] border border-[#DCE5F0] bg-white p-7 shadow-[0_20px_50px_rgba(18,55,184,.06)] lg:p-9">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
             <div className="max-w-[720px]">
