@@ -13,10 +13,10 @@ export function CarFleetSection() {
   const currentCategoryInfo = fleetCategories.find((cat) => cat.key === activeCategory) || fleetCategories[0];
   const filteredFleet = fleetItems.filter((item) => item.category === activeCategory);
 
-  const maxVisible = 8;
-  const displayedFleet = filteredFleet.slice(0, maxVisible);
-  const hasMore = filteredFleet.length > maxVisible;
-  const remainingCount = filteredFleet.length - maxVisible;
+  // Show max 8 on desktop, max 4 on mobile
+  const maxDesktopVisible = 8;
+  const displayedFleet = filteredFleet.slice(0, maxDesktopVisible);
+  const remainingCount = filteredFleet.length - maxDesktopVisible;
 
   const getCategoryIcon = (key: FleetCategoryKey) => {
     switch (key) {
@@ -32,7 +32,7 @@ export function CarFleetSection() {
   return (
     <section
       id="armada"
-      className="relative scroll-mt-20 overflow-hidden bg-[#F1F6FF] py-20 text-[#101B38] lg:py-28"
+      className="relative scroll-mt-20 overflow-hidden bg-[#F1F6FF] py-16 text-[#0F172A] sm:py-20 lg:py-28"
     >
       {/* Background Photo with Clean White/Light Overlay */}
       <div className="absolute inset-0" aria-hidden="true">
@@ -41,10 +41,10 @@ export function CarFleetSection() {
           alt=""
           fill
           sizes="100vw"
-          className="scale-[1.03] object-cover object-center opacity-35"
+          className="scale-[1.03] object-cover object-center opacity-30"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.98)_0%,rgba(241,246,255,.94)_35%,rgba(255,255,255,.88)_68%,rgba(241,246,255,.96)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(18,55,184,.06),transparent_30%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,.98)_0%,rgba(241,246,255,.95)_35%,rgba(255,255,255,.90)_68%,rgba(241,246,255,.98)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(18,55,184,.08),transparent_30%)]" />
         <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(#1237B8_1px,transparent_1px),linear-gradient(90deg,#1237B8_1px,transparent_1px)] [background-size:48px_48px]" />
       </div>
 
@@ -52,28 +52,28 @@ export function CarFleetSection() {
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-[780px]">
-            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#1237B8]/20 bg-[#E8F1FF] px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#1237B8]">
+            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#1237B8]/25 bg-[#E8F1FF] px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#1237B8] shadow-xs">
               <Sparkles className="size-3.5 text-[#50C710]" /> Pilihan Armada Sewa Elf Bandung
             </p>
-            <h2 className="text-[32px] font-bold leading-[1.14] tracking-[-0.04em] text-[#101B38] sm:text-[40px] lg:text-[46px]">
+            <h2 className="text-[30px] font-extrabold leading-[1.12] tracking-[-0.04em] text-[#0F172A] sm:text-[38px] lg:text-[44px]">
               Katalog Armada Lengkap &amp; Terawat
             </h2>
-            <p className="mt-3 max-w-[660px] text-sm leading-6 text-[#65708A] sm:text-[15px]">
+            <p className="mt-2.5 max-w-[660px] text-sm leading-relaxed text-[#334155] sm:text-[15px]">
               Temukan kendaraan ideal untuk rombongan wisata, family tour, acara instansi, maupun perjalanan dinas di Bandung dan sekitarnya.
             </p>
           </div>
 
           <Link
             href="/armada"
-            className="inline-flex h-11 w-fit items-center gap-2 rounded-xl bg-[#1237B8] hover:bg-[#2857E8] px-5 text-xs font-bold text-white shadow-[0_10px_24px_rgba(18,55,184,.22)] transition hover:-translate-y-0.5"
+            className="inline-flex h-11 w-fit items-center gap-2 rounded-xl bg-[#1237B8] hover:bg-[#2857E8] px-5 text-xs font-bold text-white shadow-[0_10px_24px_rgba(18,55,184,.25)] transition hover:-translate-y-0.5 active:scale-98"
           >
             Buka Katalog Lengkap <ArrowRight className="size-4" />
           </Link>
         </div>
 
-        {/* 3 Categories Tab Bar */}
-        <div className="mt-10">
-          <div className="flex flex-wrap gap-2.5 rounded-2xl border border-[#DCE5F0] bg-white/95 p-2 backdrop-blur-md shadow-sm">
+        {/* 3 Categories Tab Bar - Optimized Horizontal Touch Scroller on Mobile */}
+        <div className="mt-8 sm:mt-10">
+          <div className="flex gap-2.5 overflow-x-auto pb-2 sm:pb-0 rounded-2xl border border-[#DCE5F0] bg-white/95 p-2 backdrop-blur-md shadow-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {fleetCategories.map((category) => {
               const Icon = getCategoryIcon(category.key);
               const isActive = activeCategory === category.key;
@@ -82,10 +82,10 @@ export function CarFleetSection() {
                   key={category.key}
                   type="button"
                   onClick={() => setActiveCategory(category.key)}
-                  className={`group flex flex-1 min-w-[210px] items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left transition-all duration-300 cursor-pointer ${
+                  className={`group flex shrink-0 sm:flex-1 min-w-[210px] items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "bg-gradient-to-r from-[#1237B8] to-[#2857E8] text-white shadow-[0_10px_24px_rgba(18,55,184,.28)]"
-                      : "text-[#65708A] hover:bg-[#F1F6FF] hover:text-[#101B38]"
+                      ? "bg-gradient-to-r from-[#1237B8] to-[#2857E8] text-white shadow-[0_10px_24px_rgba(18,55,184,.3)]"
+                      : "text-[#334155] hover:bg-[#F1F6FF] hover:text-[#0F172A]"
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -99,16 +99,16 @@ export function CarFleetSection() {
                       <Icon className="size-5" />
                     </span>
                     <div>
-                      <strong className={`block text-sm font-bold leading-tight ${isActive ? "text-white" : "text-[#101B38]"}`}>
+                      <strong className={`block text-sm font-bold leading-tight ${isActive ? "text-white" : "text-[#0F172A]"}`}>
                         {category.label}
                       </strong>
-                      <span className={`mt-0.5 block text-[11px] ${isActive ? "text-slate-200" : "text-[#65708A]"}`}>
+                      <span className={`mt-0.5 block text-[11px] font-medium ${isActive ? "text-slate-100" : "text-[#475569]"}`}>
                         {category.subtitle}
                       </span>
                     </div>
                   </div>
                   <span
-                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold ${
+                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-extrabold ${
                       isActive
                         ? "bg-[#50C710] text-white"
                         : "bg-[#F1F6FF] text-[#1237B8]"
@@ -122,8 +122,8 @@ export function CarFleetSection() {
           </div>
 
           {/* Dynamic Tab Description Box */}
-          <div className="mt-4 rounded-xl border border-[#DCE5F0] bg-white/90 px-5 py-4 backdrop-blur-md shadow-xs">
-            <p className="text-xs leading-relaxed text-[#65708A] sm:text-[13px]">
+          <div className="mt-3.5 rounded-xl border border-[#DCE5F0] bg-white/95 px-4.5 py-3.5 backdrop-blur-md shadow-xs sm:px-5 sm:py-4">
+            <p className="text-xs font-normal leading-relaxed text-[#334155] sm:text-[13px]">
               <strong className="text-[#1237B8] font-bold mr-1.5">
                 {currentCategoryInfo.label}:
               </strong>
@@ -132,125 +132,139 @@ export function CarFleetSection() {
           </div>
         </div>
 
-        {/* Fleet Grid - Max 8 Cards */}
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {displayedFleet.map((vehicle) => (
-            <article
-              key={vehicle.id}
-              className="group flex flex-col overflow-hidden rounded-[20px] border border-[#E2E8F0] bg-white text-[#101B38] shadow-[0_12px_32px_rgba(18,55,184,.06)] transition-all duration-300 hover:-translate-y-2 hover:border-[#1237B8]/40 hover:shadow-[0_24px_50px_rgba(18,55,184,.14)]"
-            >
-              {/* Image Frame */}
-              <div className="relative aspect-[1.12] overflow-hidden bg-[radial-gradient(circle_at_50%_38%,#F1F6FF_0%,#E2ECFF_52%,#C8DCFF_100%)]">
-                <Image
-                  src={vehicle.image}
-                  alt={`${vehicle.name} - Sewa Elf Bandung by Amoora Group`}
-                  fill
-                  sizes="(min-width: 1280px) 270px, (min-width: 1024px) 310px, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/15 to-transparent" />
+        {/* Fleet Grid - Max 4 Cards on Mobile, Max 8 on Desktop */}
+        <div className="mt-7 grid gap-4.5 sm:mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-5">
+          {displayedFleet.map((vehicle, index) => {
+            // Mobile only shows first 4 cards (index 0, 1, 2, 3), desktop shows all up to 8
+            const isHiddenOnMobile = index >= 4;
 
-                {/* Badge Left */}
-                {vehicle.badge ? (
-                  <span
-                    className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-[9px] font-bold text-white shadow-sm ${
-                      vehicle.isLuxury
-                        ? "bg-[#6920CC]"
-                        : vehicle.isPopular
-                        ? "bg-[#1237B8]"
-                        : "bg-[#101B38]"
-                    }`}
-                  >
-                    <Star className="size-3 fill-current" />
-                    {vehicle.badge}
+            return (
+              <article
+                key={vehicle.id}
+                className={`group flex-col overflow-hidden rounded-[22px] border border-[#E2E8F0] bg-white text-[#0F172A] shadow-[0_12px_32px_rgba(18,55,184,.07)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1237B8]/40 hover:shadow-[0_24px_50px_rgba(18,55,184,.15)] ${
+                  isHiddenOnMobile ? "hidden sm:flex" : "flex"
+                }`}
+              >
+                {/* Image Frame */}
+                <div className="relative aspect-[1.14] overflow-hidden bg-[radial-gradient(circle_at_50%_38%,#F1F6FF_0%,#E2ECFF_52%,#C8DCFF_100%)] sm:aspect-[1.12]">
+                  <Image
+                    src={vehicle.image}
+                    alt={`${vehicle.name} - Sewa Elf Bandung by Amoora Group`}
+                    fill
+                    sizes="(min-width: 1280px) 270px, (min-width: 1024px) 310px, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/15 to-transparent" />
+
+                  {/* Badge Left */}
+                  {vehicle.badge ? (
+                    <span
+                      className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-[9px] font-extrabold text-white shadow-sm ${
+                        vehicle.isLuxury
+                          ? "bg-[#6920CC]"
+                          : vehicle.isPopular
+                          ? "bg-[#1237B8]"
+                          : "bg-[#0F172A]"
+                      }`}
+                    >
+                      <Star className="size-3 fill-current" />
+                      {vehicle.badge}
+                    </span>
+                  ) : null}
+
+                  {/* Availability Badge Right */}
+                  <span className="absolute right-3 top-3 rounded-lg border border-[#50C710]/40 bg-[#F2FBEA] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.08em] text-[#3e9f0c] shadow-xs backdrop-blur">
+                    Tersedia
                   </span>
-                ) : null}
+                </div>
 
-                {/* Availability Badge Right */}
-                <span className="absolute right-3 top-3 rounded-lg border border-[#50C710]/30 bg-[#F2FBEA] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-[#50C710] shadow-xs backdrop-blur">
-                  Tersedia
-                </span>
-              </div>
-
-              {/* Card Body */}
-              <div className="flex flex-1 flex-col p-5">
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-[17px] font-bold leading-tight tracking-[-0.025em] text-[#101B38]">
+                {/* Card Body */}
+                <div className="flex flex-1 flex-col p-4 sm:p-5">
+                  <h3 className="text-[17px] font-bold leading-tight tracking-[-0.025em] text-[#0F172A]">
                     {vehicle.name}
                   </h3>
-                </div>
 
-                <div className="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-[#1237B8]">
-                  <Users className="size-4 text-[#1237B8]" />
-                  <span>Kapasitas: <strong className="text-[#101B38]">{vehicle.capacity}</strong></span>
-                </div>
-
-                {/* Features List */}
-                <ul className="mt-3.5 space-y-1.5 border-t border-[#E2E8F0] pt-3 text-[11px] text-[#65708A]">
-                  {vehicle.features.map((feat) => (
-                    <li key={feat} className="flex items-center gap-2">
-                      <Check className="size-3.5 text-[#50C710] shrink-0" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Price & Action */}
-                <div className="mt-auto pt-5">
-                  <div className="mb-3 flex items-baseline justify-between border-t border-[#E2E8F0] pt-3">
-                    <span className="text-[11px] font-medium text-[#65708A]">Tarif Mulai</span>
-                    <strong className="text-[19px] font-extrabold tracking-[-0.02em] text-[#1237B8] [font-variant-numeric:tabular-nums]">
-                      {vehicle.price}
-                      <span className="ml-1 text-[11px] font-medium text-[#65708A]">/12 Jam</span>
-                    </strong>
+                  <div className="mt-2 flex items-center gap-1.5 text-xs font-bold text-[#1237B8]">
+                    <Users className="size-4 text-[#1237B8]" />
+                    <span>Kapasitas: <strong className="text-[#0F172A] font-extrabold">{vehicle.capacity}</strong></span>
                   </div>
 
-                  <a
-                    href={bookingUrl(`${vehicle.name} (${vehicle.capacity})`)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] text-xs font-bold text-white shadow-[0_10px_22px_rgba(80,199,16,.24)] transition hover:-translate-y-0.5 active:scale-[0.99]"
-                  >
-                    <MessageCircle className="size-4" /> Booking via WhatsApp
-                  </a>
+                  {/* Features List with High-Contrast Dark Text */}
+                  <ul className="mt-3 space-y-1.5 border-t border-[#E2E8F0] pt-2.5 text-[11px] font-medium text-[#334155]">
+                    {vehicle.features.map((feat) => (
+                      <li key={feat} className="flex items-center gap-2">
+                        <Check className="size-3.5 text-[#50C710] shrink-0 stroke-[2.5]" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Price & Action Button */}
+                  <div className="mt-auto pt-4">
+                    <div className="mb-3 flex items-baseline justify-between border-t border-[#E2E8F0] pt-3">
+                      <span className="text-[11px] font-semibold text-[#475569]">Tarif Mulai</span>
+                      <strong className="text-[19px] font-extrabold tracking-[-0.02em] text-[#1237B8] [font-variant-numeric:tabular-nums]">
+                        {vehicle.price}
+                        <span className="ml-1 text-[11px] font-semibold text-[#475569]">/12 Jam</span>
+                      </strong>
+                    </div>
+
+                    <a
+                      href={bookingUrl(`${vehicle.name} (${vehicle.capacity})`)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex h-11.5 sm:h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] text-[13px] font-bold text-white shadow-[0_10px_22px_rgba(80,199,16,.28)] transition hover:-translate-y-0.5 active:scale-[0.99]"
+                    >
+                      <MessageCircle className="size-4" /> Booking via WhatsApp
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
 
-        {/* View All / More Button when list exceeds maxVisible or to see complete catalog */}
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        {/* View All / More Button tailored for mobile (showing count) & desktop */}
+        <div className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3">
           <Link
             href="/armada"
-            className="inline-flex h-12 items-center gap-2.5 rounded-xl border border-[#1237B8]/30 bg-white px-8 text-sm font-bold text-[#1237B8] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1237B8] hover:text-white"
+            className="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl border border-[#1237B8]/35 bg-white px-7 text-sm font-extrabold text-[#1237B8] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1237B8] hover:text-white"
           >
             <span>
-              {hasMore
-                ? `Lihat ${remainingCount} Unit ${currentCategoryInfo.label} Lainnya`
-                : `Lihat Seluruh 27+ Pilihan Armada di Katalog`}
+              {filteredFleet.length > 4 ? (
+                <>
+                  <span className="sm:hidden">Lihat Semua {filteredFleet.length} Unit {currentCategoryInfo.label}</span>
+                  <span className="hidden sm:inline">
+                    {remainingCount > 0
+                      ? `Lihat ${remainingCount} Unit ${currentCategoryInfo.label} Lainnya di Katalog`
+                      : `Lihat Seluruh 27+ Pilihan Armada di Katalog`}
+                  </span>
+                </>
+              ) : (
+                "Lihat Seluruh 27+ Pilihan Armada di Katalog"
+              )}
             </span>
-            <ArrowRight className="size-4" />
+            <ArrowRight className="size-4 text-[#50C710]" />
           </Link>
         </div>
 
-        {/* Ketentuan Harga Info Card */}
-        <div id="ketentuan-harga" className="mt-14 rounded-[28px] border border-[#DCE5F0] bg-white p-7 shadow-[0_20px_50px_rgba(18,55,184,.06)] lg:p-9">
+        {/* Ketentuan Harga Info Card - Ultra Clear High Contrast */}
+        <div id="ketentuan-harga" className="mt-12 sm:mt-14 rounded-[26px] border border-[#DCE5F0] bg-white p-6 shadow-[0_20px_50px_rgba(18,55,184,.06)] sm:p-8 lg:p-9">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
             <div className="max-w-[720px]">
-              <div className="inline-flex items-center gap-2 rounded-md bg-[#F2FBEA] px-3 py-1 text-[11px] font-bold text-[#50C710]">
+              <div className="inline-flex items-center gap-2 rounded-md bg-[#F2FBEA] px-3 py-1 text-[11px] font-extrabold text-[#3e9f0c]">
                 <Info className="size-3.5" /> Ketentuan Sewa &amp; Tarif
               </div>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight text-[#101B38]">
+              <h3 className="mt-2 text-xl sm:text-2xl font-extrabold tracking-tight text-[#0F172A]">
                 Ketentuan Harga Sewa Kendaraan
               </h3>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2 text-xs leading-relaxed text-[#65708A]">
+              <ul className="mt-4 sm:mt-5 grid gap-3 sm:grid-cols-2 text-xs leading-relaxed text-[#334155]">
                 {priceRules.map((rule, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
-                    <span className="mt-1 grid size-4 shrink-0 place-items-center rounded-full bg-[#50C710] text-[10px] font-bold text-white">
+                    <span className="mt-0.5 grid size-4.5 shrink-0 place-items-center rounded-full bg-[#50C710] text-[10px] font-extrabold text-white shadow-2xs">
                       ✓
                     </span>
-                    <span className="text-[#101B38] font-medium">{rule}</span>
+                    <span className="text-[#0F172A] font-semibold">{rule}</span>
                   </li>
                 ))}
               </ul>
@@ -258,23 +272,23 @@ export function CarFleetSection() {
 
             {/* Official Contact & Office Box */}
             <div className="shrink-0 rounded-2xl border border-[#DCE5F0] bg-[#F1F6FF] p-5 lg:w-[320px]">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#1237B8]">
+              <span className="block text-[11px] font-extrabold uppercase tracking-wider text-[#1237B8]">
                 Official Hotline &amp; Garasi
               </span>
-              <p className="mt-2 flex items-start gap-2 text-xs text-[#65708A]">
+              <p className="mt-2 flex items-start gap-2 text-xs font-medium text-[#334155]">
                 <MapPin className="size-4 shrink-0 text-[#1237B8] mt-0.5" />
                 Jalan Ciborelang No. 8, Cileunyi, Bandung
               </p>
-              <div className="mt-3 space-y-1.5 border-t border-[#DCE5F0] pt-3">
+              <div className="mt-3 space-y-2 border-t border-[#DCE5F0] pt-3">
                 <a
                   href="tel:6281214802420"
-                  className="flex items-center gap-2 text-xs font-bold text-[#101B38] hover:text-[#1237B8] transition"
+                  className="flex items-center gap-2 text-xs font-extrabold text-[#0F172A] hover:text-[#1237B8] transition"
                 >
                   <Phone className="size-3.5 text-[#50C710]" /> 0812-1480-2420
                 </a>
                 <a
                   href="tel:6282215452230"
-                  className="flex items-center gap-2 text-xs font-bold text-[#101B38] hover:text-[#1237B8] transition"
+                  className="flex items-center gap-2 text-xs font-extrabold text-[#0F172A] hover:text-[#1237B8] transition"
                 >
                   <Phone className="size-3.5 text-[#50C710]" /> 0822-1545-2230
                 </a>

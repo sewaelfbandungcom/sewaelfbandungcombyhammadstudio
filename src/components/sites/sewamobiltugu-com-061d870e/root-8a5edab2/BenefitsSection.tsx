@@ -29,9 +29,9 @@ export function BenefitsSection() {
       <div className="pointer-events-none absolute inset-x-0 top-10 h-44 opacity-40 [background-image:radial-gradient(circle,#2857E8_1.2px,transparent_1.2px)] [background-size:24px_24px] [mask-image:linear-gradient(90deg,black,transparent_32%,transparent_68%,black)]" />
       <div className="site-container relative">
         <header className="mx-auto max-w-[680px] text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1237B8]">Keunggulan Kami</p>
-          <h2 className="mt-3 text-3xl font-bold leading-[1.12] tracking-[-0.045em] text-[#101B38] sm:text-[38px]">Transportasi Rombongan yang<br />Nyaman, Aman &amp; Terpercaya</h2>
-          <p className="mx-auto mt-3 max-w-[580px] text-[13px] leading-6 text-[#65708A]">Komitmen Sewa Elf Bandung by Amoora Group dalam menghadirkan pengalaman perjalanan terbaik.</p>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#1237B8]">Keunggulan Kami</p>
+          <h2 className="mt-3 text-3xl font-extrabold leading-[1.12] tracking-[-0.045em] text-[#0F172A] sm:text-[38px]">Transportasi Rombongan yang<br />Nyaman, Aman &amp; Terpercaya</h2>
+          <p className="mx-auto mt-3 max-w-[580px] text-[13px] font-medium leading-6 text-[#334155]">Komitmen Sewa Elf Bandung by Amoora Group dalam menghadirkan pengalaman perjalanan terbaik.</p>
         </header>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
@@ -39,14 +39,14 @@ export function BenefitsSection() {
             const Icon = benefitIcons[index];
             const colorClass = benefitColorClasses[index];
             return (
-              <article key={benefit.title} className="group flex min-h-[224px] flex-col items-center rounded-[18px] border border-white/80 bg-white/88 px-5 py-5 text-center shadow-[0_16px_42px_rgba(18,55,184,.09)] backdrop-blur-sm transition duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_54px_rgba(18,55,184,.15)]">
+              <article key={benefit.title} className="group flex min-h-[224px] flex-col items-center rounded-[18px] border border-white/80 bg-white/90 px-5 py-5 text-center shadow-[0_16px_42px_rgba(18,55,184,.09)] backdrop-blur-sm transition duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_24px_54px_rgba(18,55,184,.15)]">
                 <span className={`relative grid h-[82px] w-[92px] place-items-center ${colorClass} transition duration-300 group-hover:scale-105`}>
                   <span className="absolute inset-x-1 bottom-1 h-14 rounded-[50%] bg-[radial-gradient(circle,#E2ECFF_0%,#F1F6FF_62%,transparent_64%)]" />
                   <Icon className="relative size-[68px] drop-shadow-[0_9px_10px_rgba(18,55,184,.14)]" weight="duotone" />
                   {index === 0 ? <SparkleIcon className="absolute right-0 top-0 size-6 text-[#50C710]" weight="fill" /> : null}
                 </span>
-                <h3 className="mt-3 max-w-[230px] text-[16px] font-bold leading-5 text-[#101B38]">{benefit.title}</h3>
-                <p className="mx-auto mt-2 max-w-[230px] text-[12px] leading-[1.65] text-[#65708A]">{benefit.description}</p>
+                <h3 className="mt-3 max-w-[230px] text-[16px] font-bold leading-5 text-[#0F172A]">{benefit.title}</h3>
+                <p className="mx-auto mt-2 max-w-[230px] text-[12px] font-normal leading-[1.65] text-[#334155]">{benefit.description}</p>
               </article>
             );
           })}
@@ -54,8 +54,8 @@ export function BenefitsSection() {
 
         <div className="mt-14 lg:mt-16">
           <header className="text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1237B8]">Cara Pemesanan</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.045em] text-[#101B38] sm:text-[36px]">Mudah dalam 3 Langkah (SOP)</h2>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#1237B8]">Cara Pemesanan</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-[-0.045em] text-[#0F172A] sm:text-[36px]">Mudah dalam 3 Langkah (SOP)</h2>
           </header>
           <div className="relative mt-10 grid gap-10 md:grid-cols-3 md:gap-8">
             <div className="absolute left-[16.66%] right-[16.66%] top-[51px] hidden border-t-2 border-dashed border-[#2857E8]/35 md:block" />
@@ -68,8 +68,8 @@ export function BenefitsSection() {
                     {index === 1 ? <CheckCircleIcon className="absolute -bottom-2 -right-2 size-8 rounded-full bg-white text-[#50C710]" weight="fill" /> : null}
                     <span className={`absolute -left-4 -top-3 grid size-9 place-items-center rounded-full ${badgeBg} text-sm font-bold text-white shadow-[0_8px_18px_rgba(18,55,184,.28)] ring-[5px] ring-white`}>{index + 1}</span>
                   </span>
-                  <h3 className="mt-5 text-[15px] font-bold text-[#101B38]">{title}</h3>
-                  <p className="mx-auto mt-2 max-w-[300px] text-[12px] leading-[1.65] text-[#65708A]">{description}</p>
+                  <h3 className="mt-5 text-[15px] font-bold text-[#0F172A]">{title}</h3>
+                  <p className="mx-auto mt-2 max-w-[300px] text-[12px] font-normal leading-[1.65] text-[#334155]">{description}</p>
                 </article>
               );
             })}

@@ -8,8 +8,8 @@
   --color-brand-light-purple: #f5f0ff;
   --color-brand-light-blue: #f1f6ff;
   --color-brand-light-green: #f2fbea;
-  --color-brand-dark: #101b38;
-  --color-brand-body: #65708a;
+  --color-brand-dark: #0f172a;
+  --color-brand-body: #334155;
 
   --color-primary: #1237b8;
   --color-primary-hover: #2857e8;
@@ -23,10 +23,10 @@
 
 :root {
   --background: #f1f6ff;
-  --foreground: #101b38;
+  --foreground: #0f172a;
   --card-bg: #ffffff;
-  --text-dark: #101b38;
-  --text-muted: #65708a;
+  --text-dark: #0f172a;
+  --text-muted: #334155;
   --color-deep-blue: #1237b8;
   --color-electric-blue: #2857e8;
   --color-fresh-green: #50c710;
@@ -35,19 +35,19 @@
 
 @layer base {
   * {
-    border-color: #e2e8f0;
+    border-color: #cbd5e1;
     box-sizing: border-box;
   }
   body {
     background-color: var(--background);
-    color: var(--text-dark);
+    color: #1e293b;
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    color: #101b38;
-    letter-spacing: -0.02em;
+    color: #0f172a;
+    letter-spacing: -0.025em;
   }
   html {
     scroll-behavior: smooth;
