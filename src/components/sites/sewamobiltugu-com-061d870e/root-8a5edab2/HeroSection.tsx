@@ -347,11 +347,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
   const selectedFleetObj = fleetOptions.find((f) => f.value === fleet) || fleetOptions[0];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[106px] sm:pt-[112px]">
+    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[110px] sm:pt-[118px] lg:pt-[124px]">
       {/* 100% Full-Width & Full-Height 1 Viewport Screen Slider */}
       <div className="relative w-full overflow-hidden rounded-b-[24px] sm:rounded-b-[40px] lg:rounded-b-[52px] bg-slate-950 shadow-sm">
         <div
-          className="group/slider relative w-full h-[calc(100svh-106px)] sm:h-[calc(100svh-112px)] min-h-[520px] overflow-hidden"
+          className="group/slider relative w-full h-[calc(100svh-110px)] sm:h-[calc(100svh-118px)] lg:h-[calc(100svh-124px)] min-h-[520px] overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
@@ -374,7 +374,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                   className="block relative size-full cursor-pointer"
                   aria-label={slide.alt}
                 >
-                  {/* Mobile Banner: Full Screen Viewport */}
+                  {/* Mobile Banner: Full Screen Viewport (Top Aligned) */}
                   <div className="relative size-full sm:hidden">
                     <Image
                       src={slide.mobile}
@@ -382,11 +382,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                       fill
                       priority={index === 0}
                       sizes="100vw"
-                      className="object-cover object-center"
+                      className="object-cover object-top"
                     />
                   </div>
 
-                  {/* Desktop Banner: Full Screen Viewport */}
+                  {/* Desktop Banner: Full Screen Viewport (Top Aligned) */}
                   <div className="relative size-full hidden sm:block">
                     <Image
                       src={slide.desktop}
@@ -394,7 +394,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                       fill
                       priority={index === 0}
                       sizes="100vw"
-                      className="object-cover object-center"
+                      className="object-cover object-top"
                     />
                   </div>
                 </a>
