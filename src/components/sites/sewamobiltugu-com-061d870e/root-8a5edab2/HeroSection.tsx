@@ -348,10 +348,10 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
 
   return (
     <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[106px] sm:pt-[112px]">
-      {/* Full-Width Slider with Proportional Height so the Bottom is NEVER Cropped */}
-      <div className="relative w-full overflow-hidden rounded-b-[20px] sm:rounded-b-[32px] lg:rounded-b-[40px] bg-slate-950 shadow-sm">
+      {/* 100% Full-Width & Full-Height 1 Viewport Screen Slider */}
+      <div className="relative w-full overflow-hidden rounded-b-[24px] sm:rounded-b-[40px] lg:rounded-b-[52px] bg-slate-950 shadow-sm">
         <div
-          className="group/slider relative w-full aspect-[9/15] sm:aspect-[16/9] max-h-[calc(100svh-112px)] overflow-hidden"
+          className="group/slider relative w-full h-[calc(100svh-106px)] sm:h-[calc(100svh-112px)] min-h-[520px] overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
@@ -374,7 +374,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                   className="block relative size-full cursor-pointer"
                   aria-label={slide.alt}
                 >
-                  {/* Mobile Banner: 100% visible top to bottom */}
+                  {/* Mobile Banner: Full Screen Viewport */}
                   <div className="relative size-full sm:hidden">
                     <Image
                       src={slide.mobile}
@@ -382,11 +382,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                       fill
                       priority={index === 0}
                       sizes="100vw"
-                      className="object-contain sm:object-cover object-center"
+                      className="object-cover object-center"
                     />
                   </div>
 
-                  {/* Desktop Banner: 100% visible top to bottom */}
+                  {/* Desktop Banner: Full Screen Viewport */}
                   <div className="relative size-full hidden sm:block">
                     <Image
                       src={slide.desktop}
@@ -394,7 +394,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                       fill
                       priority={index === 0}
                       sizes="100vw"
-                      className="object-contain lg:object-cover object-center"
+                      className="object-cover object-center"
                     />
                   </div>
                 </a>
@@ -421,17 +421,17 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
           </button>
 
           {/* Indicator Dots */}
-          <div className="absolute bottom-3 sm:bottom-4 inset-x-0 z-20 flex items-center justify-center gap-2">
+          <div className="absolute bottom-20 sm:bottom-24 lg:bottom-28 inset-x-0 z-20 flex items-center justify-center gap-2">
             {slides.map((_, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => setCurrentSlide(idx)}
                 aria-label={`Buka slide ${idx + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
                   idx === currentSlide
-                    ? "w-8 bg-[#50C710] shadow-md"
-                    : "w-2 bg-white/70 hover:bg-white"
+                    ? "w-9 bg-[#50C710] shadow-md"
+                    : "w-2.5 bg-white/70 hover:bg-white"
                 }`}
               />
             ))}
@@ -440,7 +440,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
       </div>
 
       {/* Booking Form Planner Attached Directly onto the Hero Slider */}
-      <div className="site-container relative z-30 -mt-10 sm:-mt-14 lg:-mt-16 pb-10 sm:pb-14">
+      <div className="site-container relative z-30 -mt-14 sm:-mt-18 lg:-mt-22 pb-10 sm:pb-14">
         <form
           onSubmit={handleBookingSubmit}
           className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_24px_70px_rgba(18,55,184,.14)]"
