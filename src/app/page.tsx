@@ -3,7 +3,6 @@ import { AboutSection } from "@/components/sites/sewamobiltugu-com-061d870e/root
 import { CarFleetSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/CarFleetSection";
 import { CtaSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/CtaSection";
 import { HeroSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/HeroSection";
-import { MotorFleetSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/MotorFleetSection";
 import { SiteFooter } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/SiteFooter";
 import { SiteHeader } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/SiteHeader";
 import { TestimonialsSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/TestimonialsSection";
@@ -17,7 +16,6 @@ export default function Home() {
         <HeroSection />
         <TrustStatsSection />
         <CarFleetSection />
-        <MotorFleetSection />
         <AboutSection />
         <BenefitsSection />
         <TestimonialsSection />

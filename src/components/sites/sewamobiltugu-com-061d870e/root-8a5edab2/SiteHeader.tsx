@@ -8,15 +8,15 @@ import { useEffect, useState } from "react";
 import { BrandMark } from "./BrandMark";
 import { bookingUrl } from "./content";
 
-type SectionId = "top" | "armada" | "bus-pariwisata" | "tentang-kami" | "layanan" | "kontak";
+type SectionId = "top" | "armada" | "ketentuan-harga" | "tentang-kami" | "layanan" | "kontak";
 type HeaderLink = { label: string; href: string; path: string; section?: SectionId };
 
 const links: readonly HeaderLink[] = [
   { label: "Beranda", href: "/", path: "/", section: "top" },
-  { label: "Armada Elf & Hiace", href: "/#armada", path: "/armada", section: "armada" },
-  { label: "Bus Pariwisata", href: "/#bus-pariwisata", path: "/rental-motor", section: "bus-pariwisata" },
+  { label: "Daftar Armada", href: "/#armada", path: "/armada", section: "armada" },
+  { label: "Ketentuan Harga", href: "/#ketentuan-harga", path: "/", section: "ketentuan-harga" },
   { label: "Tentang Kami", href: "/#tentang-kami", path: "/", section: "tentang-kami" },
-  { label: "Layanan", href: "/#layanan", path: "/", section: "layanan" },
+  { label: "Layanan & SOP", href: "/#layanan", path: "/", section: "layanan" },
   { label: "Kontak", href: "/#kontak", path: "/", section: "kontak" },
 ] as const;
 

@@ -1,81 +1,276 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, BriefcaseBusiness, Gauge, Heart, MapPinned, MessageCircle, Plane, Snowflake, Star, UsersRound, Users } from "lucide-react";
+import { ArrowRight, Bus, Car, Check, ChevronRight, Fuel, Gauge, Info, MapPin, MessageCircle, Phone, ShieldCheck, Sparkles, Star, Users } from "lucide-react";
+import { useState } from "react";
 
-import { assetRoot, bookingUrl, cars } from "./content";
-
-const tripTypes = [
-  { title: "Wisata Bandung", note: "Lembang & Ciwidey", icon: MapPinned },
-  { title: "Drop Luar Kota", note: "Soetta & Antar Kota", icon: Plane },
-  { title: "Study Tour & Gathering", note: "Sekolah & Perusahaan", icon: Heart },
-  { title: "Acara & Wedding", note: "Shuttle Rombongan", icon: BriefcaseBusiness },
-] as const;
-
-const promos = ["Best Seller", "Favorit Wisata", "Paling Hemat", "Unit Euro4", "Luxury VIP", "Favorit Keluarga", "Nyaman", "Ekonomis"] as const;
+import { assetRoot, bookingUrl, fleetCategories, fleetItems, priceRules, type FleetCategoryKey } from "./content";
 
 export function CarFleetSection() {
+  const [activeCategory, setActiveCategory] = useState<FleetCategoryKey>("minibus");
+
+  const currentCategoryInfo = fleetCategories.find((cat) => cat.key === activeCategory) || fleetCategories[0];
+  const filteredFleet = fleetItems.filter((item) => item.category === activeCategory);
+
+  const getCategoryIcon = (key: FleetCategoryKey) => {
+    switch (key) {
+      case "minibus":
+        return Users;
+      case "bus":
+        return Bus;
+      case "mobil":
+        return Car;
+    }
+  };
+
   return (
-    <section id="armada" className="relative overflow-hidden bg-[#F1F6FF] py-20 lg:py-28">
-      <Image src={`${assetRoot}/bandung-gedung-sate.jpg`} alt="" fill sizes="100vw" className="pointer-events-none object-cover object-top opacity-[0.13]" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(241,246,255,.48)_0%,rgba(241,246,255,.94)_34%,#F1F6FF_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(18,55,184,.08),transparent_24%),radial-gradient(circle_at_88%_72%,rgba(105,32,204,.06),transparent_28%)]" />
-      <div className="site-container relative">
-        <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
-          <div className="max-w-[650px]">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1237B8]">Armada Rombongan Terbaik</p>
-            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-[-0.04em] text-[#101B38] sm:text-[40px]">Sewa Elf &amp; Hiace<br />Sesuai Rombongan Anda</h2>
-            <p className="mt-4 max-w-[560px] text-sm leading-6 text-[#65708A]">Pilihan unit Isuzu Elf Long, Toyota Hiace Premio &amp; Commuter, serta MPV terawat untuk wisata dan perjalanan luar kota di Bandung.</p>
+    <section
+      id="armada"
+      className="relative scroll-mt-20 overflow-hidden bg-[#101B38] py-20 text-white lg:py-28"
+    >
+      {/* Background Photo with Layered Blue-Purple Gradient */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <Image
+          src={`${assetRoot}/bandung-braga-dusk.jpg`}
+          alt=""
+          fill
+          sizes="100vw"
+          className="scale-[1.03] object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,27,56,.99)_0%,rgba(18,55,184,.93)_35%,rgba(105,32,204,.48)_68%,rgba(16,27,56,.94)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(105,32,204,.35),transparent_28%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_75%,rgba(80,199,16,.12),transparent_25%)]" />
+        <div className="absolute inset-0 opacity-15 [background-image:linear-gradient(rgba(255,255,255,.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.15)_1px,transparent_1px)] [background-size:48px_48px]" />
+      </div>
+
+      <div className="site-container relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div className="max-w-[780px]">
+            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#50C710]/40 bg-[#50C710]/15 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#50C710] backdrop-blur-md">
+              <Sparkles className="size-3.5" /> Pilihan Armada Sewa Elf Bandung
+            </p>
+            <h2 className="text-[32px] font-bold leading-[1.14] tracking-[-0.04em] text-white sm:text-[40px] lg:text-[46px]">
+              Katalog Armada Lengkap &amp; Bersih
+            </h2>
+            <p className="mt-3 max-w-[660px] text-sm leading-6 text-slate-200 sm:text-[15px]">
+              Temukan kendaraan ideal untuk rombongan wisata, family tour, acara instansi, maupun perjalanan dinas di Bandung dan sekitarnya.
+            </p>
           </div>
-          <Link href="/armada" className="inline-flex items-center gap-2 text-sm font-bold text-[#1237B8] hover:text-[#2857E8]">Lihat semua armada <ArrowRight className="size-4" /></Link>
+
+          <a
+            href={bookingUrl()}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex h-11 w-fit items-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-5 text-xs font-bold text-white shadow-[0_12px_26px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5"
+          >
+            Konsultasi Armada via WA <ArrowRight className="size-4" />
+          </a>
         </div>
 
-        <div className="mt-8 flex gap-2 border-b border-[#D9E4F2]">
-          <span className="border-b-2 border-[#1237B8] px-5 py-3 text-sm font-bold text-[#1237B8]">Elf &amp; Hiace (Microbus)</span>
-          <a href="#bus-pariwisata" className="px-5 py-3 text-sm font-semibold text-[#65708A] transition hover:text-[#101B38]">Bus Pariwisata (Medium &amp; Big)</a>
+        {/* 3 Categories Tab Bar */}
+        <div className="mt-10">
+          <div className="flex flex-wrap gap-2.5 rounded-2xl border border-white/15 bg-[#101B38]/80 p-2 backdrop-blur-xl shadow-2xl">
+            {fleetCategories.map((category) => {
+              const Icon = getCategoryIcon(category.key);
+              const isActive = activeCategory === category.key;
+              return (
+                <button
+                  key={category.key}
+                  type="button"
+                  onClick={() => setActiveCategory(category.key)}
+                  className={`group flex flex-1 min-w-[210px] items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? "bg-gradient-to-r from-[#1237B8] to-[#2857E8] text-white shadow-[0_10px_24px_rgba(18,55,184,.38)] border border-white/20"
+                      : "text-slate-300 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`grid size-10 place-items-center rounded-lg transition-transform duration-300 group-hover:scale-105 ${
+                        isActive
+                          ? "bg-white text-[#1237B8] shadow-sm"
+                          : "bg-white/10 text-[#50C710]"
+                      }`}
+                    >
+                      <Icon className="size-5" />
+                    </span>
+                    <div>
+                      <strong className="block text-sm font-bold leading-tight text-white">
+                        {category.label}
+                      </strong>
+                      <span className="mt-0.5 block text-[11px] text-slate-300">
+                        {category.subtitle}
+                      </span>
+                    </div>
+                  </div>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                      isActive
+                        ? "bg-[#50C710] text-white"
+                        : "bg-white/15 text-slate-300"
+                    }`}
+                  >
+                    {category.count} Unit
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Dynamic Tab Description Box */}
+          <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.06] px-5 py-4 backdrop-blur-md">
+            <p className="text-xs leading-relaxed text-slate-200 sm:text-[13px]">
+              <strong className="text-[#50C710] font-bold mr-1.5">
+                {currentCategoryInfo.label}:
+              </strong>
+              {currentCategoryInfo.description}
+            </p>
+          </div>
         </div>
 
-        <div className="mt-6 grid gap-y-4 border-y border-[#D9E4F2] py-4 sm:grid-cols-2 lg:grid-cols-4">
-          {tripTypes.map(({ title, note, icon: Icon }, index) => (
-            <div key={title} className={`flex items-center gap-3 lg:px-5 ${index > 0 ? "lg:border-l lg:border-[#D9E4F2]" : "lg:pl-0"}`}>
-              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#E2ECFF] text-[#1237B8] shadow-xs"><Icon className="size-5" strokeWidth={1.8} /></span>
-              <span><strong className="block text-xs font-bold text-[#101B38]">{title}</strong><span className="mt-0.5 block text-[10px] text-[#65708A]">{note}</span></span>
-            </div>
+        {/* Fleet Grid */}
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredFleet.map((vehicle) => (
+            <article
+              key={vehicle.id}
+              className="group flex flex-col overflow-hidden rounded-[20px] border border-white/80 bg-white text-[#101B38] shadow-[0_18px_46px_rgba(0,0,0,.25)] transition-all duration-300 hover:-translate-y-2 hover:border-[#50C710] hover:shadow-[0_28px_64px_rgba(18,55,184,.32)]"
+            >
+              {/* Image Frame */}
+              <div className="relative aspect-[1.12] overflow-hidden bg-[radial-gradient(circle_at_50%_38%,#F1F6FF_0%,#E2ECFF_52%,#C8DCFF_100%)]">
+                <Image
+                  src={vehicle.image}
+                  alt={`${vehicle.name} - Sewa Elf Bandung by Amoora Group`}
+                  fill
+                  sizes="(min-width: 1280px) 270px, (min-width: 1024px) 310px, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/20 to-transparent" />
+
+                {/* Badge Left */}
+                {vehicle.badge ? (
+                  <span
+                    className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-[9px] font-bold text-white shadow-sm ${
+                      vehicle.isLuxury
+                        ? "bg-[#6920CC]"
+                        : vehicle.isPopular
+                        ? "bg-[#1237B8]"
+                        : "bg-[#101B38]"
+                    }`}
+                  >
+                    <Star className="size-3 fill-current" />
+                    {vehicle.badge}
+                  </span>
+                ) : null}
+
+                {/* Availability Badge Right */}
+                <span className="absolute right-3 top-3 rounded-lg border border-[#50C710]/30 bg-[#F2FBEA] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-[#50C710] shadow-xs backdrop-blur">
+                  Tersedia
+                </span>
+              </div>
+
+              {/* Card Body */}
+              <div className="flex flex-1 flex-col p-5">
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-[17px] font-bold leading-tight tracking-[-0.025em] text-[#101B38]">
+                    {vehicle.name}
+                  </h3>
+                </div>
+
+                <div className="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-[#1237B8]">
+                  <Users className="size-4 text-[#1237B8]" />
+                  <span>Kapasitas: <strong className="text-[#101B38]">{vehicle.capacity}</strong></span>
+                </div>
+
+                {/* Features List */}
+                <ul className="mt-3.5 space-y-1.5 border-t border-[#E2E8F0] pt-3 text-[11px] text-[#65708A]">
+                  {vehicle.features.map((feat) => (
+                    <li key={feat} className="flex items-center gap-2">
+                      <Check className="size-3.5 text-[#50C710] shrink-0" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Price & Action */}
+                <div className="mt-auto pt-5">
+                  <div className="mb-3 flex items-baseline justify-between border-t border-[#E2E8F0] pt-3">
+                    <span className="text-[11px] font-medium text-[#65708A]">Tarif Mulai</span>
+                    <strong className="text-[19px] font-extrabold tracking-[-0.02em] text-[#1237B8] [font-variant-numeric:tabular-nums]">
+                      {vehicle.price}
+                      <span className="ml-1 text-[11px] font-medium text-[#65708A]">/12 Jam</span>
+                    </strong>
+                  </div>
+
+                  <a
+                    href={bookingUrl(`${vehicle.name} (${vehicle.capacity})`)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] text-xs font-bold text-white shadow-[0_10px_22px_rgba(80,199,16,.24)] transition hover:-translate-y-0.5 active:scale-[0.99]"
+                  >
+                    <MessageCircle className="size-4" /> Booking via WhatsApp
+                  </a>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
 
-        <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-6 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4 lg:gap-6">
-          {cars.map((vehicle, index) => {
-            const price = vehicle.selfDrivePrice;
-            const secondaryPrice = vehicle.allInPrice;
-            const isLuxury = vehicle.name.includes("Luxury") || vehicle.name.includes("Zenix");
-            return (
-              <article key={`${vehicle.name}-${index}`} className="group flex min-h-[490px] w-[82vw] max-w-[310px] shrink-0 snap-start flex-col overflow-hidden rounded-[20px] border border-white bg-white shadow-[0_14px_38px_rgba(18,55,184,.08)] transition duration-300 hover:-translate-y-2 hover:shadow-[0_28px_64px_rgba(18,55,184,.17)] sm:w-auto sm:max-w-none">
-                <div className="relative aspect-[1.03] overflow-hidden bg-[radial-gradient(circle_at_50%_38%,#F1F6FF_0%,#E2ECFF_52%,#C8DCFF_100%)]">
-                  <Image src={vehicle.image} alt={`${vehicle.name} Sewa Elf Bandung`} fill sizes="(min-width:1024px) 280px, (min-width:640px) 50vw, 100vw" className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.025]" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#1237B8]/20 to-transparent" />
-                  <span className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-[9px] font-bold text-white shadow-sm ${isLuxury ? "bg-[#6920CC]" : "bg-[#1237B8]"}`}>
-                    <Star className="size-3 fill-current" />{promos[index]}
-                  </span>
-                  <span className="absolute right-3 top-3 rounded-lg border border-[#50C710]/30 bg-[#F2FBEA] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-[#50C710] shadow-2xs backdrop-blur">
-                    Tersedia
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-[17px] font-bold tracking-[-0.025em] text-[#101B38]">{vehicle.name}</h3>
-                  <div className="mt-3 flex flex-wrap gap-x-3 gap-y-2 text-[10px] text-[#65708A]">
-                    <span className="flex items-center gap-1"><Users className="size-3.5 text-[#1237B8]" />{vehicle.name.includes("Elf") ? "19 Kursi" : vehicle.name.includes("Hiace") ? "14 Kursi" : "5-7 Kursi"}</span>
-                    <span className="flex items-center gap-1"><Snowflake className="size-3.5 text-[#1237B8]" />AC Dingin</span>
-                    <span className="flex items-center gap-1"><Gauge className="size-3.5 text-[#1237B8]" />Euro4 Prima</span>
-                  </div>
-                  <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#E2E8F0] pt-4">
-                    <div><span className="block text-[10px] text-[#65708A]">Dalam Kota (12 Jam)</span><strong className="text-[18px] font-bold tracking-[-0.025em] text-[#1237B8] [font-variant-numeric:tabular-nums]">{price}</strong></div>
-                    {secondaryPrice ? <span className="max-w-[92px] text-right text-[10px] leading-4 text-[#65708A]">Luar Kota<br /><strong className="text-[#101B38] font-bold">{secondaryPrice}</strong></span> : null}
-                  </div>
-                  <a href={bookingUrl(vehicle.name)} target="_blank" rel="noreferrer" className="mt-5 flex h-11 items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] text-xs font-bold text-white shadow-[0_10px_22px_rgba(80,199,16,.25)] transition hover:-translate-y-0.5"><MessageCircle className="size-4" />Booking via WhatsApp</a>
-                </div>
-              </article>
-            );
-          })}
+        {/* Ketentuan Harga Info Card */}
+        <div id="ketentuan-harga" className="mt-14 rounded-[24px] border border-white/20 bg-[#101B38]/90 p-7 shadow-2xl backdrop-blur-xl lg:p-9">
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
+            <div className="max-w-[720px]">
+              <div className="inline-flex items-center gap-2 rounded-md bg-[#50C710]/20 px-3 py-1 text-[11px] font-bold text-[#50C710]">
+                <Info className="size-3.5" /> Ketentuan Sewa &amp; Tarif
+              </div>
+              <h3 className="mt-2 text-2xl font-bold tracking-tight text-white">
+                Ketentuan Harga Sewa Kendaraan
+              </h3>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2 text-xs leading-relaxed text-slate-200">
+                {priceRules.map((rule, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="mt-1 grid size-4 shrink-0 place-items-center rounded-full bg-[#50C710] text-[10px] font-bold text-white">
+                      ✓
+                    </span>
+                    <span>{rule}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Official Contact & Office Box */}
+            <div className="shrink-0 rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md lg:w-[320px]">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-[#50C710]">
+                Official Hotline &amp; Garasi
+              </span>
+              <p className="mt-2 flex items-start gap-2 text-xs text-slate-200">
+                <MapPin className="size-4 shrink-0 text-[#50C710] mt-0.5" />
+                Jalan Ciborelang No. 8, Cileunyi, Bandung
+              </p>
+              <div className="mt-3 space-y-1.5 border-t border-white/15 pt-3">
+                <a
+                  href="tel:6281214802420"
+                  className="flex items-center gap-2 text-xs font-bold text-white hover:text-[#50C710] transition"
+                >
+                  <Phone className="size-3.5 text-[#50C710]" /> 0812-1480-2420
+                </a>
+                <a
+                  href="tel:6282215452230"
+                  className="flex items-center gap-2 text-xs font-bold text-white hover:text-[#50C710] transition"
+                >
+                  <Phone className="size-3.5 text-[#50C710]" /> 0822-1545-2230
+                </a>
+              </div>
+              <a
+                href={bookingUrl()}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#50C710] hover:bg-[#43aa0c] text-xs font-bold text-white shadow-md transition hover:-translate-y-0.5"
+              >
+                <MessageCircle className="size-4" /> Hubungi Admin Sekarang
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
