@@ -98,39 +98,100 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Card Glow & Shadows */
+  /* Card Glow & Smooth Transitions */
   .brand-shadow {
     box-shadow: 0 10px 30px -10px rgba(18, 55, 184, 0.12), 0 4px 12px -4px rgba(18, 55, 184, 0.06);
   }
 
-  .brand-shadow-hover {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  .brand-card-hover {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
   }
-  .brand-shadow-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(18, 55, 184, 0.2), 0 8px 20px -6px rgba(105, 32, 204, 0.12);
-  }
-
-  /* Subtle background pattern */
-  .pattern-grid {
-    background-image: radial-gradient(rgba(18, 55, 184, 0.08) 1px, transparent 1px);
-    background-size: 24px 24px;
+  .brand-card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px -12px rgba(18, 55, 184, 0.22), 0 12px 24px -8px rgba(105, 32, 204, 0.14);
   }
 
-  /* WhatsApp Ring Animation */
-  .wa-pulse {
-    animation: wa-pulse-animation 2.5s infinite;
+  /* Button Smooth Hover */
+  .btn-hover-effect {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  }
+  .btn-hover-effect:hover {
+    transform: translateY(-2px);
+  }
+  .btn-hover-effect:active {
+    transform: translateY(0) scale(0.98);
   }
 
-  @keyframes wa-pulse-animation {
+  /* Floating Attention Calling Keyframes */
+  .ctwa-float {
+    animation: ctwa-float-anim 4s ease-in-out infinite;
+  }
+
+  @keyframes ctwa-float-anim {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .ctwa-wiggle {
+    animation: ctwa-wiggle-anim 3.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes ctwa-wiggle-anim {
+    0%, 75%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    80% {
+      transform: rotate(-12deg) scale(1.08);
+    }
+    85% {
+      transform: rotate(12deg) scale(1.08);
+    }
+    90% {
+      transform: rotate(-8deg) scale(1.05);
+    }
+    95% {
+      transform: rotate(6deg) scale(1.02);
+    }
+  }
+
+  .ctwa-ping-ring {
+    animation: ctwa-ping-ring-anim 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes ctwa-ping-ring-anim {
     0% {
-      box-shadow: 0 0 0 0 rgba(80, 199, 16, 0.7);
+      transform: scale(0.9);
+      opacity: 0.85;
     }
-    70% {
-      box-shadow: 0 0 0 16px rgba(80, 199, 16, 0);
+    70%, 100% {
+      transform: scale(1.6);
+      opacity: 0;
     }
-    100% {
-      box-shadow: 0 0 0 0 rgba(80, 199, 16, 0);
+  }
+
+  /* Hero Reveal Keyframes */
+  .hero-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: hero-reveal-anim 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .hero-delay-1 { animation-delay: 0.08s; }
+  .hero-delay-2 { animation-delay: 0.18s; }
+  .hero-delay-3 { animation-delay: 0.28s; }
+  .hero-delay-4 { animation-delay: 0.38s; }
+  .hero-delay-5 { animation-delay: 0.48s; }
+  .hero-delay-6 { animation-delay: 0.58s; }
+  .hero-delay-7 { animation-delay: 0.68s; }
+
+  @keyframes hero-reveal-anim {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
