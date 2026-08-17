@@ -298,7 +298,7 @@ export function HeroSection() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   }, []);
 
-  // Auto slide background
+  // Auto slide
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(nextSlide, 5000);
@@ -347,200 +347,198 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
   const selectedFleetObj = fleetOptions.find((f) => f.value === fleet) || fleetOptions[0];
 
   return (
-    <section className="relative bg-[#F1F6FF] text-[#0F172A] pt-[106px] sm:pt-[112px]">
-      <div className="site-container">
-        {/* Full-screen Hero Image Slider (Fit to 1 Viewport Screen without Overflow) */}
-        <div
-          className="group/slider relative w-full overflow-hidden rounded-[24px] sm:rounded-[36px] bg-slate-900 shadow-[0_24px_70px_rgba(18,55,184,.14)] h-[calc(100svh-124px)] max-h-[720px] min-h-[460px] sm:min-h-[480px] sm:max-h-[640px] lg:max-h-[720px]"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          {slides.map((slide, index) => {
-            const isActive = index === currentSlide;
-            return (
-              <div
-                key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                  isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                }`}
+    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A]">
+      {/* 100% Full Screen 1-Viewport Hero Image Slider (Edge-to-Edge, Zero Text Overlaid) */}
+      <div
+        className="group/slider relative w-full h-[100svh] min-h-[100svh] overflow-hidden bg-slate-950"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        {slides.map((slide, index) => {
+          const isActive = index === currentSlide;
+          return (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 size-full transition-opacity duration-700 ease-in-out ${
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+              }`}
+            >
+              <a
+                href={bookingUrl()}
+                target="_blank"
+                rel="noreferrer"
+                className="block relative size-full cursor-pointer"
+                aria-label={slide.alt}
               >
-                <a
-                  href={bookingUrl()}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block relative size-full cursor-pointer"
-                  aria-label={slide.alt}
-                >
-                  {/* Mobile Image (Fit & Full Display) */}
-                  <div className="relative size-full sm:hidden">
-                    <Image
-                      src={slide.mobile}
-                      alt={slide.alt}
-                      fill
-                      priority={index === 0}
-                      sizes="100vw"
-                      className="object-cover object-center"
-                    />
-                  </div>
-
-                  {/* Desktop Image (Fit & Full Display) */}
-                  <div className="relative size-full hidden sm:block">
-                    <Image
-                      src={slide.desktop}
-                      alt={slide.alt}
-                      fill
-                      priority={index === 0}
-                      sizes="100vw"
-                      className="object-cover object-center"
-                    />
-                  </div>
-                </a>
-              </div>
-            );
-          })}
-
-          {/* Navigation Arrows */}
-          <button
-            type="button"
-            onClick={prevSlide}
-            aria-label="Slide sebelumnya"
-            className="absolute left-3.5 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/80 hover:bg-white text-[#0F172A] shadow-lg backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <ChevronLeft className="size-5 sm:size-6 text-[#1237B8]" />
-          </button>
-          <button
-            type="button"
-            onClick={nextSlide}
-            aria-label="Slide berikutnya"
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/80 hover:bg-white text-[#0F172A] shadow-lg backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            <ChevronRight className="size-5 sm:size-6 text-[#1237B8]" />
-          </button>
-
-          {/* Indicator Dots */}
-          <div className="absolute bottom-4 inset-x-0 z-20 flex items-center justify-center gap-2">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setCurrentSlide(idx)}
-                aria-label={`Buka slide ${idx + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === currentSlide
-                    ? "w-8 bg-[#50C710] shadow-md"
-                    : "w-2.5 bg-white/70 hover:bg-white"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Interactive Booking Form Planner */}
-        <div className="mt-8 sm:mt-12 pb-6 sm:pb-8">
-          <form
-            onSubmit={handleBookingSubmit}
-            className="rounded-[24px] border border-[#DCE5F0] bg-white p-5 text-[#0F172A] shadow-[0_20px_50px_rgba(18,55,184,.08)] sm:p-8"
-          >
-            <div className="mb-5 flex flex-col justify-between gap-2 sm:mb-6 sm:flex-row sm:items-center">
-              <div>
-                <div className="inline-flex items-center gap-1.5 rounded-md bg-[#F1F6FF] px-2.5 py-1 text-[11px] font-extrabold text-[#1237B8]">
-                  <Sparkles className="size-3.5 text-[#50C710]" /> Formulir Reservasi Cepat
-                </div>
-                <h2 className="mt-1.5 text-lg font-extrabold tracking-[-0.025em] text-[#0F172A]">
-                  Rencanakan Perjalanan Rombongan Anda
-                </h2>
-                <p className="mt-0.5 text-xs font-medium text-[#334155]">
-                  Pilih titik jemput, destinasi wisata, &amp; jenis unit untuk langsung mendapatkan estimasi penawaran resmi via WhatsApp.
-                </p>
-              </div>
-              <div className="hidden rounded-xl border border-[#50C710]/40 bg-[#F2FBEA] px-3.5 py-2 text-right sm:block">
-                <span className="block text-[10px] font-bold text-[#334155]">Estimasi Unit Pilihan</span>
-                <strong className="text-xs font-extrabold text-[#2e8807]">{selectedFleetObj.price}</strong>
-              </div>
-            </div>
-
-            <div className="grid gap-3.5 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-[1.15fr_1.2fr_1.2fr_0.9fr_auto] xl:items-end">
-              {/* Custom Dropdown: Lokasi Penjemputan */}
-              <CustomDropdown
-                label="Lokasi Penjemputan"
-                value={pickup}
-                options={pickupOptions}
-                onChange={setPickup}
-                icon={MapPin}
-              />
-
-              {/* Custom Dropdown: Destinasi Wisata / Rute */}
-              <CustomDropdown
-                label="Destinasi Wisata / Rute"
-                value={destination}
-                options={destinationOptions}
-                onChange={setDestination}
-                icon={Compass}
-              />
-
-              {/* Custom Dropdown: Tipe Armada (Grouped with Prices) */}
-              <CustomDropdown
-                label="Tipe Armada Kendaraan"
-                value={fleet}
-                options={fleetOptions}
-                onChange={setFleet}
-                icon={Users}
-                hasCategories
-              />
-
-              {/* Input Tanggal Berangkat */}
-              <div>
-                <label htmlFor="date-input" className="block text-[11px] font-extrabold text-[#0F172A] mb-1.5">
-                  Tanggal Berangkat
-                </label>
-                <div className="flex h-13 sm:h-14 items-center gap-2.5 rounded-xl border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 transition-all focus-within:border-[#1237B8] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1237B8]/20 shadow-[inset_0_1px_2px_rgba(0,0,0,.025)]">
-                  <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#E8F1FF] text-[#1237B8] shadow-2xs">
-                    <CalendarDays className="size-4" />
-                  </span>
-                  <input
-                    id="date-input"
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-transparent text-[13px] font-bold text-[#0F172A] outline-none cursor-pointer"
+                {/* Mobile Full Screen Banner */}
+                <div className="relative size-full sm:hidden">
+                  <Image
+                    src={slide.mobile}
+                    alt={slide.alt}
+                    fill
+                    priority={index === 0}
+                    sizes="100vw"
+                    className="object-cover object-center"
                   />
                 </div>
-              </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="flex h-13 sm:h-14 items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-6 text-sm font-bold text-white shadow-[0_14px_28px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(80,199,16,.36)] cursor-pointer"
-              >
-                <Search className="size-4" />
-                Cek via WA
-              </button>
-            </div>
-
-            {/* Benefits Bar Underneath Form */}
-            <div className="mt-5 sm:mt-6 grid gap-3.5 sm:gap-4 border-t border-[#E2E8F0] pt-4 sm:pt-5 sm:grid-cols-2 lg:grid-cols-4">
-              {bookingBenefits.map(({ title, note, icon: Icon }, index) => (
-                <div
-                  key={title}
-                  className={`flex items-center gap-3 lg:px-4 ${
-                    index === 0 ? "lg:pl-0" : "lg:border-l lg:border-[#E2E8F0]"
-                  }`}
-                >
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-[#6920CC]/20 bg-[#F5F0FF] text-[#6920CC]">
-                    <Icon className="size-4" />
-                  </span>
-                  <span>
-                    <strong className="block text-[11px] font-extrabold text-[#0F172A]">{title}</strong>
-                    <span className="mt-0.5 block text-[10px] font-semibold text-[#334155]">{note}</span>
-                  </span>
+                {/* Desktop Full Screen Banner */}
+                <div className="relative size-full hidden sm:block">
+                  <Image
+                    src={slide.desktop}
+                    alt={slide.alt}
+                    fill
+                    priority={index === 0}
+                    sizes="100vw"
+                    className="object-cover object-center"
+                  />
                 </div>
-              ))}
+              </a>
             </div>
-          </form>
+          );
+        })}
+
+        {/* Navigation Arrows */}
+        <button
+          type="button"
+          onClick={prevSlide}
+          aria-label="Slide sebelumnya"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 grid size-11 sm:size-13 place-items-center rounded-full bg-white/80 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
+        >
+          <ChevronLeft className="size-6 sm:size-7 text-[#1237B8]" />
+        </button>
+        <button
+          type="button"
+          onClick={nextSlide}
+          aria-label="Slide berikutnya"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 grid size-11 sm:size-13 place-items-center rounded-full bg-white/80 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
+        >
+          <ChevronRight className="size-6 sm:size-7 text-[#1237B8]" />
+        </button>
+
+        {/* Indicator Dots */}
+        <div className="absolute bottom-6 inset-x-0 z-30 flex items-center justify-center gap-2.5">
+          {slides.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Buka slide ${idx + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                idx === currentSlide
+                  ? "w-9 bg-[#50C710] shadow-md"
+                  : "w-2.5 bg-white/70 hover:bg-white"
+              }`}
+            />
+          ))}
         </div>
+      </div>
+
+      {/* Interactive Booking Form Planner (Below Full Screen Slider) */}
+      <div className="site-container py-10 sm:py-14">
+        <form
+          onSubmit={handleBookingSubmit}
+          className="rounded-[28px] border border-[#DCE5F0] bg-white p-6 text-[#0F172A] shadow-[0_24px_64px_rgba(18,55,184,.09)] sm:p-8 lg:p-10"
+        >
+          <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+            <div>
+              <div className="inline-flex items-center gap-1.5 rounded-md bg-[#F1F6FF] px-2.5 py-1 text-[11px] font-extrabold text-[#1237B8]">
+                <Sparkles className="size-3.5 text-[#50C710]" /> Formulir Reservasi Cepat
+              </div>
+              <h2 className="mt-1.5 text-xl font-extrabold tracking-[-0.025em] text-[#0F172A]">
+                Rencanakan Perjalanan Rombongan Anda
+              </h2>
+              <p className="mt-0.5 text-xs font-medium text-[#334155]">
+                Pilih titik jemput, destinasi wisata, &amp; jenis unit untuk langsung mendapatkan estimasi penawaran resmi via WhatsApp.
+              </p>
+            </div>
+            <div className="hidden rounded-xl border border-[#50C710]/40 bg-[#F2FBEA] px-4 py-2.5 text-right sm:block">
+              <span className="block text-[10px] font-bold text-[#334155]">Estimasi Unit Pilihan</span>
+              <strong className="text-sm font-extrabold text-[#2e8807]">{selectedFleetObj.price}</strong>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-[1.15fr_1.2fr_1.2fr_0.9fr_auto] xl:items-end">
+            {/* Custom Dropdown: Lokasi Penjemputan */}
+            <CustomDropdown
+              label="Lokasi Penjemputan"
+              value={pickup}
+              options={pickupOptions}
+              onChange={setPickup}
+              icon={MapPin}
+            />
+
+            {/* Custom Dropdown: Destinasi Wisata / Rute */}
+            <CustomDropdown
+              label="Destinasi Wisata / Rute"
+              value={destination}
+              options={destinationOptions}
+              onChange={setDestination}
+              icon={Compass}
+            />
+
+            {/* Custom Dropdown: Tipe Armada (Grouped with Prices) */}
+            <CustomDropdown
+              label="Tipe Armada Kendaraan"
+              value={fleet}
+              options={fleetOptions}
+              onChange={setFleet}
+              icon={Users}
+              hasCategories
+            />
+
+            {/* Input Tanggal Berangkat */}
+            <div>
+              <label htmlFor="date-input" className="block text-[11px] font-extrabold text-[#0F172A] mb-1.5">
+                Tanggal Berangkat
+              </label>
+              <div className="flex h-13 sm:h-14 items-center gap-2.5 rounded-xl border border-[#CBD5E1] bg-[#F8FAFC] px-3.5 transition-all focus-within:border-[#1237B8] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#1237B8]/20 shadow-[inset_0_1px_2px_rgba(0,0,0,.025)]">
+                <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#E8F1FF] text-[#1237B8] shadow-2xs">
+                  <CalendarDays className="size-4" />
+                </span>
+                <input
+                  id="date-input"
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="w-full bg-transparent text-[13px] font-bold text-[#0F172A] outline-none cursor-pointer"
+                />
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="flex h-13 sm:h-14 items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-7 text-sm font-bold text-white shadow-[0_14px_28px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(80,199,16,.36)] cursor-pointer"
+            >
+              <Search className="size-4" />
+              Cek via WA
+            </button>
+          </div>
+
+          {/* Benefits Bar Underneath Form */}
+          <div className="mt-6 grid gap-4 border-t border-[#E2E8F0] pt-6 sm:grid-cols-2 lg:grid-cols-4">
+            {bookingBenefits.map(({ title, note, icon: Icon }, index) => (
+              <div
+                key={title}
+                className={`flex items-center gap-3 lg:px-4 ${
+                  index === 0 ? "lg:pl-0" : "lg:border-l lg:border-[#E2E8F0]"
+                }`}
+              >
+                <span className="grid size-9 shrink-0 place-items-center rounded-full border border-[#6920CC]/20 bg-[#F5F0FF] text-[#6920CC]">
+                  <Icon className="size-4" />
+                </span>
+                <span>
+                  <strong className="block text-[11px] font-extrabold text-[#0F172A]">{title}</strong>
+                  <span className="mt-0.5 block text-[10px] font-semibold text-[#334155]">{note}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </form>
       </div>
     </section>
   );
