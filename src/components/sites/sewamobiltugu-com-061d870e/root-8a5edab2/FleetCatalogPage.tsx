@@ -45,8 +45,8 @@ export function FleetCatalogPage({ kind }: { kind: FleetKind }) {
             <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#50C710]">
               <MapPin className="size-4" /> Katalog Lengkap Sewa Elf Bandung
             </p>
-            <h1 className="mt-4 max-w-[680px] text-[42px] font-bold leading-[1.02] tracking-[-0.055em] sm:text-[54px] lg:text-[64px]">
-              Daftar Semua Armada
+            <h1 className="mt-4 max-w-[680px] text-[42px] font-bold leading-[1.02] tracking-[-0.055em] text-white sm:text-[54px] lg:text-[64px]">
+              Daftar Semua <span className="text-[#50C710]">Armada</span>
             </h1>
             <p className="mt-5 max-w-[590px] text-sm leading-6 text-slate-200 sm:text-base sm:leading-7">
               Tersedia 3 kategori utama: Minibus / Travel (Elf &amp; Hiace), Bus Pariwisata (Medium &amp; Big Bus), serta Mobil Pribadi &amp; Keluarga untuk kenyamanan Anda.
