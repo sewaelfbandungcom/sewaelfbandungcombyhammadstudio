@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Bus, CalendarDays, Car, CarFront, Check, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, Clock3, Compass, MapPin, Navigation, RotateCcw, Search, ShieldCheck, Sparkles, Users, X } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, Compass, MapPin, RotateCcw, Search, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { useEffect, useState, useRef, useCallback } from "react";
 
 import { bookingUrl } from "./content";
@@ -90,8 +90,8 @@ const fleetOptions: readonly DropdownOption[] = [
 const bookingBenefits = [
   { title: "SOP Transparan", note: "DP 30% Kunci Jadwal", icon: RotateCcw },
   { title: "Harga Kompetitif", note: "Tanpa biaya siluman", icon: CircleDollarSign },
-  { title: "Armada Euro4 Prima", note: "Bersih, wangi, ber-AC dingin", icon: CarFront },
-  { title: "Driver Berpengalaman", note: "Kontak dibagikan H-1", icon: ShieldCheck },
+  { title: "Armada Euro4 Prima", note: "Bersih, wangi, ber-AC dingin", icon: ShieldCheck },
+  { title: "Driver Berpengalaman", note: "Kontak dibagikan H-1", icon: Users },
 ] as const;
 
 // Custom Interactive Dropdown Component
@@ -298,7 +298,7 @@ export function HeroSection() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   }, []);
 
-  // Auto slide
+  // Auto slide 5s
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(nextSlide, 5000);
@@ -347,11 +347,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
   const selectedFleetObj = fleetOptions.find((f) => f.value === fleet) || fleetOptions[0];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[112px] sm:pt-[118px] lg:pt-[122px]">
-      {/* 100% Full-Width Edge-to-Edge Slider Container with Rounded Bottom */}
-      <div className="relative w-full overflow-hidden rounded-b-[36px] sm:rounded-b-[56px] lg:rounded-b-[72px] bg-slate-900 shadow-sm">
+    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[106px] sm:pt-[112px]">
+      {/* 100% Full Width & Full Viewport Height Slider Container (Below Navbar, Not Covered) with Rounded Bottom */}
+      <div className="relative w-full overflow-hidden rounded-b-[32px] sm:rounded-b-[48px] lg:rounded-b-[64px] bg-slate-950 shadow-sm">
         <div
-          className="group/slider relative w-full h-[540px] sm:h-[620px] lg:h-[720px] xl:h-[760px] overflow-hidden"
+          className="group/slider relative w-full h-[calc(100svh-106px)] sm:h-[calc(100svh-112px)] min-h-[500px] max-h-[920px] overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
@@ -374,7 +374,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                   className="block relative size-full cursor-pointer"
                   aria-label={slide.alt}
                 >
-                  {/* Mobile Full-Width Banner Image */}
+                  {/* Mobile Full Screen Banner (Vertical 9:16) */}
                   <div className="relative size-full sm:hidden">
                     <Image
                       src={slide.mobile}
@@ -386,7 +386,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
                     />
                   </div>
 
-                  {/* Desktop Full-Width Banner Image */}
+                  {/* Desktop Full Screen Banner (Widescreen 16:9) */}
                   <div className="relative size-full hidden sm:block">
                     <Image
                       src={slide.desktop}
@@ -407,7 +407,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
             type="button"
             onClick={prevSlide}
             aria-label="Slide sebelumnya"
-            className="absolute left-4 sm:left-7 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/85 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
+            className="absolute left-3.5 sm:left-6 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/85 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <ChevronLeft className="size-5 sm:size-6 text-[#1237B8]" />
           </button>
@@ -415,7 +415,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
             type="button"
             onClick={nextSlide}
             aria-label="Slide berikutnya"
-            className="absolute right-4 sm:right-7 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/85 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
+            className="absolute right-3.5 sm:right-6 top-1/2 -translate-y-1/2 z-20 grid size-10 sm:size-12 place-items-center rounded-full bg-white/85 hover:bg-white text-[#0F172A] shadow-xl backdrop-blur-md transition-all duration-200 opacity-80 group-hover/slider:opacity-100 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <ChevronRight className="size-5 sm:size-6 text-[#1237B8]" />
           </button>
@@ -439,11 +439,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
         </div>
       </div>
 
-      {/* Floating Interactive Booking Form Planner (Overlapping the Full-Width Slider Curve) */}
+      {/* Floating Interactive Booking Form Planner (Overlapping & Attaching to the Bottom Curve) */}
       <div className="site-container relative z-30 -mt-14 sm:-mt-18 lg:-mt-22 pb-10 sm:pb-14">
         <form
           onSubmit={handleBookingSubmit}
-          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_28px_70px_rgba(18,55,184,.14)]"
+          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_28px_70px_rgba(18,55,184,.14)]"
         >
           <div className="mb-4 sm:mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div>
