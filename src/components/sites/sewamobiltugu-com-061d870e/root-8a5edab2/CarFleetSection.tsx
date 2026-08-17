@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, Bus, Car, Check, ChevronRight, Fuel, Gauge, Info, MapPin, MessageCircle, Phone, ShieldCheck, Sparkles, Star, Users } from "lucide-react";
 import { useState } from "react";
 
@@ -11,6 +12,11 @@ export function CarFleetSection() {
 
   const currentCategoryInfo = fleetCategories.find((cat) => cat.key === activeCategory) || fleetCategories[0];
   const filteredFleet = fleetItems.filter((item) => item.category === activeCategory);
+
+  const maxVisible = 8;
+  const displayedFleet = filteredFleet.slice(0, maxVisible);
+  const hasMore = filteredFleet.length > maxVisible;
+  const remainingCount = filteredFleet.length - maxVisible;
 
   const getCategoryIcon = (key: FleetCategoryKey) => {
     switch (key) {
@@ -58,14 +64,12 @@ export function CarFleetSection() {
             </p>
           </div>
 
-          <a
-            href={bookingUrl()}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/armada"
             className="inline-flex h-11 w-fit items-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-5 text-xs font-bold text-white shadow-[0_12px_26px_rgba(80,199,16,.3)] transition hover:-translate-y-0.5"
           >
-            Konsultasi Armada via WA <ArrowRight className="size-4" />
-          </a>
+            Buka Katalog Lengkap <ArrowRight className="size-4" />
+          </Link>
         </div>
 
         {/* 3 Categories Tab Bar */}
@@ -129,9 +133,9 @@ export function CarFleetSection() {
           </div>
         </div>
 
-        {/* Fleet Grid */}
+        {/* Fleet Grid - Max 8 Cards */}
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredFleet.map((vehicle) => (
+          {displayedFleet.map((vehicle) => (
             <article
               key={vehicle.id}
               className="group flex flex-col overflow-hidden rounded-[20px] border border-white/80 bg-white text-[#101B38] shadow-[0_18px_46px_rgba(0,0,0,.25)] transition-all duration-300 hover:-translate-y-2 hover:border-[#50C710] hover:shadow-[0_28px_64px_rgba(18,55,184,.32)]"
@@ -214,6 +218,21 @@ export function CarFleetSection() {
               </div>
             </article>
           ))}
+        </div>
+
+        {/* View All / More Button when list exceeds maxVisible or to see complete catalog */}
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Link
+            href="/armada"
+            className="inline-flex h-12 items-center gap-2.5 rounded-xl border border-white/30 bg-white/10 px-8 text-sm font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#101B38] shadow-lg"
+          >
+            <span>
+              {hasMore
+                ? `Lihat ${remainingCount} Unit ${currentCategoryInfo.label} Lainnya`
+                : `Lihat Seluruh 27+ Pilihan Armada di Katalog`}
+            </span>
+            <ArrowRight className="size-4 text-[#50C710]" />
+          </Link>
         </div>
 
         {/* Ketentuan Harga Info Card */}

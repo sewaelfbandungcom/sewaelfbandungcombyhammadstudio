@@ -8,12 +8,12 @@ import { useEffect, useState } from "react";
 import { BrandMark } from "./BrandMark";
 import { bookingUrl } from "./content";
 
-type SectionId = "top" | "armada" | "ketentuan-harga" | "tentang-kami" | "layanan" | "kontak";
+type SectionId = "top" | "ketentuan-harga" | "tentang-kami" | "layanan" | "kontak";
 type HeaderLink = { label: string; href: string; path: string; section?: SectionId };
 
 const links: readonly HeaderLink[] = [
   { label: "Beranda", href: "/", path: "/", section: "top" },
-  { label: "Daftar Armada", href: "/#armada", path: "/armada", section: "armada" },
+  { label: "Armada", href: "/armada", path: "/armada" },
   { label: "Ketentuan Harga", href: "/#ketentuan-harga", path: "/", section: "ketentuan-harga" },
   { label: "Tentang Kami", href: "/#tentang-kami", path: "/", section: "tentang-kami" },
   { label: "Layanan & SOP", href: "/#layanan", path: "/", section: "layanan" },
@@ -64,10 +64,13 @@ export function SiteHeader() {
   }, [pathname]);
 
   const isActive = (link: HeaderLink) => {
-    if (pathname === "/") {
+    if (pathname === "/armada" && link.path === "/armada") {
+      return true;
+    }
+    if (pathname === "/" && link.path === "/") {
       return Boolean(link.section && activeSection === link.section);
     }
-    return pathname === link.path && link.path !== "/";
+    return false;
   };
 
   const handleLinkClick = (link: HeaderLink) => {
