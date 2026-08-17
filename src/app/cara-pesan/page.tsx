@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/common/Navbar";
 import { Footer } from "@/components/common/Footer";
 import { FloatingWhatsApp } from "@/components/common/FloatingWhatsApp";
-import { FleetSection } from "@/components/sections/FleetSection";
-import { PriceListTableSection } from "@/components/sections/PriceListTableSection";
-import { CtaBanner } from "@/components/sections/CtaBanner";
+import { BookingStepsSection } from "@/components/sections/BookingStepsSection";
+import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 import { FaqSection } from "@/components/sections/FaqSection";
+import { CtaBanner } from "@/components/sections/CtaBanner";
 
 export const metadata: Metadata = {
-  title: "Katalog Armada Sewa Elf & Bus Pariwisata Bandung | Amoora Group",
+  title: "Cara Pemesanan & SOP Sewa Elf Bandung | Amoora Group",
   description:
-    "Daftar lengkap armada sewa Elf Long 19 seat, Hiace Premio & Commuter, Medium Bus 31-39 seat, Big Bus 59 seat, Innova Zenix & Alphard di Bandung.",
+    "Panduan resmi tata cara pemesanan sewa Elf & Bus Bandung: DP 30%, Pelunasan H-3, Pembagian Kontak Driver H-1, serta Syarat & Ketentuan.",
 };
 
-export default function ArmadaPage() {
+export default function CaraPesanPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F1F6FF] text-[#101B38]">
       <Navbar />
@@ -22,19 +22,19 @@ export default function ArmadaPage() {
         <div className="bg-[#1237B8] text-white py-12 sm:py-16 text-center relative overflow-hidden">
           <div className="site-container relative z-10 space-y-3">
             <span className="text-xs font-bold text-[#50C710] bg-white/10 px-3 py-1 rounded-full uppercase tracking-wider">
-              Armada Lengkap & Terawat Euro4
+              SOP & Ketentuan Transparan
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
-              Pilihan Armada Sewa Elf Bandung
+              Tata Cara Pemesanan & Reservasi
             </h1>
             <p className="text-sm sm:text-base text-white/85 max-w-2xl mx-auto">
-              Temukan kendaraan ideal untuk rombongan wisata, study tour, ziarah, gathering, maupun perjalanan dinas kantor.
+              Prosedur cepat dan pasti untuk memastikan armada siap melayani perjalanan Anda tepat waktu.
             </p>
           </div>
         </div>
 
-        <FleetSection />
-        <PriceListTableSection />
+        <BookingStepsSection />
+        <WhyChooseUsSection />
         <FaqSection />
         <CtaBanner />
       </main>

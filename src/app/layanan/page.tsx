@@ -2,18 +2,18 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/common/Navbar";
 import { Footer } from "@/components/common/Footer";
 import { FloatingWhatsApp } from "@/components/common/FloatingWhatsApp";
-import { FleetSection } from "@/components/sections/FleetSection";
-import { PriceListTableSection } from "@/components/sections/PriceListTableSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+import { DestinationsSection } from "@/components/sections/DestinationsSection";
+import { BookingStepsSection } from "@/components/sections/BookingStepsSection";
 import { CtaBanner } from "@/components/sections/CtaBanner";
-import { FaqSection } from "@/components/sections/FaqSection";
 
 export const metadata: Metadata = {
-  title: "Katalog Armada Sewa Elf & Bus Pariwisata Bandung | Amoora Group",
+  title: "Layanan Sewa Elf Bandung - Wisata, Study Tour, Gathering, Ziarah | Amoora Group",
   description:
-    "Daftar lengkap armada sewa Elf Long 19 seat, Hiace Premio & Commuter, Medium Bus 31-39 seat, Big Bus 59 seat, Innova Zenix & Alphard di Bandung.",
+    "7 Layanan sewa Elf & Bus Bandung by Amoora Group: Wisata Lembang Ciwidey, Study Tour Sekolah, Gathering Kantor, Keluarga Besar, Event Wedding, Ziarah Religi, Drop Luar Kota.",
 };
 
-export default function ArmadaPage() {
+export default function LayananPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F1F6FF] text-[#101B38]">
       <Navbar />
@@ -22,20 +22,20 @@ export default function ArmadaPage() {
         <div className="bg-[#1237B8] text-white py-12 sm:py-16 text-center relative overflow-hidden">
           <div className="site-container relative z-10 space-y-3">
             <span className="text-xs font-bold text-[#50C710] bg-white/10 px-3 py-1 rounded-full uppercase tracking-wider">
-              Armada Lengkap & Terawat Euro4
+              Solusi Transportasi Rombongan
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
-              Pilihan Armada Sewa Elf Bandung
+              Layanan Sewa Elf Bandung
             </h1>
             <p className="text-sm sm:text-base text-white/85 max-w-2xl mx-auto">
-              Temukan kendaraan ideal untuk rombongan wisata, study tour, ziarah, gathering, maupun perjalanan dinas kantor.
+              Fleksibel, aman, dan berstandar pariwisata profesional untuk segala kebutuhan agenda perjalanan Anda.
             </p>
           </div>
         </div>
 
-        <FleetSection />
-        <PriceListTableSection />
-        <FaqSection />
+        <ServicesSection />
+        <DestinationsSection />
+        <BookingStepsSection />
         <CtaBanner />
       </main>
       <Footer />
