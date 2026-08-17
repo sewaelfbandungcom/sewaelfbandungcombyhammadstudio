@@ -1,37 +1,29 @@
-import { Navbar } from "@/components/common/Navbar";
-import { Footer } from "@/components/common/Footer";
-import { FloatingWhatsApp } from "@/components/common/FloatingWhatsApp";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { StatsBar } from "@/components/sections/StatsBar";
-import { FleetSection } from "@/components/sections/FleetSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
-import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
-import { PriceListTableSection } from "@/components/sections/PriceListTableSection";
-import { DestinationsSection } from "@/components/sections/DestinationsSection";
-import { BookingStepsSection } from "@/components/sections/BookingStepsSection";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { FaqSection } from "@/components/sections/FaqSection";
-import { CtaBanner } from "@/components/sections/CtaBanner";
+import { BenefitsSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/BenefitsSection";
+import { AboutSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/AboutSection";
+import { CarFleetSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/CarFleetSection";
+import { CtaSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/CtaSection";
+import { HeroSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/HeroSection";
+import { MotorFleetSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/MotorFleetSection";
+import { SiteFooter } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/SiteFooter";
+import { SiteHeader } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/SiteHeader";
+import { TestimonialsSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/TestimonialsSection";
+import { TrustStatsSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/TrustStatsSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F1F6FF] text-[#101B38]">
-      <Navbar />
-      <main className="flex-grow">
+    <div id="top" className="min-h-screen bg-[#F1F6FF] text-[#101B38]">
+      <SiteHeader />
+      <main>
         <HeroSection />
-        <StatsBar />
-        <FleetSection limit={6} />
-        <ServicesSection />
-        <WhyChooseUsSection />
-        <PriceListTableSection />
-        <DestinationsSection />
-        <BookingStepsSection />
+        <TrustStatsSection />
+        <CarFleetSection />
+        <MotorFleetSection />
+        <AboutSection />
+        <BenefitsSection />
         <TestimonialsSection />
-        <FaqSection />
-        <CtaBanner />
+        <CtaSection />
       </main>
-      <Footer />
-      <FloatingWhatsApp />
+      <SiteFooter />
     </div>
   );
 }

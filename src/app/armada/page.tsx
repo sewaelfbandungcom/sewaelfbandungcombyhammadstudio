@@ -1,45 +1,12 @@
 import type { Metadata } from "next";
-import { Navbar } from "@/components/common/Navbar";
-import { Footer } from "@/components/common/Footer";
-import { FloatingWhatsApp } from "@/components/common/FloatingWhatsApp";
-import { FleetSection } from "@/components/sections/FleetSection";
-import { PriceListTableSection } from "@/components/sections/PriceListTableSection";
-import { CtaBanner } from "@/components/sections/CtaBanner";
-import { FaqSection } from "@/components/sections/FaqSection";
+
+import { FleetCatalogPage } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/FleetCatalogPage";
 
 export const metadata: Metadata = {
-  title: "Katalog Armada Sewa Elf & Bus Pariwisata Bandung | Amoora Group",
-  description:
-    "Daftar lengkap armada sewa Elf Long 19 seat, Hiace Premio & Commuter, Medium Bus 31-39 seat, Big Bus 59 seat, Innova Zenix & Alphard di Bandung.",
+  title: "Sewa Elf & Hiace Bandung | Sewa Elf Bandung by Amoora Group",
+  description: "Pilih armada Elf Long 19 seat, Hiace Premio & Commuter yang bersih, terawat, dan siap untuk wisata dan perjalanan rombongan di Bandung.",
 };
 
 export default function ArmadaPage() {
-  return (
-    <div className="min-h-screen flex flex-col bg-[#F1F6FF] text-[#101B38]">
-      <Navbar />
-      <main className="flex-grow">
-        {/* Page Hero Header */}
-        <div className="bg-[#1237B8] text-white py-12 sm:py-16 text-center relative overflow-hidden">
-          <div className="site-container relative z-10 space-y-3">
-            <span className="text-xs font-bold text-[#50C710] bg-white/10 px-3 py-1 rounded-full uppercase tracking-wider">
-              Armada Lengkap & Terawat Euro4
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
-              Pilihan Armada Sewa Elf Bandung
-            </h1>
-            <p className="text-sm sm:text-base text-white/85 max-w-2xl mx-auto">
-              Temukan kendaraan ideal untuk rombongan wisata, study tour, ziarah, gathering, maupun perjalanan dinas kantor.
-            </p>
-          </div>
-        </div>
-
-        <FleetSection />
-        <PriceListTableSection />
-        <FaqSection />
-        <CtaBanner />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
-  );
+  return <FleetCatalogPage kind="car" />;
 }

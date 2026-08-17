@@ -3,40 +3,42 @@ import type { Benefit, Vehicle } from "@/types/sewamobil";
 export const assetRoot =
   "/sites/sewamobiltugu-com-061d870e/root-8a5edab2/images";
 
-export const whatsappBase = "https://wa.me/62811261209";
+export const whatsappPhone1 = "6281214802420";
+export const whatsappPhone2 = "6282215452230";
+export const whatsappBase = `https://wa.me/${whatsappPhone1}`;
 
 export const cars: Vehicle[] = [
-  { name: "Calya Matic", image: `${assetRoot}/car-calya.webp`, selfDrivePrice: "Rp 300.000 / Hari", allInPrice: "Rp 650.000 / Hari" },
-  { name: "Xenia FWD Manual", image: `${assetRoot}/car-xenia.webp`, selfDrivePrice: "Rp 300.000 / Hari", allInPrice: "Rp 650.000 / Hari" },
-  { name: "Brio Matic", image: `${assetRoot}/car-brio.webp`, selfDrivePrice: "Rp 325.000 / Hari", allInPrice: "Rp 650.000 / Hari" },
-  { name: "Avanza FWD Matic", image: `${assetRoot}/car-avanza.webp`, selfDrivePrice: "Rp 400.000 / Hari", allInPrice: "Rp 700.000 / Hari" },
-  { name: "Innova Reborn", image: `${assetRoot}/car-reborn-lama.webp`, selfDrivePrice: "Rp 500.000 / Hari", allInPrice: "Rp 825.000 / Hari" },
-  { name: "Innova New Reborn", image: `${assetRoot}/car-reborn-baru.webp`, selfDrivePrice: "Rp 500.000 / Hari", allInPrice: "Rp 825.000 / Hari" },
-  { name: "Xpander", image: `${assetRoot}/car-xpander.webp`, selfDrivePrice: "Rp 550.000 / Hari", allInPrice: "Rp 850.000 / Hari" },
-  { name: "Zenix Matic", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 650.000 / Hari", allInPrice: "Rp 1.000.000 / Hari" },
+  { name: "Hiace Commuter (14 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 1.200.000 / Hari", allInPrice: "Rp 1.500.000 / Hari" },
+  { name: "Hiace Premio (14 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 1.500.000 / Hari", allInPrice: "Rp 2.000.000 / Hari" },
+  { name: "Isuzu Elf Long (19 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 1.400.000 / Hari", allInPrice: "Rp 1.700.000 / Hari" },
+  { name: "Elf Coaster Euro4 (18-22 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 2.000.000 / Hari", allInPrice: "Rp 2.300.000 / Hari" },
+  { name: "Hiace Premio Luxury (9 Seat VIP)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 2.200.000 / Hari", allInPrice: "Rp 2.600.000 / Hari" },
+  { name: "Innova Reborn", image: `${assetRoot}/car-reborn-baru.webp`, selfDrivePrice: "Rp 950.000 / Hari", allInPrice: "Rp 1.200.000 / Hari" },
+  { name: "Innova Zenix G", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 1.500.000 / Hari", allInPrice: "Rp 2.200.000 / Hari" },
+  { name: "New Avanza TSS", image: `${assetRoot}/car-avanza.webp`, selfDrivePrice: "Rp 750.000 / Hari", allInPrice: "Rp 1.000.000 / Hari" },
 ];
 
-export const motorcycles: Vehicle[] = [
-  { name: "Beat", image: `${assetRoot}/motor-beat.webp`, dailyPrice: "Rp 80.000 / Hari" },
-  { name: "Scoopy", image: `${assetRoot}/motor-scoopy.webp`, dailyPrice: "Rp 90.000 / Hari" },
-  { name: "Vario 125", image: `${assetRoot}/motor-vario-125-a.webp`, dailyPrice: "Rp 100.000 / Hari" },
-  { name: "Vario 125", image: `${assetRoot}/motor-vario-125-b.webp`, dailyPrice: "Rp 100.000 / Hari" },
-  { name: "Vario 150", image: `${assetRoot}/motor-vario-150.webp`, dailyPrice: "Rp 100.000 / Hari" },
-  { name: "Vario 160", image: `${assetRoot}/motor-vario-160.webp`, dailyPrice: "Rp 110.000 / Hari" },
-  { name: "Stylo", image: `${assetRoot}/motor-stylo.webp`, dailyPrice: "Rp 115.000 / Hari" },
-  { name: "NMAX", image: `${assetRoot}/motor-nmax.webp`, dailyPrice: "Rp 130.000 / Hari" },
+export const busFleet: Vehicle[] = [
+  { name: "Bus Medium Jetbus 3+ (31-35 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 2.500.000 / Hari", allInPrice: "Rp 3.000.000 / Hari", dailyPrice: "Rp 2.500.000 / Hari" },
+  { name: "Bus Medium Long JB5 (35-39 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 3.000.000 / Hari", allInPrice: "Rp 3.600.000 / Hari", dailyPrice: "Rp 3.000.000 / Hari" },
+  { name: "MD Bus Luxury Legrest (14-16 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 3.200.000 / Hari", allInPrice: "Rp 3.800.000 / Hari", dailyPrice: "Rp 3.200.000 / Hari" },
+  { name: "Big Bus Jetbus HDD (47-59 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 3.200.000 / Hari", allInPrice: "Rp 3.700.000 / Hari", dailyPrice: "Rp 3.200.000 / Hari" },
+  { name: "Big Bus SHD JB5 (45-59 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 4.000.000 / Hari", allInPrice: "Rp 4.500.000 / Hari", dailyPrice: "Rp 4.000.000 / Hari" },
+  { name: "Big Bus Luxury Legrest (25-30 Seat)", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 4.200.000 / Hari", allInPrice: "Rp 4.700.000 / Hari", dailyPrice: "Rp 4.200.000 / Hari" },
+  { name: "Toyota Fortuner GR Sport", image: `${assetRoot}/car-xpander.webp`, selfDrivePrice: "Rp 1.800.000 / Hari", allInPrice: "Rp 2.400.000 / Hari", dailyPrice: "Rp 1.800.000 / Hari" },
+  { name: "Toyota Alphard VIP", image: `${assetRoot}/car-zenix.webp`, selfDrivePrice: "Rp 3.200.000 / Hari", allInPrice: "Rp 3.500.000 / Hari", dailyPrice: "Rp 3.200.000 / Hari" },
 ];
 
 export const benefits: Benefit[] = [
-  { title: "Armada Bersih & Terawat", description: "Setiap mobil selalu dalam kondisi prima & rutin diservis, nyaman dan aman.", image: `${assetRoot}/benefit-clean.webp` },
-  { title: "Praktis & Cepat", description: "Cukup pesan lewat WhatsApp atau website, mobil langsung kami antar ke lokasi Anda.", image: `${assetRoot}/benefit-fast.webp` },
-  { title: "Harga Terjangkau", description: "Nikmati tarif sewa mobil yang bersahabat tanpa biaya tambahan tersembunyi.", image: `${assetRoot}/benefit-price.webp` },
-  { title: "Sopir Profesional", description: "Tersedia layanan dengan sopir berpengalaman yang hafal jalanan Bandung.", image: `${assetRoot}/benefit-driver.webp` },
+  { title: "Kendaraan Bersih & Terawat", description: "Armada berstandar Euro4, wangi, nyaman, dan rutin diservis berkala di bengkel resmi.", image: `${assetRoot}/benefit-clean.webp` },
+  { title: "Cocok untuk Rombongan", description: "Kapasitas penumpang luas untuk keluarga, wisata, study tour, ziarah, dan gathering kantor.", image: `${assetRoot}/benefit-fast.webp` },
+  { title: "Harga Kompetitif & Transparan", description: "Tarif sewa bersahabat dan jelas tanpa ada biaya siluman atau biaya tersembunyi.", image: `${assetRoot}/benefit-price.webp` },
+  { title: "Pelayanan Ramah & Profesional", description: "Driver berlisensi pariwisata yang santun, tepat waktu, dan menguasai jalanan Bandung.", image: `${assetRoot}/benefit-driver.webp` },
 ];
 
 export function bookingUrl(unit?: string) {
   const message = unit
-    ? `Halo DriveMate Bandung, saya ingin booking unit ${unit}. Bisa minta informasi lebih lanjut?`
-    : "Halo DriveMate Bandung, saya ingin meminta informasi rental kendaraan lebih lanjut.";
+    ? `Halo Admin Sewa Elf Bandung by Amoora Group, saya ingin booking unit ${unit}. Bisa minta info ketersediaan dan penawarannya?`
+    : "Halo Admin Sewa Elf Bandung by Amoora Group, saya ingin konsultasi sewa kendaraan rombongan di Bandung.";
   return `${whatsappBase}?text=${encodeURIComponent(message)}`;
 }
