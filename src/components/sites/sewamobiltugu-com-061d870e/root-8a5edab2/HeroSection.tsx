@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CalendarDays, Check, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, Compass, MapPin, RotateCcw, Search, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, ChevronLeft, ChevronRight, CircleDollarSign, Compass, MapPin, RotateCcw, Search, ShieldCheck, Users } from "lucide-react";
 import { useEffect, useState, useRef, useCallback } from "react";
 
 import { bookingUrl } from "./content";
@@ -439,18 +439,15 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
         </div>
       </div>
 
-      {/* Booking Form Planner Attached Right Below the Banner without covering bottom graphics */}
-      <div className="site-container relative z-30 pt-6 sm:pt-8 pb-10 sm:pb-14">
+      {/* Booking Form Planner Attached Directly onto the Hero Slider */}
+      <div className="site-container relative z-30 -mt-10 sm:-mt-14 lg:-mt-16 pb-10 sm:pb-14">
         <form
           onSubmit={handleBookingSubmit}
-          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_20px_50px_rgba(18,55,184,.10)]"
+          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_24px_70px_rgba(18,55,184,.14)]"
         >
           <div className="mb-4 sm:mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div>
-              <div className="inline-flex items-center gap-1.5 rounded-md bg-[#F1F6FF] px-2.5 py-1 text-[11px] font-extrabold text-[#1237B8]">
-                <Sparkles className="size-3.5 text-[#50C710]" /> Formulir Reservasi Cepat
-              </div>
-              <h2 className="mt-1.5 text-base sm:text-lg lg:text-xl font-extrabold tracking-[-0.025em] text-[#0F172A]">
+              <h2 className="text-base sm:text-lg lg:text-xl font-extrabold tracking-[-0.025em] text-[#0F172A]">
                 Rencanakan Perjalanan Rombongan Anda
               </h2>
               <p className="mt-0.5 text-xs font-medium text-[#334155]">

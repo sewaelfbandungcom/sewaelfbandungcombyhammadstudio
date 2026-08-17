@@ -3,7 +3,7 @@
 import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, CarFront, Check, Clock3, Headphones, MapPin, Phone, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, CalendarDays, CarFront, Check, Clock3, Headphones, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 import { assetRoot, bookingUrl } from "./content";
 
@@ -28,12 +28,7 @@ export function CtaSection() {
           <div className="relative z-10 grid items-center gap-10 p-8 sm:p-12 lg:grid-cols-[1.25fr_0.9fr] lg:gap-14 lg:p-14">
             {/* Left Content */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-[#50C710]/40 bg-[#50C710]/15 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#50C710] backdrop-blur-md">
-                <span className="size-2 rounded-full bg-[#50C710] animate-pulse" />
-                <Sparkles className="size-3.5" /> Sewa Elf Bandung by Amoora Group
-              </div>
-
-              <h2 className="mt-4 text-3xl font-bold leading-[1.08] tracking-[-0.045em] text-white sm:text-4xl lg:text-[44px]">
+              <h2 className="text-3xl font-bold leading-[1.08] tracking-[-0.045em] text-white sm:text-4xl lg:text-[44px]">
                 Siap Menjelajahi Bandung Bersama <span className="text-[#50C710]">Rombongan?</span>
               </h2>
 

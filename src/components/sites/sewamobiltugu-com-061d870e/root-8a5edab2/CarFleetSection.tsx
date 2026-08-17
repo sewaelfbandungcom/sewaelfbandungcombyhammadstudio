@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Bus, Car, Check, ChevronRight, Fuel, Gauge, Info, MapPin, MessageCircle, Phone, ShieldCheck, Sparkles, Star, Users } from "lucide-react";
+import { ArrowRight, Bus, Car, Check, ChevronRight, Fuel, Gauge, Info, MapPin, MessageCircle, Phone, ShieldCheck, Star, Users } from "lucide-react";
 import { useState } from "react";
 
 import { assetRoot, bookingUrl, fleetCategories, fleetItems, priceRules, type FleetCategoryKey } from "./content";
@@ -37,13 +37,13 @@ export function CarFleetSection() {
       {/* Background Photo Clearly Visible with Crisp Contrast Tint */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
         <Image
-          src={`${assetRoot}/bandung-braga-dusk.jpg`}
-          alt="Suasana Braga Bandung - Sewa Elf Bandung"
+          src="/frontage.jpg"
+          alt="Armada Sewa Elf Bandung - Amoora Group"
           fill
           sizes="100vw"
           className="scale-[1.03] object-cover object-center"
         />
-        {/* Balanced Light Overlay so Braga Photo is Richly Visible */}
+        {/* Balanced Light Overlay so Frontage Photo is Richly Visible */}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(241,246,255,0.92)_0%,rgba(241,246,255,0.85)_40%,rgba(241,246,255,0.88)_70%,rgba(241,246,255,0.95)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(18,55,184,0.12),transparent_40%)]" />
       </div>
@@ -52,9 +52,6 @@ export function CarFleetSection() {
         {/* Section Header */}
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-[780px]">
-            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#1237B8]/25 bg-white/95 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#1237B8] shadow-xs backdrop-blur-md">
-              <Sparkles className="size-3.5 text-[#50C710]" /> Pilihan Armada Sewa Elf Bandung
-            </p>
             <h2 className="text-[30px] font-extrabold leading-[1.12] tracking-[-0.04em] text-[#0F172A] sm:text-[38px] lg:text-[44px]">
               Katalog Armada Lengkap &amp; Terawat
             </h2>

@@ -3,7 +3,7 @@
 import { FacebookLogoIcon } from "@phosphor-icons/react/dist/ssr/FacebookLogo";
 import { InstagramLogoIcon } from "@phosphor-icons/react/dist/ssr/InstagramLogo";
 import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
-import { Mail, MapPin, Phone, MessageSquare, Sparkles, X } from "lucide-react";
+import { Mail, MapPin, Phone, MessageSquare, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 

@@ -1,4 +1,4 @@
-import { Clock3, Headphones, Star, Users, Sparkles } from "lucide-react";
+import { Clock3, Headphones, Star, Users } from "lucide-react";
 
 const stats = [
   {
