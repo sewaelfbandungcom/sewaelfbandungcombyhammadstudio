@@ -20,16 +20,16 @@ export function MotorFleetSection() {
           sizes="100vw"
           className="scale-[1.03] object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,27,56,.99)_0%,rgba(18,55,184,.93)_35%,rgba(40,87,232,.82)_68%,rgba(16,27,56,.93)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,27,56,.99)_0%,rgba(18,55,184,.93)_35%,rgba(105,32,204,.45)_68%,rgba(16,27,56,.93)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,rgba(105,32,204,.35),transparent_28%)]" />
-        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(80,199,16,.15)_1px,transparent_1px),linear-gradient(90deg,rgba(80,199,16,.15)_1px,transparent_1px)] [background-size:54px_54px]" />
+        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(80,199,16,.2)_1px,transparent_1px),linear-gradient(90deg,rgba(80,199,16,.2)_1px,transparent_1px)] [background-size:54px_54px]" />
       </div>
 
       <div className="site-container relative z-10">
         <header className="mb-10 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-[780px]">
             <p className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#50C710]">
-              <MapPin className="size-4" /> Solusi Rombongan Besar
+              <MapPin className="size-4" /> Solusi Rombongan Besar &amp; Luar Kota
             </p>
             <h2 className="text-[32px] font-bold leading-[1.15] tracking-[-0.04em] text-white sm:text-[36px] lg:text-[44px]">
               Sewa Bus Pariwisata &amp; Unit VIP Bandung
@@ -41,7 +41,7 @@ export function MotorFleetSection() {
 
           <Link
             href="/armada"
-            className="group inline-flex h-11 w-fit shrink-0 items-center gap-2 rounded-lg border border-[#50C710]/60 bg-[#50C710]/15 px-5 text-[14px] font-semibold text-white backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#50C710] active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#50C710]"
+            className="group inline-flex h-11 w-fit shrink-0 items-center gap-2 rounded-lg border border-[#50C710]/60 bg-[#50C710]/15 px-5 text-[14px] font-bold text-white backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#50C710] active:translate-y-0"
           >
             Lihat Semua Unit
             <ArrowRight
@@ -67,7 +67,7 @@ export function MotorFleetSection() {
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#1237B8]/20 to-transparent" />
                 <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-lg bg-[#6920CC] px-2.5 py-1.5 text-[9px] font-bold text-white shadow-[0_8px_20px_rgba(105,32,204,.28)]"><Star className="size-3 fill-current" />{promos[index]}</span>
-                <span className="absolute right-3 top-3 rounded-lg border border-white/60 bg-white/90 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-[#50C710] shadow-sm backdrop-blur">Tersedia</span>
+                <span className="absolute right-3 top-3 rounded-lg border border-[#50C710]/30 bg-[#F2FBEA] px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.08em] text-[#50C710] shadow-sm backdrop-blur">Tersedia</span>
               </div>
 
               <div className="flex flex-1 flex-col p-5">
