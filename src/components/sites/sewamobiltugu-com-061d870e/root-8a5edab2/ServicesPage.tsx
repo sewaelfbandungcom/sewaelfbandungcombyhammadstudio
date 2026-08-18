@@ -1,7 +1,7 @@
 "use client";
 
 import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
-import { ArrowRight, CheckCircle2, Compass, Home, Info, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle2, Compass, Home, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,31 +15,31 @@ const services = [
     num: "1",
     title: "Sewa Elf untuk Wisata",
     desc: "Ingin liburan bersama keluarga atau rombongan tanpa harus menggunakan beberapa kendaraan? Layanan rental Elf Bandung untuk wisata dapat menjadi pilihan yang praktis.",
-    target: "Cocok untuk perjalanan wisata ke berbagai destinasi seperti Bandung, Lembang, Ciwidey, Pangalengan, Pangandaran, Garut, Subang, dan berbagai tujuan wisata lainnya.",
+    note: "Cocok untuk perjalanan wisata ke berbagai destinasi seperti Bandung, Lembang, Ciwidey, Pangalengan, Pangandaran, Garut, Subang, dan berbagai tujuan wisata lainnya.",
   },
   {
     num: "2",
     title: "Sewa Elf untuk Study Tour",
     desc: "Layanan sewa Elf Bandung untuk study tour cocok untuk sekolah, kampus, lembaga pendidikan, maupun organisasi.",
-    target: "Dengan kendaraan yang dapat menampung rombongan, perjalanan menuju lokasi kegiatan menjadi lebih praktis dan terkoordinasi.",
+    note: "Dengan kendaraan yang dapat menampung rombongan, perjalanan menuju lokasi kegiatan menjadi lebih praktis dan terkoordinasi.",
   },
   {
     num: "3",
     title: "Sewa Elf untuk Gathering Perusahaan",
     desc: "Kami melayani kebutuhan rental Elf Bandung untuk gathering, outing, meeting, dan perjalanan perusahaan.",
-    target: "Menggunakan Elf dapat membantu memudahkan pengaturan transportasi karyawan sehingga perjalanan rombongan menjadi lebih efisien.",
+    note: "Menggunakan Elf dapat membantu memudahkan pengaturan transportasi karyawan sehingga perjalanan rombongan menjadi lebih efisien.",
   },
   {
     num: "4",
     title: "Sewa Elf untuk Keluarga",
     desc: "Bagi Anda yang ingin bepergian bersama keluarga besar, sewa Elf Bandung dapat menjadi solusi transportasi yang nyaman.",
-    target: "Tidak perlu menggunakan beberapa mobil pribadi. Seluruh anggota keluarga dapat melakukan perjalanan bersama dalam satu kendaraan.",
+    note: "Tidak perlu menggunakan beberapa mobil pribadi. Seluruh anggota keluarga dapat melakukan perjalanan bersama dalam satu kendaraan.",
   },
   {
     num: "5",
     title: "Sewa Elf untuk Acara dan Event",
     desc: "Kami juga melayani kebutuhan kendaraan untuk berbagai acara:",
-    items: [
+    list: [
       "Pernikahan",
       "Acara keluarga",
       "Komunitas",
@@ -55,13 +55,13 @@ const services = [
     num: "6",
     title: "Sewa Elf untuk Ziarah dan Perjalanan Religi",
     desc: "Layanan sewa Elf Bandung untuk ziarah dapat digunakan untuk perjalanan bersama keluarga, komunitas, maupun rombongan menuju berbagai lokasi tujuan.",
-    target: "Rute dan durasi perjalanan dapat disesuaikan dengan kebutuhan pemesan.",
+    note: "Rute dan durasi perjalanan dapat disesuaikan dengan kebutuhan pemesan.",
   },
   {
     num: "7",
     title: "Sewa Elf Bandung untuk Luar Kota",
     desc: "Selain melayani perjalanan di wilayah Bandung, kami juga melayani kebutuhan perjalanan luar kota.",
-    target: "Anda dapat berkonsultasi terlebih dahulu mengenai tujuan, tanggal keberangkatan, durasi perjalanan, jumlah penumpang, serta kebutuhan kendaraan.",
+    note: "Anda dapat berkonsultasi terlebih dahulu mengenai tujuan, tanggal keberangkatan, durasi perjalanan, jumlah penumpang, serta kebutuhan kendaraan.",
   },
 ];
 
@@ -81,7 +81,7 @@ export function ServicesPage() {
       <SiteHeader />
       <main>
         {/* Header Hero */}
-        <section className="relative flex min-h-[320px] sm:min-h-[380px] items-end overflow-hidden pb-8 sm:pb-12 pt-[116px] sm:pt-[136px] text-white">
+        <section className="relative flex min-h-[280px] sm:min-h-[340px] items-end overflow-hidden pb-8 sm:pb-10 pt-[116px] sm:pt-[136px] text-white">
           <Image
             src={`${assetRoot}/drivemate-cta-bandung.png`}
             alt="Layanan Sewa Elf Bandung"
@@ -104,61 +104,50 @@ export function ServicesPage() {
             <h1 className="text-[30px] sm:text-[44px] lg:text-[52px] font-extrabold leading-[1.1] tracking-[-0.04em] text-white">
               Layanan <span className="text-[#50C710]">Sewa Elf Bandung</span>
             </h1>
-            <p className="mt-2 text-xs sm:text-sm font-medium text-slate-200">
-              Pilihan layanan transportasi rombongan yang nyaman, aman, praktis, dan profesional.
+            <p className="mt-1.5 max-w-[620px] text-xs sm:text-sm font-medium text-slate-200">
+              Sewa Elf Bandung by Amoora Group menyediakan layanan penyewaan kendaraan Elf untuk berbagai kebutuhan perjalanan di Bandung dan sekitarnya.
             </p>
           </div>
         </section>
 
         {/* 7 Pilihan Layanan (from Markdown) */}
-        <section className="py-10 sm:py-14 bg-white">
+        <section className="py-8 sm:py-12 lg:py-14 bg-white">
           <div className="site-container">
-            <div className="max-w-[700px] mb-8">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">
+            <div className="mb-6">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0F172A]">
                 Pilihan Layanan Sewa Elf Bandung
               </h2>
-              <p className="mt-2 text-xs sm:text-sm text-[#475569]">
-                Kami menyediakan layanan sewa Elf Bandung untuk berbagai kebutuhan, antara lain:
+              <p className="mt-1 text-xs text-[#64748B]">
+                Kami menyediakan layanan sewa Elf Bandung untuk berbagai kebutuhan:
               </p>
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((svc) => (
                 <div
                   key={svc.num}
-                  className="flex flex-col justify-between rounded-2xl border border-[#DCE5F0] bg-[#F8FAFC] p-5 sm:p-6 shadow-2xs transition duration-200 hover:border-[#1237B8]/40 hover:bg-white hover:shadow-md"
+                  className="rounded-2xl border border-[#DCE5F0] bg-[#F8FAFC] p-5 shadow-2xs transition hover:border-[#1237B8]/40 hover:bg-white"
                 >
-                  <div>
-                    <h3 className="text-base sm:text-[17px] font-extrabold text-[#0F172A]">
-                      {svc.num}. {svc.title.replace(/^\d+\.\s*/, "")}
-                    </h3>
-                    <p className="mt-2.5 text-xs sm:text-[13px] leading-relaxed text-[#334155]">
-                      {svc.desc}
+                  <h3 className="text-sm sm:text-base font-extrabold text-[#0F172A]">
+                    {svc.num}. {svc.title.replace(/^\d+\.\s*/, "")}
+                  </h3>
+                  <p className="mt-2 text-xs leading-relaxed text-[#334155]">
+                    {svc.desc}
+                  </p>
+                  {svc.note ? (
+                    <p className="mt-2 text-[11px] leading-relaxed text-[#64748B]">
+                      {svc.note}
                     </p>
-                    {svc.target ? (
-                      <p className="mt-2 text-xs leading-relaxed text-[#64748B] italic">
-                        {svc.target}
-                      </p>
-                    ) : null}
-                    {svc.items ? (
-                      <ul className="mt-2.5 grid grid-cols-2 gap-1 text-xs font-semibold text-[#1237B8]">
-                        {svc.items.map((it) => (
-                          <li key={it} className="flex items-center gap-1.5">
-                            <span className="size-1 rounded-full bg-[#50C710]" /> {it}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </div>
-
-                  <a
-                    href={bookingUrl(`Layanan: ${svc.title}`)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-5 flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] text-xs font-bold text-white shadow-xs transition hover:-translate-y-0.5"
-                  >
-                    <WhatsappLogoIcon className="size-4" weight="fill" /> Pesan Layanan Ini
-                  </a>
+                  ) : null}
+                  {svc.list ? (
+                    <ul className="mt-2 grid grid-cols-2 gap-1 text-[11px] font-medium text-[#1237B8]">
+                      {svc.list.map((it) => (
+                        <li key={it} className="flex items-center gap-1.5">
+                          <span className="size-1 rounded-full bg-[#50C710]" /> {it}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </div>
               ))}
             </div>
@@ -166,17 +155,17 @@ export function ServicesPage() {
         </section>
 
         {/* Cara Pemesanan SOP (from Markdown) */}
-        <section className="py-10 sm:py-14 bg-[#F1F6FF]">
-          <div className="site-container max-w-[840px]">
+        <section className="py-8 sm:py-12 bg-[#F1F6FF]">
+          <div className="site-container max-w-[780px]">
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#0F172A] text-center">
               Cara Pemesanan
             </h2>
 
-            <div className="mt-6 rounded-2xl border border-[#DCE5F0] bg-white p-6 sm:p-8 shadow-xs">
-              <ul className="space-y-3.5 text-xs sm:text-sm text-[#0F172A]">
+            <div className="mt-5 rounded-2xl border border-[#DCE5F0] bg-white p-5 sm:p-7 shadow-xs">
+              <ul className="space-y-3 text-xs sm:text-sm text-[#0F172A]">
                 {bookingRules.map((rule, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-[#50C710] text-[11px] font-extrabold text-white">
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 grid size-4.5 shrink-0 place-items-center rounded-full bg-[#50C710] text-[10px] font-extrabold text-white">
                       ✓
                     </span>
                     <span className="leading-relaxed">{rule}</span>
