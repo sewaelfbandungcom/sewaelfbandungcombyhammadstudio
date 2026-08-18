@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { assetRoot } from "./content";
 
@@ -34,15 +35,23 @@ export function AboutSection() {
               Dengan kapasitas penumpang yang sesuai untuk kelompok, kendaraan Elf dan Hiace menjadi pilihan tepat bagi <strong className="font-extrabold text-[#0F172A]">keluarga, perusahaan, sekolah, komunitas, maupun wisatawan</strong>. Kami melayani destinasi populer seperti Lembang, Ciwidey, Pangalengan, Pangandaran, Garut, Subang, hingga carter antar kota.
             </p>
           </div>
-          <a
-            href="#kontak"
-            className="mt-6 inline-flex h-12 items-center gap-3 rounded-xl bg-[#1237B8] hover:bg-[#2857E8] px-6 text-sm font-bold text-white shadow-[0_10px_24px_rgba(18,55,184,0.25)] transition hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Hubungi Kami
-            <span className="grid size-7 place-items-center rounded-lg bg-[#50C710] text-white">
-              <ArrowRight size={15} />
-            </span>
-          </a>
+          <div className="mt-6 flex flex-wrap items-center gap-3.5">
+            <Link
+              href="/kontak"
+              className="inline-flex h-12 items-center gap-3 rounded-xl bg-[#1237B8] hover:bg-[#2857E8] px-6 text-sm font-bold text-white shadow-[0_10px_24px_rgba(18,55,184,0.25)] transition hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Hubungi Kami
+              <span className="grid size-7 place-items-center rounded-lg bg-[#50C710] text-white">
+                <ArrowRight size={15} />
+              </span>
+            </Link>
+            <Link
+              href="/tentang"
+              className="inline-flex h-12 items-center gap-2 rounded-xl border border-[#DCE5F0] bg-[#F8FAFC] hover:bg-[#F1F6FF] px-5 text-sm font-bold text-[#1237B8] transition hover:-translate-y-0.5"
+            >
+              Profil Lengkap <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

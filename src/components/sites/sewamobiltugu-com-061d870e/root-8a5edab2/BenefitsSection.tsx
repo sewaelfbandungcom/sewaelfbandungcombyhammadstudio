@@ -10,6 +10,8 @@ import { UsersThreeIcon } from "@phosphor-icons/react/dist/ssr/UsersThree";
 import Image from "next/image";
 
 import { assetRoot, benefits } from "./content";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const benefitIcons = [CarIcon, UsersThreeIcon, TagIcon, SteeringWheelIcon] as const;
 const benefitColorClasses = ["text-[#1237B8]", "text-[#6920CC]", "text-[#50C710]", "text-[#2857E8]"] as const;
@@ -73,6 +75,15 @@ export function BenefitsSection() {
                 </article>
               );
             })}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/layanan"
+              className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#1237B8] hover:bg-[#2857E8] px-6 text-sm font-bold text-white shadow-md shadow-[#1237B8]/20 transition hover:-translate-y-0.5"
+            >
+              Lihat Detail 7 Pilihan Layanan Kami <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
       </div>

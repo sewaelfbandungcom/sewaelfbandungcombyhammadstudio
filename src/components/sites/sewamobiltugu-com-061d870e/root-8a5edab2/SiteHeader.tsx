@@ -8,23 +8,20 @@ import { useEffect, useState } from "react";
 import { BrandMark } from "./BrandMark";
 import { bookingUrl } from "./content";
 
-type SectionId = "top" | "ketentuan-harga" | "tentang-kami" | "layanan" | "kontak";
-type HeaderLink = { label: string; href: string; path: string; section?: SectionId };
+type HeaderLink = { label: string; href: string; path: string };
 
 const links: readonly HeaderLink[] = [
-  { label: "Beranda", href: "/", path: "/", section: "top" },
+  { label: "Beranda", href: "/", path: "/" },
   { label: "Armada", href: "/armada", path: "/armada" },
-  { label: "Ketentuan Harga", href: "/#ketentuan-harga", path: "/", section: "ketentuan-harga" },
-  { label: "Tentang Kami", href: "/#tentang-kami", path: "/", section: "tentang-kami" },
-  { label: "Layanan & SOP", href: "/#layanan", path: "/", section: "layanan" },
-  { label: "Kontak", href: "/#kontak", path: "/", section: "kontak" },
+  { label: "Tentang Kami", href: "/tentang", path: "/tentang" },
+  { label: "Layanan", href: "/layanan", path: "/layanan" },
+  { label: "Kontak", href: "/kontak", path: "/kontak" },
 ] as const;
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<SectionId>("top");
 
   useEffect(() => {
     let animationFrame = 0;
@@ -33,50 +30,27 @@ export function SiteHeader() {
       cancelAnimationFrame(animationFrame);
       animationFrame = requestAnimationFrame(() => {
         setIsScrolled(window.scrollY > 40);
-        if (pathname !== "/") return;
-
-        const triggerLine = 160;
-        let currentSection: SectionId = "top";
-        for (const link of links) {
-          if (!link.section) continue;
-          const section = document.getElementById(link.section);
-          if (section && section.getBoundingClientRect().top <= triggerLine) {
-            currentSection = link.section;
-          }
-        }
-        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 80) {
-          currentSection = "kontak";
-        }
-        setActiveSection(currentSection);
       });
     };
 
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
     window.addEventListener("resize", updateHeader);
-    window.addEventListener("hashchange", updateHeader);
     return () => {
       cancelAnimationFrame(animationFrame);
       window.removeEventListener("scroll", updateHeader);
       window.removeEventListener("resize", updateHeader);
-      window.removeEventListener("hashchange", updateHeader);
     };
-  }, [pathname]);
+  }, []);
 
   const isActive = (link: HeaderLink) => {
-    if (pathname === "/armada" && link.path === "/armada") {
-      return true;
+    if (link.path === "/") {
+      return pathname === "/";
     }
-    if (pathname === "/" && link.path === "/") {
-      return Boolean(link.section && activeSection === link.section);
-    }
-    return false;
+    return pathname.startsWith(link.path);
   };
 
-  const handleLinkClick = (link: HeaderLink) => {
-    if (pathname === "/" && link.section) {
-      setActiveSection(link.section);
-    }
+  const handleLinkClick = () => {
     setMenuOpen(false);
   };
 
@@ -119,10 +93,7 @@ export function SiteHeader() {
           <Link
             href="/"
             aria-label="Sewa Elf Bandung - Beranda"
-            onClick={() => {
-              setActiveSection("top");
-              setMenuOpen(false);
-            }}
+            onClick={() => setMenuOpen(false)}
           >
             <BrandMark compact />
           </Link>
@@ -136,7 +107,7 @@ export function SiteHeader() {
                     <Link
                       href={link.href}
                       aria-current={active ? "page" : undefined}
-                      onClick={() => handleLinkClick(link)}
+                      onClick={handleLinkClick}
                       className={`relative flex items-center py-2 text-[13px] font-semibold transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:rounded-full after:bg-[#1237B8] after:transition-transform after:duration-300 hover:text-[#1237B8] hover:after:scale-x-100 xl:text-sm ${
                         active
                           ? "text-[#1237B8] after:scale-x-100 font-bold"
@@ -187,7 +158,7 @@ export function SiteHeader() {
                     <Link
                       href={link.href}
                       aria-current={active ? "page" : undefined}
-                      onClick={() => handleLinkClick(link)}
+                      onClick={handleLinkClick}
                       className={`flex h-12 items-center rounded-lg px-3 text-base font-semibold transition ${
                         active
                           ? "bg-[#1237B8]/10 text-[#1237B8] font-bold"

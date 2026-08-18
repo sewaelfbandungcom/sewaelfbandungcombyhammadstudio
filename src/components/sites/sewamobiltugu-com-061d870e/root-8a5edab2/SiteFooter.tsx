@@ -11,17 +11,18 @@ import { BrandMark } from "./BrandMark";
 import { bookingUrl } from "./content";
 
 const companyLinks = [
-  ["Tentang Kami", "/#tentang-kami"],
-  ["Cara Sewa", "/#layanan"],
-  ["Armada", "/armada"],
-  ["Kontak", "/#kontak"],
+  ["Beranda", "/"],
+  ["Katalog Armada", "/armada"],
+  ["Tentang Kami", "/tentang"],
+  ["Layanan Kami", "/layanan"],
+  ["Kontak & Garasi", "/kontak"],
 ] as const;
 
 const serviceLinks = [
-  ["Sewa Elf Long", "/armada"],
-  ["Sewa Hiace Premio", "/armada"],
-  ["Bus Pariwisata", "/armada"],
-  ["Wisata Bandung", "/#layanan"],
+  ["Sewa Elf Wisata", "/layanan"],
+  ["Study Tour & Edukasi", "/layanan"],
+  ["Gathering Perusahaan", "/layanan"],
+  ["Sewa Elf Luar Kota", "/layanan"],
 ] as const;
 
 export function SiteFooter() {
