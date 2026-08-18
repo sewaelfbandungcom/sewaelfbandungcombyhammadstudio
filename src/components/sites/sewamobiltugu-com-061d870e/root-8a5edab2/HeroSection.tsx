@@ -439,11 +439,11 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
         </div>
       </div>
 
-      {/* Booking Form Planner Attached Right Below the Banner without deep covering */}
-      <div className="site-container relative z-30 pt-4 sm:pt-6 pb-10 sm:pb-14">
+      {/* Booking Form Planner Attached Directly onto the Hero Slider Curve */}
+      <div className="site-container relative z-30 -mt-10 sm:-mt-14 lg:-mt-16 pb-10 sm:pb-14">
         <form
           onSubmit={handleBookingSubmit}
-          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_20px_50px_rgba(18,55,184,.12)]"
+          className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_24px_70px_rgba(18,55,184,.14)]"
         >
           <div className="mb-4 sm:mb-6 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
             <div>
