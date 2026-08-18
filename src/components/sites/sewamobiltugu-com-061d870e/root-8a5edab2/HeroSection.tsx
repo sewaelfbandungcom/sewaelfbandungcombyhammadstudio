@@ -347,7 +347,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
   const selectedFleetObj = fleetOptions.find((f) => f.value === fleet) || fleetOptions[0];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#F1F6FF] text-[#0F172A] pt-[106px] sm:pt-[112px]">
+    <section className="relative z-40 w-full overflow-visible bg-[#F1F6FF] text-[#0F172A] pt-[106px] sm:pt-[112px]">
       {/* Full-Width Slider Container with Exact Proportions: 100% of Image is Visible (Zero Top/Bottom Crop) */}
       <div className="relative w-full overflow-hidden rounded-b-[20px] sm:rounded-b-[36px] bg-slate-950 shadow-sm">
         <div

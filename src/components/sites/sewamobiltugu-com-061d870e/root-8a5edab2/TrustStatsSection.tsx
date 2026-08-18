@@ -41,7 +41,7 @@ const stats = [
 
 export function TrustStatsSection() {
   return (
-    <section className="bg-[#F1F6FF] pb-12 pt-4 lg:pb-20 lg:pt-6">
+    <section className="relative z-10 bg-[#F1F6FF] pb-12 pt-4 lg:pb-20 lg:pt-6">
       <div className="site-container">
         <div className="relative overflow-hidden rounded-[24px] border border-white/20 bg-[#101B38] shadow-[0_24px_60px_rgba(18,55,184,.18)]">
           {/* Subtle Ambient Glow Gradients */}
