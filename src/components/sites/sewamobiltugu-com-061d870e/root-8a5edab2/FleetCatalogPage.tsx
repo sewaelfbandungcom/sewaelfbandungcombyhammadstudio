@@ -1,7 +1,7 @@
 "use client";
 
 import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
-import { ArrowRight, CheckCircle2, Home, MapPin, ShieldCheck, Users, Bus, Car, Sparkles, Phone, Check } from "lucide-react";
+import { ArrowRight, CheckCircle2, Home, MapPin, ShieldCheck, Users, Bus, Car, Check, Star, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -127,64 +127,86 @@ export function FleetCatalogPage({ kind }: { kind: FleetKind }) {
               </p>
             </div>
 
-            {/* Vehicle Grid - Clean, Beautiful Touch Cards on Mobile */}
-            <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
+            {/* Vehicle Grid - Clean, Beautiful Touch Cards on Mobile & Desktop */}
+            <div className="mt-6 sm:mt-8 grid gap-4.5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-5">
               {items.map((vehicle) => (
                 <article
                   key={vehicle.id}
-                  className="group flex flex-col overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#DCE5F0] bg-white shadow-[0_10px_30px_rgba(18,55,184,.06)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(18,55,184,.14)]"
+                  className="group flex flex-col overflow-hidden rounded-[22px] border border-white bg-white text-[#0F172A] shadow-[0_12px_32px_rgba(18,55,184,.09)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1237B8]/40 hover:shadow-[0_24px_50px_rgba(18,55,184,.18)]"
                 >
-                  {/* Vehicle Image Container */}
-                  <div className="relative aspect-[16/11] sm:aspect-[1.1] overflow-hidden bg-[radial-gradient(circle_at_50%_34%,#F1F6FF_0%,#E2ECFF_48%,#C8DCFF_100%)]">
+                  {/* Image Frame */}
+                  <div className="relative aspect-[1.14] overflow-hidden bg-[radial-gradient(circle_at_50%_38%,#F1F6FF_0%,#E2ECFF_52%,#C8DCFF_100%)] sm:aspect-[1.12]">
                     <Image
                       src={vehicle.image}
-                      alt={`${vehicle.name} Sewa Elf Bandung`}
+                      alt={`${vehicle.name} - Sewa Elf Bandung by Amoora Group`}
                       fill
-                      sizes="(min-width:1024px) 280px, (min-width:640px) 50vw, 100vw"
-                      className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.04]"
+                      sizes="(min-width: 1280px) 270px, (min-width: 1024px) 310px, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.03]"
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-slate-900/30 to-transparent" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/15 to-transparent" />
+
+                    {/* Badge Left */}
                     {vehicle.badge ? (
                       <span
-                        className={`absolute left-3 top-3 rounded-lg px-2.5 py-1 text-[9px] font-bold text-white shadow-xs ${
-                          vehicle.isLuxury ? "bg-[#6920CC]" : "bg-[#1237B8]"
+                        className={`absolute left-3 top-3 inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-[9px] font-extrabold text-white shadow-sm ${
+                          vehicle.isLuxury
+                            ? "bg-[#6920CC]"
+                            : vehicle.isPopular
+                            ? "bg-[#1237B8]"
+                            : "bg-[#0F172A]"
                         }`}
                       >
+                        <Star className="size-3 fill-current" />
                         {vehicle.badge}
                       </span>
                     ) : null}
-                    <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-lg border border-white/80 bg-[#F2FBEA] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.06em] text-[#2e8807] shadow-xs backdrop-blur">
-                      <span className="size-1.5 rounded-full bg-[#50C710]" /> Ready
+
+                    {/* Availability Badge Right */}
+                    <span className="absolute right-3 top-3 rounded-lg border border-[#50C710]/40 bg-[#F2FBEA] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.08em] text-[#2e8807] shadow-xs backdrop-blur">
+                      Tersedia
                     </span>
                   </div>
 
-                  {/* Vehicle Details */}
+                  {/* Card Body */}
                   <div className="flex flex-1 flex-col p-4 sm:p-5">
-                    <h3 className="text-[15px] sm:text-[17px] font-extrabold tracking-[-0.025em] text-[#0F172A] leading-snug">
+                    <h3 className="text-[17px] font-bold leading-tight tracking-[-0.025em] text-[#0F172A]">
                       {vehicle.name}
                     </h3>
-                    <div className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-[#1237B8]">
-                      <Users className="size-3.5 sm:size-4 text-[#1237B8] shrink-0" />
-                      <span>Kapasitas: <strong className="text-[#0F172A]">{vehicle.capacity}</strong></span>
+
+                    <div className="mt-2 flex items-center gap-1.5 text-xs font-bold text-[#1237B8]">
+                      <Users className="size-4 text-[#1237B8]" />
+                      <span>Kapasitas: <strong className="text-[#0F172A] font-extrabold">{vehicle.capacity}</strong></span>
                     </div>
 
-                    <div className="mt-4 border-t border-[#E2E8F0] pt-3 sm:pt-4">
-                      <span className="block text-[10px] font-semibold text-[#64748B]">Tarif Dalam Kota (12 Jam / PP)</span>
-                      <strong className="mt-0.5 block text-lg sm:text-xl font-extrabold tracking-[-0.02em] text-[#1237B8] [font-variant-numeric:tabular-nums]">
-                        {vehicle.price}
-                      </strong>
-                    </div>
+                    {/* Features List with High-Contrast Dark Text */}
+                    <ul className="mt-3 space-y-1.5 border-t border-[#E2E8F0] pt-2.5 text-[11px] font-medium text-[#1E293B]">
+                      {vehicle.features.map((feat) => (
+                        <li key={feat} className="flex items-center gap-2">
+                          <Check className="size-3.5 text-[#50C710] shrink-0 stroke-[2.5]" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                    <a
-                      href={bookingUrl(`${vehicle.name} (${vehicle.capacity})`)}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Pesan ${vehicle.name} via WhatsApp`}
-                      className="mt-4 flex h-11 sm:h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] text-xs sm:text-sm font-bold text-white shadow-[0_10px_22px_rgba(80,199,16,.25)] transition hover:-translate-y-0.5 active:scale-98 cursor-pointer"
-                    >
-                      <WhatsappLogoIcon className="size-[18px] sm:size-5" weight="fill" />
-                      Pesan via WhatsApp
-                    </a>
+                    {/* Price & Action Button */}
+                    <div className="mt-auto pt-4">
+                      <div className="mb-3 flex items-baseline justify-between border-t border-[#E2E8F0] pt-3">
+                        <span className="text-[11px] font-semibold text-[#475569]">Tarif Mulai</span>
+                        <strong className="text-[19px] font-extrabold tracking-[-0.02em] text-[#1237B8] [font-variant-numeric:tabular-nums]">
+                          {vehicle.price}
+                          <span className="ml-1 text-[11px] font-semibold text-[#475569]">/12 Jam</span>
+                        </strong>
+                      </div>
+
+                      <a
+                        href={bookingUrl(`${vehicle.name} (${vehicle.capacity})`)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex h-11.5 sm:h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] text-[13px] font-bold text-white shadow-[0_10px_22px_rgba(80,199,16,.28)] transition hover:-translate-y-0.5 active:scale-[0.99]"
+                      >
+                        <MessageCircle className="size-4" /> Booking via WhatsApp
+                      </a>
+                    </div>
                   </div>
                 </article>
               ))}
