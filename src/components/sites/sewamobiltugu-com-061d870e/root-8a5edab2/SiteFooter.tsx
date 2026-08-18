@@ -3,9 +3,8 @@
 import { FacebookLogoIcon } from "@phosphor-icons/react/dist/ssr/FacebookLogo";
 import { InstagramLogoIcon } from "@phosphor-icons/react/dist/ssr/InstagramLogo";
 import { WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
-import { Mail, MapPin, Phone, MessageSquare, X } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 import { BrandMark } from "./BrandMark";
 import { bookingUrl } from "./content";
@@ -26,8 +25,6 @@ const serviceLinks = [
 ] as const;
 
 export function SiteFooter() {
-  const [showTooltip, setShowTooltip] = useState(true);
-
   return (
     <footer id="kontak" className="bg-[#101B38] text-white">
       <div className="site-container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.35fr_.7fr_.7fr_1fr] lg:gap-12 lg:py-16">
@@ -120,53 +117,20 @@ export function SiteFooter() {
         <span>Solusi Perjalanan Rombongan Nyaman, Aman, dan Terpercaya.</span>
       </div>
 
-      {/* Inviting Floating CTWA Widget with Ambient Attention Calls */}
-      <aside aria-label="WhatsApp Floating Help Desk" className="fixed bottom-5 right-5 z-[90] flex flex-col items-end gap-2.5">
-        {/* Floating Calling Message Bubble */}
-        {showTooltip ? (
-          <div className="ctwa-float relative max-w-[270px] rounded-2xl border border-[#50C710]/30 bg-white p-3.5 text-[#101B38] shadow-[0_16px_36px_rgba(18,55,184,.18)] backdrop-blur-md transition-all duration-300 sm:max-w-[290px]">
-            <button
-              type="button"
-              onClick={() => setShowTooltip(false)}
-              aria-label="Tutup pesan bantuan"
-              className="absolute right-2 top-2 rounded-full p-1 text-slate-400 hover:bg-slate-100 hover:text-[#101B38]"
-            >
-              <X className="size-3.5" />
-            </button>
-            <div className="flex items-center gap-2">
-              <span className="relative flex size-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#50C710] opacity-75" />
-                <span className="relative inline-flex size-2.5 rounded-full bg-[#50C710]" />
-              </span>
-              <span className="text-[11px] font-bold text-[#1237B8]">Admin Sewa Elf Online</span>
-            </div>
-            <p className="mt-1.5 text-xs leading-relaxed text-[#65708A]">
-              Halo! Mau tanya tarif atau cek jadwal Elf &amp; Hiace? <strong className="text-[#101B38] font-bold">Chat kami sekarang! 👋</strong>
-            </p>
-            <div className="absolute -bottom-2 right-6 size-3.5 rotate-45 border-b border-r border-[#50C710]/30 bg-white" />
-          </div>
-        ) : null}
-
-        {/* Pulse Calling Button */}
+      {/* Simple Floating Circular WhatsApp Button */}
+      <aside aria-label="WhatsApp Floating Help Desk" className="fixed bottom-5 right-5 z-[90]">
         <a
           aria-label="Hubungi Sewa Elf Bandung via WhatsApp"
           href={bookingUrl()}
           target="_blank"
           rel="noreferrer"
-          className="group relative flex items-center gap-2.5 rounded-full bg-[#50C710] p-3 text-white shadow-[0_14px_34px_rgba(80,199,16,.42)] transition-all duration-300 hover:scale-105 hover:bg-[#43aa0c] hover:shadow-[0_18px_42px_rgba(80,199,16,.55)] active:scale-95"
+          className="group relative flex size-14 items-center justify-center rounded-full bg-[#50C710] text-white shadow-[0_10px_28px_rgba(80,199,16,.45)] transition-all duration-300 hover:scale-110 hover:bg-[#43aa0c] hover:shadow-[0_14px_36px_rgba(80,199,16,.6)] active:scale-95"
         >
           {/* Animated Wave Rings */}
-          <span className="ctwa-ping-ring pointer-events-none absolute -inset-1 rounded-full bg-[#50C710]/45" />
-          <span className="ctwa-ping-ring pointer-events-none absolute -inset-2.5 rounded-full bg-[#50C710]/25 [animation-delay:0.7s]" />
+          <span className="ctwa-ping-ring pointer-events-none absolute -inset-1 rounded-full bg-[#50C710]/40" />
+          <span className="ctwa-ping-ring pointer-events-none absolute -inset-2.5 rounded-full bg-[#50C710]/20 [animation-delay:0.7s]" />
 
-          {/* Icon with Periodic Wiggle */}
-          <div className="ctwa-wiggle relative z-10 grid size-10 place-items-center">
-            <WhatsappLogoIcon className="size-8 text-white drop-shadow-sm" weight="fill" />
-          </div>
-
-          <span className="relative z-10 hidden pr-3 text-[13px] font-bold tracking-tight text-white md:inline-block">
-            Tanya Admin via WA
-          </span>
+          <WhatsappLogoIcon className="relative z-10 size-8 text-white drop-shadow-sm transition-transform duration-300 group-hover:scale-110" weight="fill" />
         </a>
       </aside>
     </footer>
