@@ -73,7 +73,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 1200000,
     badge: "Favorit Wisata",
     isPopular: true,
-    image: "/images/armada/hiace-commuter.png",
+    image: "/images/armada/hiace-commuter.webp",
     features: ["14 Kursi Reclining", "AC Dingin Merata", "Audio & USB Port", "Driver Berpengalaman"],
   },
   {
@@ -84,7 +84,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 1.300.000",
     priceNum: 1300000,
     badge: "Euro4 Prima",
-    image: "/images/armada/hiace-commuter-euro4.png",
+    image: "/images/armada/hiace-commuter-euro4.webp",
     features: ["14 Kursi Nyaman", "Mesin Euro4 Senyap", "AC Ducting", "Suspensi Halus"],
   },
   {
@@ -96,7 +96,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 1500000,
     badge: "Best Seller",
     isPopular: true,
-    image: "/images/armada/hiace-premio-std.png",
+    image: "/images/armada/hiace-premio-std.webp",
     features: ["14 Kursi Luas", "Kabin Tinggi & Lega", "Desain Modern Elegan", "Bagasi Lapang"],
   },
   {
@@ -108,7 +108,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 2200000,
     badge: "Luxury Captain Seat",
     isLuxury: true,
-    image: "/images/armada/hiace-premio-luxury.png",
+    image: "/images/armada/hiace-premio-luxury.webp",
     features: ["Captain Seat VIP", "Interior Mewah Wood Panel", "Smart TV & Audio", "Suasana Eksekutif"],
   },
   {
@@ -120,7 +120,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 1400000,
     badge: "Rombongan Hemat",
     isPopular: true,
-    image: "/images/armada/elf-long-euro4.png",
+    image: "/images/armada/elf-long.webp",
     features: ["18 - 19 Kursi", "Muat Rombongan Besar", "AC Sejuk", "Bagasi Belakang"],
   },
   {
@@ -131,7 +131,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 1.700.000",
     priceNum: 1700000,
     badge: "Unit Baru Euro4",
-    image: "/images/armada/elf-long-euro4.png",
+    image: "/images/armada/elf-long-euro4.webp",
     features: ["19 - 21 Kursi", "Mesin Bertenaga Euro4", "Kabin Wangi & Bersih", "Suspensi Stabil"],
   },
   {
@@ -142,7 +142,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 1.800.000",
     priceNum: 1800000,
     badge: "Bodi Coaster Lega",
-    image: "/images/armada/elf-coaster.png",
+    image: "/images/armada/elf-coaster.webp",
     features: ["17 - 18 Kursi", "Bodi Lebar & Tinggi", "Reclining Seat", "Perjalanan Nyaman"],
   },
   {
@@ -153,7 +153,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 2.000.000",
     priceNum: 2000000,
     badge: "Kapasitas Maksimal",
-    image: "/images/armada/elf-coaster-euro4.png",
+    image: "/images/armada/elf-coaster-euro4.webp",
     features: ["18 - 22 Kursi", "Euro4 Terawat", "AC Ducting Merata", "Cocok Study Tour / Family"],
   },
 
@@ -166,7 +166,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 2.000.000",
     priceNum: 2000000,
     badge: "Ekonomis",
-    image: "/images/armada/bus-medium-jetbus.png",
+    image: "/images/armada/bus-medium-jetbus.webp",
     features: ["29 - 31 Seat 2-2", "Full AC & Audio Karaoke", "Reclining Seat", "Bagasi Samping & Belakang"],
   },
   {
@@ -177,7 +177,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 2.200.000",
     priceNum: 2200000,
     badge: "Jetbus 2",
-    image: "/images/armada/bus-medium-jetbus2.png",
+    image: "/images/armada/bus-medium-jetbus2.webp",
     features: ["29 - 35 Seat", "AC Ducting Dingin", "Audio & Mic Karaoke", "Kru Profesional"],
   },
   {
@@ -189,7 +189,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 2500000,
     badge: "Favorit Gathering",
     isPopular: true,
-    image: "/images/armada/bus-medium-jetbus3+.png",
+    image: "/images/armada/bus-medium-jetbus3+.webp",
     features: ["31 - 35 Seat", "Bodi Jetbus 3+ Modern", "LED Ambient Light", "Port Charger Tiap Baris"],
   },
   {
@@ -200,7 +200,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 2.800.000",
     priceNum: 2800000,
     badge: "Medium Long",
-    image: "/images/armada/bus-medium-long-jb3+.png",
+    image: "/images/armada/bus-medium-long-jb3+.webp",
     features: ["35 - 39 Seat", "Sasis Long Tambah Luas", "Layar TV LCD", "Kenyamanan Ekstra"],
   },
   {
@@ -211,7 +211,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 3.000.000",
     priceNum: 3000000,
     badge: "New Jetbus 5",
-    image: "/images/armada/bus-medium-long-jb5.png",
+    image: "/images/armada/bus-medium-long-jb5.webp",
     features: ["35 - 39 Seat", "Model Terbaru Jetbus 5", "Peredam Suara Premium", "Desain Futuristik"],
   },
   {
@@ -223,7 +223,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 3200000,
     badge: "VIP Legrest",
     isLuxury: true,
-    image: "/images/armada/md-bus-luxury-legrest.png",
+    image: "/images/armada/md-bus-luxury-legrest.webp",
     features: ["14 - 16 Seat Legrest", "Konfigurasi 2-1 Lega", "Dispenser / Coolbox", "Fasilitas VVIP Eksekutif"],
   },
   {
@@ -234,7 +234,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 3.000.000",
     priceNum: 3000000,
     badge: "Big Bus Ekonomis",
-    image: "/images/armada/big-bus-jetbus-hdd.png",
+    image: "/images/armada/big-bus-jetbus-hdd.webp",
     features: ["47 - 59 Seat", "Kapasitas Rombongan Akbar", "Bagasi Tembus Luas", "AC Sentral Dingin"],
   },
   {
@@ -245,7 +245,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 3.200.000",
     priceNum: 3200000,
     badge: "High Double Deck",
-    image: "/images/armada/big-bus-jetbus-hdd.png",
+    image: "/images/armada/big-bus-jetbus-hdd.webp",
     features: ["47 - 59 Seat", "High Deck Pandangan Luas", "Audio Video Karaoke", "Driver Wisata Berlisensi"],
   },
   {
@@ -256,7 +256,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 3.500.000",
     priceNum: 3500000,
     badge: "HDD Premium",
-    image: "/images/armada/big-bus-hdd-premium.png",
+    image: "/images/armada/big-bus-hdd-premium.webp",
     features: ["45 - 57 Seat", "Jok Kulit Ergonomis", "Lampu Disco / Karaoke", "Suspensi Udara / Lembut"],
   },
   {
@@ -268,7 +268,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 3800000,
     badge: "Super High Deck JB3+",
     isPopular: true,
-    image: "/images/armada/big-bus-hddshd-jb3+.png",
+    image: "/images/armada/big-bus-hddshd-jb3+.webp",
     features: ["45 - 59 Seat", "Super High Deck Gagah", "Fasilitas Lengkap", "Air Suspension Halus"],
   },
   {
@@ -279,7 +279,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 4.000.000",
     priceNum: 4000000,
     badge: "New Jetbus 5 Flagship",
-    image: "/images/armada/big-bus-hddshd-jb5.png",
+    image: "/images/armada/big-bus-hddshd-jb5.webp",
     features: ["45 - 59 Seat", "Generasi Terbaru Jetbus 5", "Interior Ultra Modern", "Kenyamanan Tertinggi"],
   },
   {
@@ -291,7 +291,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 4200000,
     badge: "Royal VIP Legrest",
     isLuxury: true,
-    image: "/images/armada/big-bus-luxury-legrest.png",
+    image: "/images/armada/big-bus-luxury-legrest.webp",
     features: ["25 - 30 Seat Legrest 2-1", "Sofa & Smoking Room / Toilet", "Coffee Maker / Coolbox", "Pelayanan VVIP"],
   },
 
@@ -305,7 +305,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 750000,
     badge: "Paling Hemat",
     isPopular: true,
-    image: "/images/armada/avanza.png",
+    image: "/images/armada/avanza.webp",
     features: ["5 - 7 Penumpang", "All New TSS Nyaman", "Irit & Lincah", "Sudah Termasuk Driver"],
   },
   {
@@ -317,7 +317,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 950000,
     badge: "Favorit Keluarga",
     isPopular: true,
-    image: "/images/armada/innova-reborn.png",
+    image: "/images/armada/innova-reborn.webp",
     features: ["5 - 7 Penumpang", "Diesel Bertenaga & Halus", "Kenyamanan Legendaris", "AC Double Blower"],
   },
   {
@@ -328,7 +328,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 1.500.000",
     priceNum: 1500000,
     badge: "Zenix Generasi Baru",
-    image: "/images/armada/innova-zenix-g.png",
+    image: "/images/armada/innova-zenix-g.webp",
     features: ["5 - 7 Penumpang", "Platform TNGA Empuk", "Kabin Hening & Modern", "Handling Nyaman"],
   },
   {
@@ -340,7 +340,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 1800000,
     badge: "Captain Seat Ottoman",
     isLuxury: true,
-    image: "/images/armada/innova-zenix-q.png",
+    image: "/images/armada/innova-zenix-q.webp",
     features: ["5 - 6 Penumpang (Captain Seat)", "Ottoman Legrest Elektrik", "Panoramic Sunroof", "Suasana Mewah"],
   },
   {
@@ -351,7 +351,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 1.800.000",
     priceNum: 1800000,
     badge: "SUV Tangguh",
-    image: "/images/armada/fortuner.png",
+    image: "/images/armada/fortuner.webp",
     features: ["5 - 7 Penumpang", "SUV Gagah & Berkelas", "Kuat Tanjakan Pegunungan", "Interior Premium"],
   },
   {
@@ -362,7 +362,7 @@ export const fleetItems: FleetItem[] = [
     price: "Rp 2.000.000",
     priceNum: 2000000,
     badge: "Dakar SUV",
-    image: "/images/armada/pajero.png",
+    image: "/images/armada/pajero.webp",
     features: ["5 - 7 Penumpang", "Desain Maskulin & Gagah", "Sunroof & Audio Mantap", "Siap Rute Menantang"],
   },
   {
@@ -374,7 +374,7 @@ export const fleetItems: FleetItem[] = [
     priceNum: 3200000,
     badge: "VVIP Sultan",
     isLuxury: true,
-    image: "/images/armada/alphard.png",
+    image: "/images/armada/alphard.webp",
     features: ["5 - 7 Penumpang", "First Class Pilot Seat", "Luxury Ambient Lighting", "Kenyamanan Tertinggi"],
   },
 ];
