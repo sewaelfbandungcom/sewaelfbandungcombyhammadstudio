@@ -380,12 +380,14 @@ export const fleetItems: FleetItem[] = [
 ];
 
 export const priceRules = [
-  "Harga berlaku untuk penjemputan dari area Bandung Kota.",
-  "Durasi rental: maksimal 12 jam per hari penggunaan.",
-  "Area penggunaan: rute dalam Kota Bandung & destinasi sekitarnya.",
-  "Perjalanan dilakukan dan selesai pada hari yang sama.",
-  "Harga dapat berubah sewaktu-waktu tanpa pemberitahuan terlebih dahulu.",
-  "Untuk mendapatkan update harga terbaru & rute luar kota, customer disarankan menghubungi admin resmi kami.",
+  "Harga berlaku untuk penjemputan Bandung Kota.",
+  "Bandung Dalam Kota: durasi 12 jam / hari (pada hari yang sama).",
+  "Luar Kota: durasi 18 jam / hari (pada hari yang sama).",
+  "Pemesanan sewa kendaraan deal setelah melakukan DP 30% dari total sewa.",
+  "Pelunasan dilakukan maksimal di H-3 (3 hari sebelum keberangkatan).",
+  "Kontak driver akan diinformasikan di H-1 (1 hari sebelum keberangkatan).",
+  "DP tidak bisa diuangkan kembali (pembatalan H-3 dikenakan 100%).",
+  "Harga dapat berubah tanpa pemberitahuan terlebih dahulu (Hubungi admin kami untuk harga terbaru).",
 ] as const;
 
 export const benefits: Benefit[] = [
