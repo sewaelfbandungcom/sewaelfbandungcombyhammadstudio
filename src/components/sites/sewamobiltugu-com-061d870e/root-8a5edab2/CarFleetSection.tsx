@@ -34,18 +34,18 @@ export function CarFleetSection() {
       id="armada"
       className="relative scroll-mt-20 overflow-hidden py-16 text-[#0F172A] sm:py-20 lg:py-28"
     >
-      {/* Background Photo Clearly Visible with Crisp Contrast Tint */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
+      {/* Continuous Full-Cover Background Photo with Clean Consistent Overlay and Seamless Bottom Transition */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <Image
           src="/frontage.jpg"
           alt="Armada Sewa Elf Bandung - Amoora Group"
           fill
           sizes="100vw"
-          className="scale-[1.03] object-cover object-center"
+          className="object-cover object-center"
         />
-        {/* Balanced Light Overlay so Frontage Photo is Richly Visible */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(241,246,255,0.92)_0%,rgba(241,246,255,0.85)_40%,rgba(241,246,255,0.88)_70%,rgba(241,246,255,0.95)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(18,55,184,0.12),transparent_40%)]" />
+        {/* Continuous Full-Cover Light Overlay with Seamless Bottom Blend to White */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(241,246,255,0.92)_0%,rgba(241,246,255,0.88)_40%,rgba(241,246,255,0.92)_70%,rgba(255,255,255,0.98)_90%,#FFFFFF_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(18,55,184,0.08),transparent_40%)]" />
       </div>
 
       <div className="site-container relative z-10">
