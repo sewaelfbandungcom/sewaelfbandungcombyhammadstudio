@@ -138,7 +138,7 @@ function CustomDropdown({
     : [];
 
   return (
-    <div className="relative w-full min-w-0" ref={dropdownRef}>
+    <div className={`relative w-full min-w-0 ${isOpen ? "z-[70]" : "z-10"}`} ref={dropdownRef}>
       <label className="block text-[11px] font-extrabold text-[#0F172A] mb-1.5">
         {label}
       </label>
@@ -179,7 +179,7 @@ function CustomDropdown({
 
       {/* Dropdown Menu Popover */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 w-full max-w-full max-h-[280px] overflow-y-auto rounded-2xl border border-[#DCE5F0] bg-white p-2 shadow-[0_18px_48px_rgba(18,55,184,.22)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150">
+        <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-[80] w-full max-w-full max-h-[300px] overflow-y-auto rounded-2xl border border-[#DCE5F0] bg-white p-2 shadow-[0_24px_56px_rgba(15,23,42,.26)] backdrop-blur-xl animate-in fade-in zoom-in-95 duration-150">
           {hasCategories && categories.length > 0 ? (
             <div className="space-y-3">
               {categories.map((categoryName) => {
@@ -461,7 +461,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
           </div>
 
           {/* Form Fields: 1 Column on Mobile, 2 on Tablet, 5 on Desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 items-end">
+          <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4 items-end">
             {/* Custom Dropdown: Lokasi Penjemputan */}
             <div className="min-w-0 w-full">
               <CustomDropdown
@@ -528,7 +528,7 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
           </div>
 
           {/* Benefits Bar Underneath Form */}
-          <div className="mt-5 sm:mt-6 grid gap-3 sm:gap-4 border-t border-[#E2E8F0] pt-4 sm:pt-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="relative z-0 mt-5 sm:mt-6 grid gap-3 sm:gap-4 border-t border-[#E2E8F0] pt-4 sm:pt-5 sm:grid-cols-2 lg:grid-cols-4">
             {bookingBenefits.map(({ title, note, icon: Icon }, index) => (
               <div
                 key={title}
