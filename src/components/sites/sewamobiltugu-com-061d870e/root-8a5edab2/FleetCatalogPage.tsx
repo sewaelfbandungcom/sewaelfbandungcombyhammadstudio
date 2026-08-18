@@ -113,7 +113,7 @@ export function FleetCatalogPage({ kind }: { kind: FleetKind }) {
                       alt={`${vehicle.name} - Sewa Elf Bandung by Amoora Group`}
                       fill
                       sizes="(min-width: 1280px) 270px, (min-width: 1024px) 310px, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover hue-rotate-[212deg] saturate-[.92] transition-transform duration-500 group-hover:scale-[1.03]"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/15 to-transparent" />
 
