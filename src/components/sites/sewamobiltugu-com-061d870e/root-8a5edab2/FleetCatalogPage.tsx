@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { assetRoot, bookingUrl, fleetCategories, fleetItems, type FleetCategoryKey } from "./content";
+import { CtaSection } from "./CtaSection";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 
@@ -211,40 +212,11 @@ export function FleetCatalogPage({ kind }: { kind: FleetKind }) {
                 </article>
               ))}
             </div>
-
-            {/* Bottom CTA Banner */}
-            <div className="relative mt-10 sm:mt-14 overflow-hidden rounded-[24px] sm:rounded-[32px] bg-[#101B38] p-6 sm:p-10 lg:p-12 text-white shadow-[0_24px_58px_rgba(18,55,184,.2)] lg:flex lg:items-center lg:justify-between">
-              <Image
-                src={`${assetRoot}/bandung-braga-dusk.jpg`}
-                alt=""
-                fill
-                sizes="1176px"
-                className="object-cover object-center opacity-25"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,27,56,.98)_0%,rgba(18,55,184,.88)_62%,rgba(40,87,232,.72)_100%)]" />
-              <div className="relative max-w-[650px]">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#50C710]">
-                  Sewa Elf Bandung by Amoora Group
-                </p>
-                <h2 className="mt-1.5 text-xl sm:text-2xl lg:text-[32px] font-extrabold tracking-[-0.04em] leading-tight">
-                  Siap Menjelajahi Bandung Bersama Rombongan?
-                </h2>
-                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-200">
-                  Pilih kendaraan favorit Anda dan lakukan reservasi cepat via WhatsApp sekarang.
-                </p>
-              </div>
-              <a
-                href={bookingUrl()}
-                target="_blank"
-                rel="noreferrer"
-                className="relative mt-5 sm:mt-6 inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] px-6 text-sm font-bold text-white shadow-[0_12px_28px_rgba(80,199,16,.28)] transition hover:-translate-y-0.5 lg:mt-0 cursor-pointer"
-              >
-                <WhatsappLogoIcon className="size-5" weight="fill" />
-                Hubungi Kami <ArrowRight className="size-4" />
-              </a>
-            </div>
           </div>
         </section>
+
+        {/* Rich Interactive CTA Section */}
+        <CtaSection />
       </main>
       <SiteFooter />
     </div>
