@@ -99,7 +99,7 @@ export function CtaSection() {
               {/* Contact numbers */}
               <div className="mt-4 space-y-2.5">
                 <a
-                  href="https://wa.me/6281214802420?text=Halo%20Admin%20Sewa%20Elf%20Bandung%2C%20saya%20mau%20booking%20armada."
+                  href="https://wa.me/6281214802420?text=Halo%20admin%20sewaelfbandung.com%2C%20saya%20ingin%20sewa%20armada."
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-center justify-between rounded-xl border border-white/15 bg-white/10 p-3.5 transition hover:bg-white/20 hover:border-[#50C710]/50"
@@ -117,7 +117,7 @@ export function CtaSection() {
                 </a>
 
                 <a
-                  href="https://wa.me/6282215452230?text=Halo%20Admin%20Sewa%20Elf%20Bandung%2C%20saya%20mau%20booking%20armada."
+                  href="https://wa.me/6282215452230?text=Halo%20admin%20sewaelfbandung.com%2C%20saya%20ingin%20sewa%20armada."
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-center justify-between rounded-xl border border-white/15 bg-white/10 p-3.5 transition hover:bg-white/20 hover:border-[#50C710]/50"

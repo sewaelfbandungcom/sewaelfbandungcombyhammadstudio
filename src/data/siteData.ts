@@ -28,7 +28,7 @@ export function getWhatsAppBookingUrl(options?: {
   phone?: string;
 }) {
   const targetPhone = options?.phone || primaryWhatsApp;
-  let text = "Halo Admin Sewa Elf Bandung by Amoora Group,\n\nSaya ingin konsultasi / reservasi sewa kendaraan:";
+  let text = "Halo admin sewaelfbandung.com,\n\nSaya ingin sewa / reservasi kendaraan:";
   
   if (options?.unitName) {
     text += `\n• Unit Armada: ${options.unitName}`;

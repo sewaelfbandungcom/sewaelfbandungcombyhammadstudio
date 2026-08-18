@@ -415,8 +415,8 @@ export const benefits: Benefit[] = [
 
 export function bookingUrl(unit?: string) {
   const message = unit
-    ? `Halo Admin Sewa Elf Bandung (Amoora Group), saya ingin cek ketersediaan & booking unit ${unit}. Mohon info penawaran harganya ya. Terima kasih!`
-    : "Halo Admin Sewa Elf Bandung (Amoora Group), saya ingin konsultasi sewa kendaraan rombongan di Bandung.";
+    ? `Halo admin sewaelfbandung.com, saya ingin sewa unit ${unit}. Mohon info ketersediaan dan penawaran harganya.`
+    : "Halo admin sewaelfbandung.com, saya ingin sewa armada kendaraan di Bandung. Mohon info pilihan unit dan tarifnya.";
   return `${whatsappBase}?text=${encodeURIComponent(message)}`;
 }
 

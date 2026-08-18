@@ -63,7 +63,7 @@ export function ContactPage() {
                   </span>
                   <div className="mt-3 flex flex-col sm:flex-row gap-3">
                     <a
-                      href="https://wa.me/6281214802420?text=Halo%20Admin%20Sewa%20Elf%20Bandung%2C%20saya%20mau%20tanya%20sewa%20armada."
+                      href="https://wa.me/6281214802420?text=Halo%20admin%20sewaelfbandung.com%2C%20saya%20ingin%20sewa%20armada."
                       target="_blank"
                       rel="noreferrer"
                       className="flex-1 flex items-center justify-between gap-3 rounded-xl bg-[#50C710] hover:bg-[#43aa0c] p-4 text-white font-extrabold text-sm sm:text-base shadow-sm transition hover:-translate-y-0.5"
@@ -76,7 +76,7 @@ export function ContactPage() {
                     </a>
 
                     <a
-                      href="https://wa.me/6282215452230?text=Halo%20Admin%20Sewa%20Elf%20Bandung%2C%20saya%20mau%20tanya%20sewa%20armada."
+                      href="https://wa.me/6282215452230?text=Halo%20admin%20sewaelfbandung.com%2C%20saya%20ingin%20sewa%20armada."
                       target="_blank"
                       rel="noreferrer"
                       className="flex-1 flex items-center justify-between gap-3 rounded-xl bg-[#1237B8] hover:bg-[#2857E8] p-4 text-white font-extrabold text-sm sm:text-base shadow-sm transition hover:-translate-y-0.5"

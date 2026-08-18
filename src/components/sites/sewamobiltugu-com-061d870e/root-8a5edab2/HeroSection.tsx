@@ -331,7 +331,7 @@ export function HeroSection() {
 
     const formattedDate = date ? new Date(date).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : "Menyusul / Diskusi via WA";
 
-    const text = `Halo Admin Sewa Elf Bandung (Amoora Group), saya mau cek ketersediaan & booking armada:
+    const text = `Halo admin sewaelfbandung.com, saya ingin sewa armada:
 
 🚐 *Tipe Unit:* ${fleet}
 📍 *Lokasi Penjemputan:* ${pickup}
