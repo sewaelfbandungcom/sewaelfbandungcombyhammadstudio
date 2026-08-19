@@ -13,10 +13,14 @@ export function CarFleetSection() {
   const currentCategoryInfo = fleetCategories.find((cat) => cat.key === activeCategory) || fleetCategories[0];
   const filteredFleet = fleetItems.filter((item) => item.category === activeCategory);
 
-  // Show max 8 on desktop, max 4 on mobile
-  const maxDesktopVisible = 8;
-  const displayedFleet = filteredFleet.slice(0, maxDesktopVisible);
-  const remainingCount = filteredFleet.length - maxDesktopVisible;
+  // On Homepage: For minibus (Elf & Hiace), feature strictly the 2 core Elf units (Elf Long & Elf Long Euro4)!
+  // For other categories (bus & mobil), show top 4 flagship models.
+  const displayedFleet =
+    activeCategory === "minibus"
+      ? filteredFleet.filter((item) => item.id === "elf-long" || item.id === "elf-long-euro4")
+      : filteredFleet.slice(0, 4);
+
+  const isElfCategory = activeCategory === "minibus";
 
   const getCategoryIcon = (key: FleetCategoryKey) => {
     switch (key) {
@@ -129,27 +133,29 @@ export function CarFleetSection() {
           </div>
         </div>
 
-        {/* Fleet Grid - Max 4 Cards on Mobile, Max 8 on Desktop */}
-        <div className="mt-7 grid gap-4.5 sm:mt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 sm:gap-5">
-          {displayedFleet.map((vehicle, index) => {
-            const isHiddenOnMobile = index >= 4;
-
+        {/* Fleet Grid */}
+        <div
+          className={`mt-7 grid gap-5 sm:mt-8 ${
+            isElfCategory
+              ? "grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto"
+              : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+          }`}
+        >
+          {displayedFleet.map((vehicle) => {
             return (
               <article
                 key={vehicle.id}
-                className={`group flex-col overflow-hidden rounded-[22px] border border-white bg-white text-[#0F172A] shadow-[0_12px_32px_rgba(18,55,184,.09)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1237B8]/40 hover:shadow-[0_24px_50px_rgba(18,55,184,.18)] ${
-                  isHiddenOnMobile ? "hidden sm:flex" : "flex"
-                }`}
+                className="group flex flex-col overflow-hidden rounded-[22px] border border-white bg-white text-[#0F172A] shadow-[0_12px_32px_rgba(18,55,184,.09)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1237B8]/40 hover:shadow-[0_24px_50px_rgba(18,55,184,.18)]"
               >
                 {/* Image Frame */}
                 <div className="relative aspect-[1.14] overflow-hidden bg-[radial-gradient(circle_at_50%_38%,#F1F6FF_0%,#E2ECFF_52%,#C8DCFF_100%)] sm:aspect-[1.12]">
-                    <Image
-                      src={vehicle.image}
-                      alt={`${vehicle.name} - Sewa Elf Bandung by Amoora Group`}
-                      fill
-                      sizes="(min-width: 1280px) 270px, (min-width: 1024px) 310px, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
+                  <Image
+                    src={vehicle.image}
+                    alt={`${vehicle.name} - Sewa Elf Bandung by Amoora Group`}
+                    fill
+                    sizes="(min-width: 1280px) 380px, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1237B8]/15 to-transparent" />
 
                   {/* Badge Left */}
@@ -227,20 +233,9 @@ export function CarFleetSection() {
             className="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl border border-[#1237B8]/35 bg-white px-7 text-sm font-extrabold text-[#1237B8] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1237B8] hover:text-white"
           >
             <span>
-              {filteredFleet.length > 4 ? (
-                <>
-                  <span className="sm:hidden">Lihat Semua {filteredFleet.length} Unit {currentCategoryInfo.label}</span>
-                  <span className="hidden sm:inline">
-                    {remainingCount > 0
-                      ? `Lihat ${remainingCount} Unit ${currentCategoryInfo.label} Lainnya di Katalog`
-                      : `Lihat Seluruh 27+ Pilihan Armada di Katalog`}
-                  </span>
-                </>
-              ) : (
-                "Lihat Seluruh 27+ Pilihan Armada di Katalog"
-              )}
+              Lihat Semua {filteredFleet.length} Pilihan Unit {currentCategoryInfo.label} di Katalog Lengkap
             </span>
-            <ArrowRight className="size-4 text-[#50C710]" />
+            <ChevronRight className="size-4" />
           </Link>
         </div>
 
