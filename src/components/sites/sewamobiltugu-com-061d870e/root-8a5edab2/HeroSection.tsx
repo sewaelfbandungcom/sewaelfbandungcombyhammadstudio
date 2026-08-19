@@ -60,14 +60,14 @@ const destinationOptions: readonly DropdownOption[] = [
 
 const fleetOptions: readonly DropdownOption[] = [
   // Elf & Hiace
+  { value: "Jenis Armada Elf (14 Seat)", label: "Jenis Armada Elf (14 Seat)", category: "Elf & Hiace", price: "Rp1.200.000", sublabel: "14 Orang | Nyaman, Suspensi Empuk" },
+  { value: "Jenis Armada Elf Euro4 (14 Seat)", label: "Jenis Armada Elf Euro4 (14 Seat)", category: "Elf & Hiace", price: "Rp1.300.000", sublabel: "14 Orang | Unit Anyar Euro4" },
+  { value: "Jenis Armada Elf Premio Standard (14 Seat)", label: "Jenis Armada Elf Premio Standard (14 Seat)", category: "Elf & Hiace", price: "Rp1.500.000", sublabel: "14 Orang | Kabin Modern & Mewah" },
+  { value: "Jenis Armada Elf Premio Luxury (8-10 Seat VIP)", label: "Jenis Armada Elf Premio Luxury (VIP)", category: "Elf & Hiace", price: "Rp2.200.000", sublabel: "8-10 Orang | Captain Seat & Audio Karaoke" },
   { value: "Isuzu Elf Long (18-19 Seat)", label: "Isuzu Elf Long (18-19 Seat)", category: "Elf & Hiace", price: "Rp1.400.000", sublabel: "18-19 Orang | Reclining Seat & AC Dingin" },
   { value: "Isuzu Elf Long Euro4 (19-21 Seat)", label: "Isuzu Elf Long Euro4 (19-21 Seat)", category: "Elf & Hiace", price: "Rp1.700.000", sublabel: "19-21 Orang | Mesin Euro4 Terbaru & Senyap" },
   { value: "Isuzu Elf Coaster (17-18 Seat)", label: "Isuzu Elf Coaster (17-18 Seat)", category: "Elf & Hiace", price: "Rp1.800.000", sublabel: "17-18 Orang | Bodi Luas & Lega" },
   { value: "Isuzu Elf Coaster Euro4 (18-22 Seat)", label: "Isuzu Elf Coaster Euro4 (18-22 Seat)", category: "Elf & Hiace", price: "Rp2.000.000", sublabel: "18-22 Orang | Varian Jumbo Euro4" },
-  { value: "Toyota Hiace Commuter (14 Seat)", label: "Toyota Hiace Commuter (14 Seat)", category: "Elf & Hiace", price: "Rp1.200.000", sublabel: "14 Orang | Nyaman, Suspensi Empuk" },
-  { value: "Toyota Hiace Commuter Euro4 (14 Seat)", label: "Toyota Hiace Commuter Euro4 (14 Seat)", category: "Elf & Hiace", price: "Rp1.300.000", sublabel: "14 Orang | Unit Anyar Euro4" },
-  { value: "Toyota Hiace Premio Std (14 Seat)", label: "Toyota Hiace Premio Std (14 Seat)", category: "Elf & Hiace", price: "Rp1.500.000", sublabel: "14 Orang | Kabin Modern & Mewah" },
-  { value: "Toyota Hiace Premio Luxury (8-10 Seat VIP)", label: "Toyota Hiace Premio Luxury (VIP)", category: "Elf & Hiace", price: "Rp2.200.000", sublabel: "8-10 Orang | Captain Seat & Audio Karaoke" },
 
   // Bus Pariwisata
   { value: "Medium Bus Jetbus (29-31 Seat)", label: "Medium Bus Jetbus (29-31 Seat)", category: "Bus Pariwisata", price: "Rp2.000.000", sublabel: "29-31 Orang | Standar Pariwisata AC TV" },

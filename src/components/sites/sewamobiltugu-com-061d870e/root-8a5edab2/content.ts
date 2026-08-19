@@ -66,7 +66,7 @@ export const fleetItems: FleetItem[] = [
   // --- KATEGORI 1: MINIBUS / TRAVEL ---
   {
     id: "hiace-commuter",
-    name: "Hiace Commuter",
+    name: "Jenis Armada Elf",
     category: "minibus",
     capacity: "14 orang",
     price: "Rp 1.200.000",
@@ -78,7 +78,7 @@ export const fleetItems: FleetItem[] = [
   },
   {
     id: "hiace-commuter-euro4",
-    name: "Hiace Commuter Euro4",
+    name: "Jenis Armada Elf Euro4",
     category: "minibus",
     capacity: "14 orang",
     price: "Rp 1.300.000",
@@ -89,7 +89,7 @@ export const fleetItems: FleetItem[] = [
   },
   {
     id: "hiace-premio-std",
-    name: "Hiace Premio Std",
+    name: "Jenis Armada Elf Premio Standard",
     category: "minibus",
     capacity: "14 orang",
     price: "Rp 1.500.000",
@@ -101,7 +101,7 @@ export const fleetItems: FleetItem[] = [
   },
   {
     id: "hiace-premio-luxury",
-    name: "Hiace Premio Luxury",
+    name: "Jenis Armada Elf Premio Luxury",
     category: "minibus",
     capacity: "8, 9, atau 10 orang",
     price: "Rp 2.200.000",
