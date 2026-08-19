@@ -54,13 +54,13 @@ export function CarFleetSection() {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-          <div className="max-w-[780px]">
-            <h2 className="text-[30px] font-extrabold leading-[1.12] tracking-[-0.04em] text-[#0F172A] sm:text-[38px] lg:text-[44px]">
-              Katalog Armada Lengkap &amp; Terawat
+        <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+          <div className="max-w-[720px]">
+            <h2 className="text-[28px] font-extrabold leading-[1.15] tracking-[-0.03em] text-[#0F172A] sm:text-[36px] lg:text-[40px]">
+              Katalog Armada Pilihan
             </h2>
-            <p className="mt-2.5 max-w-[660px] text-sm font-medium leading-relaxed text-[#1E293B] sm:text-[15px]">
-              Temukan kendaraan ideal untuk rombongan wisata, family tour, acara instansi, maupun perjalanan dinas di Bandung dan sekitarnya.
+            <p className="mt-1.5 text-sm font-medium text-[#475569] sm:text-[15px]">
+              Armada bersih, terawat, dan berstandar prima siap melayani perjalanan Anda di Bandung &amp; luar kota.
             </p>
           </div>
 
@@ -72,8 +72,8 @@ export function CarFleetSection() {
           </Link>
         </div>
 
-        {/* 3 Categories Tab Bar - Optimized Horizontal Touch Scroller on Mobile */}
-        <div className="mt-8 sm:mt-10">
+        {/* 3 Categories Tab Bar - Simple & Clean */}
+        <div className="mt-6 sm:mt-8">
           <div className="flex gap-2.5 overflow-x-auto pb-2 sm:pb-0 rounded-2xl border border-white/80 bg-white/95 p-2 backdrop-blur-md shadow-[0_8px_24px_rgba(18,55,184,.08)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {fleetCategories.map((category) => {
               const Icon = getCategoryIcon(category.key);
@@ -83,33 +83,28 @@ export function CarFleetSection() {
                   key={category.key}
                   type="button"
                   onClick={() => setActiveCategory(category.key)}
-                  className={`group flex shrink-0 sm:flex-1 min-w-[210px] items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-left transition-all duration-300 cursor-pointer ${
+                  className={`group flex shrink-0 sm:flex-1 min-w-[170px] items-center justify-between gap-3 rounded-xl px-4 py-3 text-left transition-all duration-300 cursor-pointer ${
                     isActive
                       ? "bg-gradient-to-r from-[#1237B8] to-[#2857E8] text-white shadow-[0_10px_24px_rgba(18,55,184,.3)]"
                       : "text-[#334155] hover:bg-[#F1F6FF] hover:text-[#0F172A]"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5">
                     <span
-                      className={`grid size-10 place-items-center rounded-lg transition-transform duration-300 group-hover:scale-105 ${
+                      className={`grid size-8.5 place-items-center rounded-lg transition-transform duration-300 group-hover:scale-105 ${
                         isActive
                           ? "bg-white text-[#1237B8] shadow-xs"
                           : "bg-[#F1F6FF] text-[#1237B8]"
                       }`}
                     >
-                      <Icon className="size-5" />
+                      <Icon className="size-4.5" />
                     </span>
-                    <div>
-                      <strong className={`block text-sm font-bold leading-tight ${isActive ? "text-white" : "text-[#0F172A]"}`}>
-                        {category.label}
-                      </strong>
-                      <span className={`mt-0.5 block text-[11px] font-medium ${isActive ? "text-slate-100" : "text-[#475569]"}`}>
-                        {category.subtitle}
-                      </span>
-                    </div>
+                    <strong className={`block text-xs sm:text-sm font-bold leading-tight ${isActive ? "text-white" : "text-[#0F172A]"}`}>
+                      {category.label}
+                    </strong>
                   </div>
                   <span
-                    className={`rounded-full px-2.5 py-0.5 text-[10px] font-extrabold ${
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-extrabold ${
                       isActive
                         ? "bg-[#50C710] text-white"
                         : "bg-[#F1F6FF] text-[#1237B8]"
@@ -120,16 +115,6 @@ export function CarFleetSection() {
                 </button>
               );
             })}
-          </div>
-
-          {/* Dynamic Tab Description Box */}
-          <div className="mt-3.5 rounded-xl border border-white/80 bg-white/95 px-4.5 py-3.5 backdrop-blur-md shadow-xs sm:px-5 sm:py-4">
-            <p className="text-xs font-normal leading-relaxed text-[#1E293B] sm:text-[13px]">
-              <strong className="text-[#1237B8] font-bold mr-1.5">
-                {currentCategoryInfo.label}:
-              </strong>
-              {currentCategoryInfo.description}
-            </p>
           </div>
         </div>
 
