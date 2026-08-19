@@ -62,29 +62,29 @@ const fleetOptions: readonly DropdownOption[] = [
   // Elf & Hiace
   { value: "Isuzu Elf Long (18-19 Seat)", label: "Isuzu Elf Long (18-19 Seat)", category: "Elf & Hiace", price: "Rp1.400.000", sublabel: "18-19 Orang | Reclining Seat & AC Dingin" },
   { value: "Isuzu Elf Long Euro4 (19-21 Seat)", label: "Isuzu Elf Long Euro4 (19-21 Seat)", category: "Elf & Hiace", price: "Rp1.700.000", sublabel: "19-21 Orang | Mesin Euro4 Terbaru & Senyap" },
-  { value: "Isuzu Elf Coaster (17-18 Seat)", label: "Isuzu Elf Coaster (17-18 Seat)", category: "Elf & Hiace", price: "Rp1.800.000", sublabel: "17-18 Orang | Bodi Luas & Lega" },
-  { value: "Isuzu Elf Coaster Euro4 (18-22 Seat)", label: "Isuzu Elf Coaster Euro4 (18-22 Seat)", category: "Elf & Hiace", price: "Rp2.000.000", sublabel: "18-22 Orang | Varian Jumbo Euro4" },
-  { value: "Jenis Armada Elf (14 Seat)", label: "Jenis Armada Elf (14 Seat)", category: "Elf & Hiace", price: "Rp1.200.000", sublabel: "14 Orang | Nyaman, Suspensi Empuk" },
-  { value: "Jenis Armada Elf Euro4 (14 Seat)", label: "Jenis Armada Elf Euro4 (14 Seat)", category: "Elf & Hiace", price: "Rp1.300.000", sublabel: "14 Orang | Unit Anyar Euro4" },
-  { value: "Jenis Armada Elf Premio Standard (14 Seat)", label: "Jenis Armada Elf Premio Standard (14 Seat)", category: "Elf & Hiace", price: "Rp1.500.000", sublabel: "14 Orang | Kabin Modern & Mewah" },
-  { value: "Jenis Armada Elf Premio Luxury (8-10 Seat VIP)", label: "Jenis Armada Elf Premio Luxury (VIP)", category: "Elf & Hiace", price: "Rp2.200.000", sublabel: "8-10 Orang | Captain Seat & Audio Karaoke" },
+  { value: "Toyota Hiace Commuter (14 Seat)", label: "Toyota Hiace Commuter (14 Seat)", category: "Elf & Hiace", price: "Rp1.200.000", sublabel: "14 Orang | Nyaman, Suspensi Empuk" },
+  { value: "Toyota Hiace Commuter Euro4 (14 Seat)", label: "Toyota Hiace Commuter Euro4 (14 Seat)", category: "Elf & Hiace", price: "Rp1.300.000", sublabel: "14 Orang | Unit Anyar Euro4" },
+  { value: "Toyota Hiace Premio Standard (14 Seat)", label: "Toyota Hiace Premio Standard (14 Seat)", category: "Elf & Hiace", price: "Rp1.500.000", sublabel: "14 Orang | Kabin Modern & Mewah" },
+  { value: "Toyota Hiace Premio Luxury (8-10 Seat VIP)", label: "Toyota Hiace Premio Luxury (VIP)", category: "Elf & Hiace", price: "Rp2.200.000", sublabel: "8-10 Orang | Captain Seat & Audio Karaoke" },
 
   // Bus Pariwisata
-  { value: "Medium Bus Jetbus (29-31 Seat)", label: "Medium Bus Jetbus (29-31 Seat)", category: "Bus Pariwisata", price: "Rp2.000.000", sublabel: "29-31 Orang | Standar Pariwisata AC TV" },
-  { value: "Medium Bus Jetbus 2 (29-35 Seat)", label: "Medium Bus Jetbus 2 (29-35 Seat)", category: "Bus Pariwisata", price: "Rp2.200.000", sublabel: "29, 31, 33, 35 Orang | Nyaman & Luas" },
   { value: "Medium Bus Jetbus 3+ (31-35 Seat)", label: "Medium Bus Jetbus 3+ (31-35 Seat)", category: "Bus Pariwisata", price: "Rp2.500.000", sublabel: "31-35 Orang | Fasilitas Lengkap Karoseri Adiputro" },
-  { value: "Medium Bus Long JB3+ / JB5 (35-39 Seat)", label: "Medium Bus Long JB3+/JB5 (35-39 Seat)", category: "Bus Pariwisata", price: "Rp2.800.000", sublabel: "35-39 Orang | Model Terbaru Jetbus 5" },
+  { value: "Medium Bus Long JB5 (35-39 Seat)", label: "Medium Bus Long JB5 (35-39 Seat)", category: "Bus Pariwisata", price: "Rp3.000.000", sublabel: "35-39 Orang | Model Terbaru Jetbus 5" },
   { value: "MD Bus Luxury Legrest (14-16 Seat VIP)", label: "MD Bus Luxury Legrest (14-16 Seat)", category: "Bus Pariwisata", price: "Rp3.200.000", sublabel: "14-16 Orang | Kursi Legrest Super Nyaman" },
   { value: "Big Bus Jetbus HDD (47-59 Seat)", label: "Big Bus Jetbus HDD (47-59 Seat)", category: "Bus Pariwisata", price: "Rp3.200.000", sublabel: "47, 50, 59 Orang | Bagasi Luas & AC Merata" },
-  { value: "Big Bus HDD/SHD JB3+ / JB5 (45-59 Seat)", label: "Big Bus HDD/SHD JB3+/JB5 (45-59 Seat)", category: "Bus Pariwisata", price: "Rp3.800.000", sublabel: "45-59 Orang | Karoseri Mewah Adiputro" },
+  { value: "Big Bus HDD Premium (45-57 Seat)", label: "Big Bus HDD Premium (45-57 Seat)", category: "Bus Pariwisata", price: "Rp3.500.000", sublabel: "45-57 Orang | Interior Premium & Suspensi Lembut" },
+  { value: "Big Bus HDD/SHD JB3+ (45-59 Seat)", label: "Big Bus HDD/SHD JB3+ (45-59 Seat)", category: "Bus Pariwisata", price: "Rp3.800.000", sublabel: "45-59 Orang | Karoseri Super High Deck" },
+  { value: "Big Bus HDD/SHD JB5 (45-59 Seat)", label: "Big Bus HDD/SHD JB5 (45-59 Seat)", category: "Bus Pariwisata", price: "Rp4.000.000", sublabel: "45-59 Orang | Flagship New Jetbus 5" },
   { value: "Big Bus Luxury Legrest (25-30 Seat VIP)", label: "Big Bus Luxury Legrest (25-30 Seat)", category: "Bus Pariwisata", price: "Rp4.200.000", sublabel: "25-30 Orang | Kursi Sultan & Toilet" },
 
   // Mobil Pribadi & Keluarga
   { value: "New Avanza TSS (5-7 Seat)", label: "New Avanza TSS (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp750.000", sublabel: "5-7 Orang | Irit & Nyaman untuk Keluarga" },
   { value: "Innova Reborn (5-7 Seat)", label: "Innova Reborn (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp950.000", sublabel: "5-7 Orang | Standar Perjalanan Luar Kota" },
-  { value: "Innova Zenix G / Q (5-7 Seat)", label: "Innova Zenix G / Q (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp1.500.000", sublabel: "5-7 Orang | Varian Modern Hybrid / Gasoline" },
-  { value: "Fortuner / Pajero Sport (5-7 Seat)", label: "Fortuner / Pajero Sport (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp1.800.000", sublabel: "5-7 Orang | SUV Gagah & Berkelas" },
-  { value: "Toyota Alphard Transformer (5-7 Seat VIP)", label: "Toyota Alphard Transformer (VIP)", category: "Mobil Pribadi & Keluarga", price: "Rp3.200.000", sublabel: "5-7 Orang | Kemewahan & Privasi Maksimal" },
+  { value: "Innova Zenix G (5-7 Seat)", label: "Innova Zenix G (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp1.500.000", sublabel: "5-7 Orang | Kabin Lega TNGA" },
+  { value: "Innova Zenix Q (5-6 Seat VIP)", label: "Innova Zenix Q (5-6 Seat VIP)", category: "Mobil Pribadi & Keluarga", price: "Rp1.800.000", sublabel: "5-6 Orang | Captain Seat & Sunroof" },
+  { value: "Toyota Fortuner GR (5-7 Seat)", label: "Toyota Fortuner GR (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp1.800.000", sublabel: "5-7 Orang | SUV Gagah & Berkelas" },
+  { value: "Mitsubishi Pajero Sport (5-7 Seat)", label: "Mitsubishi Pajero Sport (5-7 Seat)", category: "Mobil Pribadi & Keluarga", price: "Rp2.000.000", sublabel: "5-7 Orang | SUV Tangguh Siap Wisata" },
+  { value: "Toyota Alphard VIP (5-7 Seat VIP)", label: "Toyota Alphard VIP (5-7 Seat VIP)", category: "Mobil Pribadi & Keluarga", price: "Rp3.200.000", sublabel: "5-7 Orang | Kemewahan & Privasi Maksimal" },
 ];
 
 const bookingBenefits = [
