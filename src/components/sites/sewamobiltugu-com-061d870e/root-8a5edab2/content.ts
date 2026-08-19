@@ -35,7 +35,7 @@ export interface CategoryInfo {
 export const fleetCategories: CategoryInfo[] = [
   {
     key: "minibus",
-    label: "Minibus / Travel",
+    label: "Elf & Hiace",
     shortTitle: "Elf & Hiace",
     subtitle: "Kapasitas 8 s/d 22 Orang",
     description:
