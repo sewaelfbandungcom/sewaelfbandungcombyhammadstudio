@@ -35,8 +35,25 @@ export function AeoAnswerSection() {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: conciseFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <section id="faq" className="relative overflow-hidden bg-white py-12 sm:py-16 border-t border-[#DCE5F0]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="site-container max-w-3xl">
         {/* Crisp Header */}
         <div className="text-center">
