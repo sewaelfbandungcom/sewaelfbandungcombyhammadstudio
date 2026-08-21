@@ -12,9 +12,10 @@ type HeaderLink = { label: string; href: string; path: string };
 
 const links: readonly HeaderLink[] = [
   { label: "Beranda", href: "/", path: "/" },
+  { label: "Harga Sewa", href: "/harga-sewa-elf-bandung", path: "/harga-sewa-elf-bandung" },
   { label: "Armada", href: "/armada", path: "/armada" },
-  { label: "Tentang Kami", href: "/tentang", path: "/tentang" },
   { label: "Layanan", href: "/layanan", path: "/layanan" },
+  { label: "Tentang Kami", href: "/tentang", path: "/tentang" },
   { label: "Kontak", href: "/kontak", path: "/kontak" },
 ] as const;
 

@@ -441,6 +441,20 @@ Mohon info ketersediaan unit dan penawaran harga terbaiknya. Terima kasih!`;
 
       {/* Booking Form Planner Attached Directly onto the Hero Slider Curve */}
       <div className="site-container relative z-30 -mt-10 sm:-mt-14 lg:-mt-16 pb-10 sm:pb-14">
+        {/* Main Semantic H1 Banner for SEO / AEO / GEO */}
+        <div className="mb-4 sm:mb-6 rounded-[22px] border border-white/80 bg-white/95 px-5 py-4.5 sm:px-7 sm:py-6 shadow-[0_16px_40px_rgba(18,55,184,.10)] backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-md bg-[#F2FBEA] px-3 py-1 text-[11px] font-extrabold text-[#2e8807]">
+            <span className="size-2 rounded-full bg-[#50C710] animate-pulse" />
+            Official Booking by Amoora Group
+          </div>
+          <h1 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.035em] text-[#0F172A]">
+            Sewa Elf Bandung untuk <span className="text-[#1237B8]">Wisata &amp; Perjalanan Rombongan</span>
+          </h1>
+          <p className="mt-2 max-w-[840px] text-xs sm:text-sm font-medium leading-relaxed text-[#334155]">
+            Elf Long 18–22 Seat, Hiace &amp; Bus Pariwisata dengan armada terawat dan pilihan kapasitas lengkap untuk Bandung dan luar kota. Driver profesional, ber-AC dingin, full karaoke, dan harga transparan mulai Rp1,4 Juta.
+          </p>
+        </div>
+
         <form
           onSubmit={handleBookingSubmit}
           className="w-full max-w-full rounded-[24px] sm:rounded-[28px] border border-[#DCE5F0] bg-white p-4.5 sm:p-7 lg:p-8 text-[#0F172A] shadow-[0_24px_70px_rgba(18,55,184,.14)]"

@@ -19,33 +19,53 @@ const bodyFont = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sewaelfbandung.com"),
-  title: "Sewa Elf Bandung Murah & Terpercaya - by Amoora Group",
+  title: "Sewa Elf Bandung Murah | Elf Long 19 Seat mulai Rp1,4 Juta",
   description:
-    "Layanan sewa Elf Long 19 Seat, Hiace Premio / Commuter, dan Bus Pariwisata di Bandung. Armada bersih Euro4, driver berpengalaman untuk wisata Lembang, Ciwidey, Study Tour, & Luar Kota.",
+    "Sewa Elf Bandung untuk wisata, study tour, ziarah, gathering & luar kota. Elf Long 18–22 seat mulai Rp1,4 juta/12 jam. Cek jadwal via WhatsApp.",
   keywords: [
     "sewa elf bandung",
     "rental elf bandung",
+    "harga sewa elf bandung",
+    "sewa elf bandung murah",
+    "sewa elf long bandung",
+    "sewa elf long 19 seat bandung",
+    "sewa elf long euro4 bandung",
+    "sewa elf 21 seat bandung",
+    "sewa elf coaster bandung",
+    "sewa elf 22 seat bandung",
     "sewa hiace bandung",
-    "sewa elf pariwisata bandung",
-    "rental elf murah bandung",
-    "sewa bus medium bandung",
-    "sewa big bus bandung",
-    "sewa elf cileunyi",
+    "sewa hiace premio bandung",
+    "sewa hiace commuter bandung",
+    "sewa bus pariwisata bandung",
+    "sewa elf bandung lembang",
+    "sewa elf bandung ciwidey",
+    "sewa elf bandung pangalengan",
+    "sewa elf bandung garut",
+    "sewa elf stasiun whoosh tegalluar",
     "amoora group transport",
-    "rental mobil rombongan bandung",
-    "sewa hiace premio bandung luxury",
   ],
   authors: [{ name: "Sewa Elf Bandung by Amoora Group" }],
   creator: "Amoora Group",
   publisher: "Sewa Elf Bandung",
+  alternates: {
+    canonical: "https://sewaelfbandung.com",
+  },
   openGraph: {
-    title: "Sewa Elf Bandung - Rental Hiace & Bus Pariwisata by Amoora Group",
+    title: "Sewa Elf Bandung Murah | Elf Long 19 Seat mulai Rp1,4 Juta",
     description:
-      "Solusi transportasi rombongan terbaik di Bandung. Unit bersih, nyaman, aman, harga kompetitif untuk wisata, study tour, gathering, dan luar kota.",
+      "Sewa Elf Bandung untuk wisata, study tour, ziarah, gathering & luar kota. Elf Long 18–22 seat mulai Rp1,4 juta/12 jam. Cek jadwal via WhatsApp.",
     url: "https://sewaelfbandung.com",
-    siteName: "Sewa Elf Bandung",
+    siteName: "Sewa Elf Bandung by Amoora Group",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/images/armada/elf-long.webp",
+        width: 1200,
+        height: 630,
+        alt: "Sewa Elf Bandung by Amoora Group - Elf Long 19 Seat",
+      },
+    ],
   },
   icons: {
     icon: "/icon.png",
@@ -61,37 +81,58 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AutoRental",
-    "name": "Sewa Elf Bandung by Amoora Group",
-    "image": "https://sewaelfbandung.com/icon.png",
-    "url": "https://sewaelfbandung.com",
-    "telephone": "+6281214802420",
-    "priceRange": "Rp 750.000 - Rp 4.700.000",
-    "address": {
+    "@id": "https://sewaelfbandung.com/#business",
+    name: "Sewa Elf Bandung by Amoora Group",
+    image: "https://sewaelfbandung.com/images/armada/elf-long.webp",
+    logo: "https://sewaelfbandung.com/logo-brand.jpeg",
+    url: "https://sewaelfbandung.com",
+    telephone: ["+6281214802420", "+6282215452230"],
+    email: "info@sewaelfbandung.com",
+    priceRange: "Rp 750.000 - Rp 4.700.000",
+    address: {
       "@type": "PostalAddress",
-      "streetAddress": "Jalan Ciborelang No 8 Cileunyi",
-      "addressLocality": "Bandung",
-      "addressRegion": "Jawa Barat",
-      "addressCountry": "ID"
+      streetAddress: "Jalan Ciborelang No 8",
+      addressLocality: "Cileunyi",
+      addressRegion: "Jawa Barat",
+      postalCode: "40622",
+      addressCountry: "ID",
     },
-    "geo": {
+    geo: {
       "@type": "GeoCoordinates",
-      "latitude": -6.9388,
-      "longitude": 107.7471
+      latitude: -6.9388,
+      longitude: 107.7471,
     },
-    "openingHoursSpecification": {
+    areaServed: [
+      "Bandung",
+      "Lembang",
+      "Ciwidey",
+      "Pangalengan",
+      "Garut",
+      "Subang",
+      "Pangandaran",
+      "Jakarta",
+      "Sumedang",
+      "Cirebon",
+    ],
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Amoora Group",
+      url: "https://sewaelfbandung.com",
+    },
+    openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
+      dayOfWeek: [
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday"
+        "Sunday",
       ],
-      "opens": "00:00",
-      "closes": "23:59"
-    }
+      opens: "00:00",
+      closes: "23:59",
+    },
   };
 
   return (

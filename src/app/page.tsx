@@ -1,3 +1,4 @@
+import { AeoAnswerSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/AeoAnswerSection";
 import { BenefitsSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/BenefitsSection";
 import { AboutSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/AboutSection";
 import { CarFleetSection } from "@/components/sites/sewamobiltugu-com-061d870e/root-8a5edab2/CarFleetSection";
@@ -18,6 +19,7 @@ export default function Home() {
         <CarFleetSection />
         <AboutSection />
         <BenefitsSection />
+        <AeoAnswerSection />
         <TestimonialsSection />
         <CtaSection />
       </main>
