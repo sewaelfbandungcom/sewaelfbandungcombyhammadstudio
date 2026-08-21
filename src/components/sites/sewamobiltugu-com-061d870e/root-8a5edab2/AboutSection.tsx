@@ -24,15 +24,15 @@ export function AboutSection() {
           <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.18em] text-[#6920CC] bg-[#F5F0FF] px-3 py-1 rounded-md inline-block">
             Profil Sewa Elf Bandung
           </p>
-          <h2 className="text-2xl font-extrabold leading-[1.18] tracking-[-0.035em] text-[#0F172A] sm:text-3xl md:text-[2.5rem]">
-            Sewa Elf Bandung – <span className="text-[#1237B8]">Solusi Transportasi</span> Rombongan Terpercaya
+          <h2 className="text-2xl font-extrabold leading-[1.18] tracking-[-0.035em] text-[#0F172A] sm:text-3xl md:text-[2.2rem]">
+            Sewa Elf Bandung – <span className="text-[#1237B8]">Transportasi Rombongan</span> Terpercaya
           </h2>
-          <div className="mt-5 space-y-4 text-[14px] leading-relaxed text-[#334155] sm:text-[15px] sm:leading-7">
+          <div className="mt-4 space-y-3 text-xs sm:text-sm leading-relaxed text-[#475569]">
             <p>
-              <strong className="font-extrabold text-[#0F172A]">Sewa Elf Bandung by Amoora Group</strong> menyediakan layanan penyewaan kendaraan Elf, Hiace, dan Bus Pariwisata untuk berbagai kebutuhan perjalanan di Bandung dan sekitarnya. Kami hadir sebagai solusi transportasi rombongan yang nyaman, aman, praktis, dan profesional, baik untuk perjalanan dalam kota maupun luar kota.
+              <strong className="font-extrabold text-[#0F172A]">Sewa Elf Bandung by Amoora Group</strong> menyediakan unit Elf Long, Hiace Premio, dan Bus Pariwisata berstandar Euro4 dengan supir berpengalaman untuk rute Bandung maupun luar kota.
             </p>
             <p>
-              Dengan kapasitas penumpang yang sesuai untuk kelompok, kendaraan Elf dan Hiace menjadi pilihan tepat bagi <strong className="font-extrabold text-[#0F172A]">keluarga, perusahaan, sekolah, komunitas, maupun wisatawan</strong>. Kami melayani destinasi populer seperti Lembang, Ciwidey, Pangalengan, Pangandaran, Garut, Subang, hingga carter antar kota.
+              Pilihan ideal untuk wisata Lembang, Ciwidey, gathering kantor, study tour sekolah, ziarah, dan drop bandara dengan kapasitas 8 hingga 59 seat.
             </p>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-3.5">
