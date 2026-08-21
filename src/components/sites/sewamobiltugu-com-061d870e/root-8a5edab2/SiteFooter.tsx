@@ -120,13 +120,37 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-          <div className="mt-5 border-t border-white/10 pt-3 text-xs text-slate-300 space-y-1.5">
-            <p className="flex items-start gap-2">
+          <div className="mt-5 border-t border-white/10 pt-3.5 text-xs text-slate-300 space-y-2.5">
+            <div className="flex items-start gap-2 text-slate-300">
               <MapPin className="mt-0.5 size-3.5 shrink-0 text-[#50C710]" />
-              Jl. Ciborelang No 8 Cileunyi, Bandung
-            </p>
-            <a href="tel:6281214802420" className="flex items-center gap-2 font-bold text-slate-200 hover:text-[#50C710] transition">
-              <Phone className="size-3.5 text-[#50C710]" /> 0812-1480-2420 / 0822-1545-2230
+              <span>Jalan Ciborelang No. 8, Cileunyi, Bandung</span>
+            </div>
+            
+            <div className="space-y-1.5">
+              <a
+                href="tel:6281214802420"
+                className="flex items-center gap-2 font-bold text-slate-200 hover:text-[#50C710] transition"
+              >
+                <Phone className="size-3.5 text-[#50C710] shrink-0" />
+                <span>0812-1480-2420</span>
+                <span className="rounded bg-white/10 px-1.5 py-0.2 text-[9px] font-semibold text-slate-400">Utama</span>
+              </a>
+              <a
+                href="tel:6282215452230"
+                className="flex items-center gap-2 font-bold text-slate-200 hover:text-[#50C710] transition"
+              >
+                <Phone className="size-3.5 text-[#50C710] shrink-0" />
+                <span>0822-1545-2230</span>
+                <span className="rounded bg-white/10 px-1.5 py-0.2 text-[9px] font-semibold text-slate-400">Reservasi</span>
+              </a>
+            </div>
+
+            <a
+              href="mailto:info@sewaelfbandung.com"
+              className="flex items-center gap-2 text-slate-300 hover:text-[#50C710] transition"
+            >
+              <Mail className="size-3.5 text-[#50C710] shrink-0" />
+              <span>info@sewaelfbandung.com</span>
             </a>
           </div>
         </div>
